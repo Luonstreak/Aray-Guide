@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:wght@500&display=swap');
+
 html,
 body {
   padding: 0;
@@ -9,12 +11,47 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+  
 a {
-  color: inherit;
+  color: 'primary';
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+
+@layer base {
+
+  h1, h2, h3, h4 {
+    @apply text-primary;
+    font-family: 'Playfair Display', serif;
+  }
+
+  p, a, .display {
+    font-family: 'Montserrat', sans-serif;
+    @apply leading-snug;
+  }
+
+  p {
+    @apply text-gray-500;
+  }
+  
+  a {
+    @apply text-primary underline;
+  }
+
+}
+
+@layer components {
+
+  .container-separator {
+    @apply w-40 border-gray-300 mx-auto w-11/12 my-16;
+  }
+
+  .title-separator {
+    @apply border-primary border w-16 my-2 max-h-px bg-primary;
+  }
+
 }

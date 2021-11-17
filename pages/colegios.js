@@ -5,7 +5,23 @@ import graduation from '/public/images/graduation.jpg'
 import SearchInput from '../components/SearchInput'
 import Select from '../components/Select'
 import SchoolCard from '../components/SchoolCard';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 export default function colegios() {
+
+    const [schools, setSchools] = useState(null)
+
+    useEffect(() => {
+        if(!schools){
+          axios.get('https://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
+            if (res.data) {
+              setSchools(res.data);
+            }
+          }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
+        }
+    });
+
     const pais = [
         {
             label: "España",
@@ -21,7 +37,7 @@ export default function colegios() {
         },
     ];
 
-    const showMap = true;
+    const showMap = false;
 
     return (
         <div className="bg-gray-100">
@@ -35,7 +51,7 @@ export default function colegios() {
                     <Select name="comedor" options={pais} />
                     <Select name="idioma" options={pais} />
                 </div>
-                {/* <Image src={graduation} layout="fill" /> */}
+                <Image src={graduation} layout="responsive" />
             </div>
 
             <div className="container mx-auto bg-orange-300 p-4">
@@ -51,10 +67,11 @@ export default function colegios() {
                 </div>
             </div>
             <div className="container mx-auto bg-red-500 p-4 flex">
-                <div className={`grid grid-cols-1 gap-8 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-3 w-full'}`}>
-                    {[1,2,3,4,5,6,7,8].map(el => {
-                        return <SchoolCard key={el} el={el} grid={true} />
-                    })}
+                <div className={`grid grid-cols-1 gap-8 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
+                    {schools 
+                        ? schools.map(el => <SchoolCard key={el.guid} el={el} grid />) 
+                        : <p>loading...</p>
+                    }
                 </div>
                 {showMap && <div className="w-1/2 ml-8 fi">
                     <Image src={map} width={750} height={750} alt="map" className="rounded-lg" />

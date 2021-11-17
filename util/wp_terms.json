@@ -1,0 +1,99 @@
+{
+    "model_educativo": {
+        "29": "Britanico",
+        "3": "Internacional"
+    },
+    "idioma_principal_de_clases": {
+        "38": "Alemán",
+        "4": "Castellano",
+        "70": "Catalán",
+        "30": "Chino",
+        "6": "Frances",
+        "5": "Ingles",
+        "53": "Otros"
+    },
+    "otros_idiomas_de_clase": {
+        "1": "Castellano",
+        "2": "Ingles",
+        "3": "Frances"
+    },
+    "cursos_ofrecidos": {
+        "7": "Infantil",
+        "8": "Primaria",
+        "9": "ESO",
+        "10": "Bachillerato"
+    },
+    "curriculum_academico": {
+        "39": "Advanced International Certificate of Education (AICE)",
+        "73": "Advanced Level (A-Level)",
+        "75": "Bachillerato Europeo",
+        "67": "International Baccalaureate Diploma Programme (IBDP)",
+        "74": "International General Certificate of Secondary Education (IGCSE)"
+    },
+    "poblacion": {
+        "69": "Alicante",
+        "66": "Cuarte de Huerva",
+        "71": "Manacor",
+        "72": "Puçol",
+        "68": "Soto de Viñuelas"
+    },
+    "provincia": {
+        "11": "Alicante",
+        "55": "Islas Baleares",
+        "59": "Valencia",
+        "61": "Zaragoza",
+        "32": "Madrid"
+    },
+    "pais": {
+        "12": "España"
+    },
+    "equipamiento": {
+        "40": "Adaptado para personas con minusvalía",
+        "41": "Aire acondicionado",
+        "14": "Campo de futbol",
+        "15": "Campo de tenis",
+        "56": "Instalaciones olímpicas",
+        "17": "Piscina climatizada",
+        "16": "Piscina sin climatizar"
+    },
+    "servicios_ofrecidos": {
+        "18": "Alojamiento",
+        "20": "Comedor",
+        "22": "Horario ampliado matutino",
+        "23": "Horario ampliado vespertino",
+        "21": "Seguro de salud o vida",
+        "19": "Transporte escolar"
+    },
+    "actividades_extraescolares": {
+        "42": "Ajedrez",
+        "60": "Ballet",
+        "26": "Futbol",
+        "62": "Gimnasia rítmica",
+        "34": "Hípica",
+        "24": "Natación",
+        "35": "Otros deportes",
+        "37": "Otros instrumentos musicales",
+        "33": "Piano",
+        "25": "Tenis",
+        "36": "Violín"
+    },
+    "menu_especial": {
+        "47": "bajo en grasas",
+        "27": "Halal",
+        "46": "hipercalórico (suplemento en calorías)",
+        "48": "para diabéticos",
+        "43": "sin gluten",
+        "44": "sin lactosa",
+        "45": "vegano",
+        "57": "vegetariano"
+    },
+    "servicios_especiales": {
+        "28": "Logopeda",
+        "49": "Psicología infantil"
+    },
+    "programas_de_integracion": {
+        "52": "Programa de igualdad",
+        "51": "Programa de integración social",
+        "50": "Programa de prevención de acoso escolar (Cero Bullying)"
+    }
+}

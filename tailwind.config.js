@@ -12,11 +12,11 @@ module.exports = {
     }
   },
   variants: {
-    extend: {
-      backgroundImage: ( theme ) => ({
-        'banner': `url('/public/images/banner.jpg')`
-      }),
-    }
+    // extend: {
+    //   backgroundImage: ( theme ) => ({
+    //     'banner': `url('/public/images/banner.jpg')`
+    //   }),
+    // }
   },
   plugins: [],
 }

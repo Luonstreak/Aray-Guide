@@ -11,10 +11,50 @@ import banner from '/public/images/banner.jpg'
 import facebook from '/public/images/icons/facebook.svg';
 import instagram from '/public/images/icons/instagram.svg';
 import linkedin from '/public/images/icons/linkedin.svg';
+import tiktok from '/public/images/icons/tiktok.svg';
+import weibo from '/public/images/icons/weibo.svg';
+import xiaohongshu from '/public/images/icons/xiaohongshu.svg';
+import wechat from '/public/images/icons/wechat.svg';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export default function Inicio() {
+
+  const [schools, setSchools] = useState(null)
+  const [actividades, setActividades] = useState(null)
+  const [paises, setPaises] = useState([{ name: 'españa'}, { name: 'francia' },{ name: 'italia' },{ name: 'alemania' },{ name: 'china' } ])
+
+  useEffect(() => {
+    if(!schools){
+      axios.get('https://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
+        if (res.data) {
+          setSchools(res.data);
+        }
+      }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
+    }
+    if(!actividades){
+      axios.get('https://localhost/aray.new/wp-json/wp/v2/actividades?_embed').then(res => {
+        if (res.data) {
+          setActividades(res.data);
+        }
+      }).catch(err => console.log(err, 'There was an error fetching "Actviades"'));
+    }
+    if(!paises){
+      let paisesWithData = []
+      paises.map(({ name }) => {
+        paisesWithData.push({ name, numeroDeColegios: 0 });
+        // axios.get(`https://localhost/colegios?pais=${paisId}`).then(res => {
+        //   if (res.data) {
+        //     paisesWithData.push({})
+        //   }
+        // }).catch(err => console.log(err, 'There was an error fetching "Paises"'));
+        setPaises(paisesWithData);
+      });
+    }
+  })
+
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-50">
       
       {/* META */}
       <Head>
@@ -23,110 +63,164 @@ export default function Inicio() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      {/* JUMBO SEARCH */}
-      <div className="w-screen h-2/3 lg:h-96 flex flex-col justify-center items-center bg-green-900">
-        <div className="mx-auto w-10/12 md:w-full max-w-lg">
-          <SearchInput large />
+      {/* HERO SEARCH */}
+      <div className="w-screen h-80 lg:h-96 flex flex-col justify-center content-center bg-primary relative">
+        <div className="z-10 mx-auto w-10/12 md:w-full max-w-xl">
+          <SearchInput />
         </div>
-        <h2 className="z-10 text-xl text-white md:text-3xl my-4 mx-8">Buscar un centro educativo en otro pais nunca ha sido tan facil</h2>
-        {/* <div className="w-screen h-full">
-          <Image src={banner} layout="responsive" width={1920} height={649} alt="hero image" />
-        </div> */}
+        <h2 className="z-10 text-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">Buscar un centro educativo en otro pais nunca ha sido tan facil</h2>
+        <div className="z-0 absolute inset-0">
+          <Image priority src={banner} layout="fill" className="object-cover brightness-90" alt="hero image" />
+        </div>
       </div>
-
       {/* ACTIVIDADES */}
-      <div className="container mx-auto py-20 bg-yellow-300">
-        <h2 className="ml-2 uppercase font-bold">Actividades destacadas</h2>
+      <div className="container mx-auto px-2">
+        <hr className="container-separator" />
+        <h1 className="uppercase font-bold mb-8 text-xl md:text-2xl lg:text-4xl">actividades destacadas</h1>
         <div className="flex overflow-x-scroll items-center">
-          {[1,2,3,4,5,6].map(el => {
-            return <ActivityCard key={el} el={el} />
-          })}
+          {actividades 
+            ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
+            : <p>loading...</p>
+          }
         </div>
       </div>
       
       {/* SELECCION */}
-      <div className="container mx-auto py-20 bg-yellow-300">
-        <h2 className="ml-2 uppercase font-bold">seleccion</h2>
-        <p className="ml-2 uppercase">de la guia aray</p>
-        <div className="flex overflow-x-scroll items-center">
-          {[1,2,3,4,5,6].map(el => {
-            return <SchoolCard key={el} el={el} />
-          })}
+      <div className="container mx-auto px-2">
+        <hr className="container-separator" />
+        <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">seleccion</h1>
+        <p className="mb-8 uppercase text-gray-400">de la guia aray</p>
+        <div className="flex overflow-x-scroll items-center gap-x-2 md:gap-x-6">
+          {schools 
+            ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} />) 
+            : <p>loading...</p>
+          }
         </div>
       </div>
 
       {/* SUBSCRIBETE */}
-      <div className="w-screen bg-yellow-500">
-        <div className="container mx-auto py-10 md:rounded bg-white p-4 flex flex-col md:flex-row content-center">
-          <div>
-            <h1 className="text-3xl text-gray-700 mb-2 md:mb-4">Subscribete a nuestro newsletter</h1>
-            <p>Y mantente al tanto de todo lo que occure en nuestra guia</p>
-            <hr className="border-yellow-500 border-1 md:border-2 w-full my-8 md:mb-0 md:w-16 my-2" />
+      <hr className="container-separator" />
+      <div className="w-screen bg-primary mb-32">
+        <Link href="/subscribete">
+          <div className="cursor-pointer w-full lg:w-8/12 xl:w-5/12 shadow-lg rounded bg-white p-4 md:p-6 relative md:inset-x-auto -bottom-16 flex flex-col md:flex-row justify-center md:items-center mx-auto">
+            <div>
+              <h1 className="text-4xl font-bold">Subscribete a nuestro newsletter</h1>
+              <p className="mb-4">Y mantente al tanto de todo lo que occure en nuestra guia</p>
+              <hr className="title-separator" />
+            </div>
+            <a className="text-center md:text-left md:ml-10"><Image src={subsrcibete} width={50} height={50} alt="flecha derecha" /></a>
           </div>
-          <Link href="/subscribete"><a className="text-center md:text-left md:ml-10"><Image src={subsrcibete} width={50} height={50} alt="flecha derecha" /></a></Link>
-        </div>
+        </Link>
       </div>
 
       {/* PAISES */}
-      <div className="container mx-auto py-20 bg-yellow-300">
-        <h2 className="ml-2 uppercase font-bold">Los Paises</h2>
-        <p className="ml-2 uppercase">de la guia aray</p>
-        <div className="flex overflow-x-scroll overflow- items-center">
-          {[1,2,3,4,5,6].map(el => {
-            return <CountryCard key={el} el={el} />
+      <div className="container mx-auto px-2">
+        <hr className="container-separator" />
+        <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">los paises</h1>
+        <p className="mb-8 uppercase text-gray-400">de la guia aray</p>
+        <div className="flex overflow-x-scroll items-center gap-x-4 md:gap-x-6">
+          {paises.map(pais => {
+            return <CountryCard key={pais.name} pais={pais} />
           })}
         </div>
       </div>
 
       {/* CONOCE TODO SOBRE LA GUIA */}
-      <div className="w-screen bg-green-500 h-screen md:h-96">
-        <div className="w-screen bg-yellow-500 relative">
-          <div className="w-10/12 md:w-80 mx-auto h-auto absolute inset-x-0 md:-left-10">
-            <Image layout="responsive" className="rounded-lg" src={conoce} width={150} height={175}  alt="preview de actividad"/>
+      <hr className="container-separator" />
+      <div className="w-screen py-20 mt-32 mb-80 bg-primary relative">
+          <div className="absolute -top-12 sm:left-20 lg:left-1/4 shadow-md w-80 flex-shrink-0" >
+            <Image layout="responsive" className="rounded-lg" src={conoce}  alt="preview de actividad"/>
           </div>
-          <div className="absolute top-64 md:top-20 inset-x-2 md:left-40 md:right-10 bg-white rounded-lg p-4 p-4 flex flex-col md:flex-row md:items-end">
-            <div>
-              <h1 className="text-3xl text-gray-700">Conoce todo</h1>
-              <p>Sobre la guia</p>
-              <hr className="border-yellow-500 border-1 md:border-2 w-full my-8 md:w-16 my-2" />
-              <p>Descubre todo sobre la guia bla bla bla</p>
+          <Link href="/subscribete">
+            <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
+              <div>
+                <h1 className="text-4xl font-bold capitalize mb-2">conoce todo</h1>
+                <p className="text-gray-500 mb-4">sobre la guia aray</p>
+                <hr className="title-separator" />
+                <p className="mb-2">Descubre todo lo que necesitas saber sobre la guia de colegios mas completa que Aray ha desarollado para que todo sea mas comodo y sensillo para ti</p>
+              </div>
+              <div className="mx-auto md:w-40 mt-4 md:mt-0">
+                <Image src={subsrcibete} width={50} height={50} alt="flecha derecha" />
+              </div>
             </div>
-            <Link href="/subscribete"><a className="text-center md:text-left md:ml-10"><Image src={subsrcibete} width={50} height={50} alt="flecha derecha" /></a></Link>
-          </div>
-        </div>
+          </Link>
       </div>
 
       {/* REDES SOCIALES */}
-      <div className="w-screen bg-red-500 py-10 text-center">
-          <h2 className="text-xl uppercase font-bold">siguenos en nuestras redes sociales</h2>
-          {/* <hr clasName="w-40 border-yellow-700 border-1" /> */}
-          <hr className="border-yellow-500 border-1 md:border-2 w-20 my-8 md:w-16 my-2 mx-auto mb-8" />
-          <div className="flex mx-4 justify-center">
+      <div className="w-screen sm:text-center px-2">
+        <hr className="container-separator" />
+        <h1 className="text-4xl font-bold capitalize mb-2">siguenos en nuestras redes sociales</h1>
+          <hr className="title-separator mx-auto h-1" />
+          <div className="flex flex-wrap justify-center gap-x-4 pt-4 pb-32">
+
             {/* facebook */}
             <Link href="https:/facebook.com/arayasociados/" target="_blank">
-              <div className="flex flex-col items-center mr-4">
-                <svg x="0px" y="0px" viewBox="0 0 100 100" className="fill-current text-primary w-8 h-8 mb-2">
-                  <path d="M100,50.3c0-27.6-22.4-50-50-50S0,22.7,0,50.3c0,25,18.3,45.6,42.2,49.4V64.8H29.5V50.3h12.7v-11c0-12.5,7.5-19.5,18.9-19.5 c5.5,0,11.2,1,11.2,1v12.3H66c-6.2,0-8.2,3.9-8.2,7.8v9.4h13.9l-2.2,14.5H57.8v34.9C81.7,95.9,100,75.3,100,50.3z"/>
-                </svg>
-                <p className="text-xs font-bold text-gray-500">Facebook</p>
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={facebook} w={25} h={25} />
+                <p className="text-xs">Facebook</p>
               </div>
             </Link>
+
             {/* instagram */}
-            <div className="flex flex-col items-center mr-4">
-              <Link href="https:/instagram.com/arayasociados/" target="_blank">
-              <svg x="0px" y="0px" viewBox="0 0 100 100" className="w-8 h-8 mb-2">
-                <circle className="fill-current text-primary" id="XMLID_115_" cx="50" cy="50" r="50"/>
-                <path className="stroke-current text-white" d="M70.5,20.1h-41c-5.2,0-9.4,4.2-9.4,9.4v41c0,5.2,4.2,9.4,9.4,9.4h41c5.2,0,9.4-4.2,9.4-9.4v-41
-                  C79.9,24.3,75.7,20.1,70.5,20.1z M64.2,27l7.5,0h0c0.7,0,1.3,0.6,1.3,1.3v7.5c0,0.7-0.6,1.3-1.3,1.3l-7.5,0c-0.7,0-1.3-0.6-1.3-1.3
-                  l0-7.5C62.9,27.6,63.4,27,64.2,27z M40.8,44.9c0.2-0.3,0.4-0.7,0.6-1c1.9-2.7,5-4.4,8.5-4.4c3.5,0,6.6,1.7,8.5,4.4
-                  c0.2,0.3,0.4,0.7,0.6,1c0.9,1.5,1.4,3.3,1.4,5.1c0,5.8-4.7,10.5-10.5,10.5S39.5,55.8,39.5,50C39.5,48.1,40,46.4,40.8,44.9z
-                  M74.1,68.4c0,3.2-2.6,5.7-5.7,5.7H31.6c-3.2,0-5.7-2.6-5.7-5.7V43.9h8.9c-0.2,0.5-0.4,1.1-0.6,1.7c-0.4,1.4-0.6,2.9-0.6,4.5
-                  c0,9,7.3,16.4,16.4,16.4c9,0,16.4-7.3,16.4-16.4c0-1.5-0.2-3-0.6-4.5c-0.2-0.6-0.4-1.1-0.6-1.7h8.9V68.4z"/>
-                </svg>
-              </Link>
-              <p className="text-xs font-bold text-gray-500">Instagram</p>
-            </div>
+            <Link href="https:/instagram.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={instagram} w={25} h={25} />
+                <p className="text-xs">Instagram</p>
+              </div>
+            </Link>
+            
+            {/* linkedin */}
+            <Link href="https:/linkedin.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={linkedin} w={25} h={25} />
+                <p className="text-xs">Linked In</p>
+              </div>
+            </Link>
+            
+            {/* tiktok */}
+            <Link href="https:/tiktok.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={tiktok} w={25} h={25} />
+                <p className="text-xs">TikTok</p>
+              </div>
+            </Link>
+
+            {/* wechat */}
+            <Link href="https:/wechat.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={wechat} w={25} h={25} />
+                <p className="text-xs">WeChat</p>
+              </div>
+            </Link>
+
+            {/* weibo */}
+            <Link href="https:/weibo.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={weibo} w={25} h={25} />
+                <p className="text-xs">Weibo</p>
+              </div>
+            </Link>
+
+            {/* dou yin */}
+            <Link href="https:/douyin.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={tiktok} w={25} h={25} />
+                <p className="text-xs">Dou Yin</p>
+              </div>
+            </Link>
+
+            {/* xiao hong shu */}
+            <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank">
+              <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
+                <Image className="scale-50" src={xiaohongshu} w={25} h={25} />
+                <p className="text-xs">Xiao Hong Shu</p>
+              </div>
+            </Link>
+
+
+
           </div>
+
       </div>
 
     </div>
