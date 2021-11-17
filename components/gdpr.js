@@ -5,7 +5,7 @@ export default function Gdpr(){
                 <h1>La guia aray</h1>
                 <p>utiliza cookies</p>
                 <hr className="w-8 border-2 border-yellow-500" />
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
                 <div className="flex flex-wrap gap-4 justify-end pt-8">
                     <button className="w-full md:w-auto px-4 py-2 rounded bg-white border-2 border-yellow-600 text-yellow-600">configurar cookies</button>
                     <button className="w-full md:w-auto px-4 py-2 rounded bg-white border-2 border-yellow-600 text-yellow-600">solo cookies necesarias</button>
