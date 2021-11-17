@@ -9,7 +9,7 @@ export default function CountryCard({ pais }){
                 <Image layout="responsive" className="rounded-lg" src={thumbnail} width={150} height={175}  alt="preview de actividad"/>
             </div>
             <div className="w-full h-full absolute invisible group-hover:visible inset-0  bg-black bg-opacity-60 rounded-lg flex flex-col justify-center items-center">
-                <Link href="/colegios?pais=francia"><h2 className="text-4xl text-white capitalize mb-2">{pais.name}</h2></Link>
+                <Link href="/colegios?pais=francia" passHref><h2 className="text-4xl text-white capitalize mb-2">{pais.name}</h2></Link>
                 <p className="uppercase text-white text-md text-right">{pais.numeroColegios || '0'} colegios</p>
             </div>
         </div>

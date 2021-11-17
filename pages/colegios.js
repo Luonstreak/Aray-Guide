@@ -8,7 +8,7 @@ import SchoolCard from '../components/SchoolCard';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function colegios() {
+export default function Colegios() {
 
     const [schools, setSchools] = useState(null)
 
@@ -40,9 +40,12 @@ export default function colegios() {
     const showMap = false;
 
     return (
-        <div className="bg-gray-100">
-            <div className="w-screen py-24 md:pt-32 bg-green-500 p-8 flex flex-col items-center">
-                <SearchInput />
+        <div className="bg-gray-50">
+            <div className="w-screen py-24 md:pt-32 bg-green-500 p-8 flex flex-col items-center relative">
+                <SearchInput className="z-30" />
+                    {/* <div className="z-0 absolute inset-0">
+                        <Image priority src={graduation} layout="fill" className="object-cover brightness-90" alt="imagen de graduacion" />
+                    </div> */}
                 <div className="flex flex-col gap-4 md:flex-row flex-wrap w-full mt-4">
                     <Select name="pais" options={pais} />
                     <Select name="ciudad" options={pais} />
@@ -51,7 +54,6 @@ export default function colegios() {
                     <Select name="comedor" options={pais} />
                     <Select name="idioma" options={pais} />
                 </div>
-                <Image src={graduation} layout="responsive" />
             </div>
 
             <div className="container mx-auto bg-orange-300 p-4">
@@ -69,7 +71,7 @@ export default function colegios() {
             <div className="container mx-auto bg-red-500 p-4 flex">
                 <div className={`grid grid-cols-1 gap-8 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
                     {schools 
-                        ? schools.map(el => <SchoolCard key={el.guid} el={el} grid />) 
+                        ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} grid />) 
                         : <p>loading...</p>
                     }
                 </div>

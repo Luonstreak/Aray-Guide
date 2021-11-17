@@ -101,7 +101,7 @@ export default function Inicio() {
       {/* SUBSCRIBETE */}
       <hr className="container-separator" />
       <div className="w-screen bg-primary mb-32">
-        <Link href="/subscribete">
+        <Link href="/subscribete" passHref>
           <div className="cursor-pointer w-full lg:w-8/12 xl:w-5/12 shadow-lg rounded bg-white p-4 md:p-6 relative md:inset-x-auto -bottom-16 flex flex-col md:flex-row justify-center md:items-center mx-auto">
             <div>
               <h1 className="text-4xl font-bold">Subscribete a nuestro newsletter</h1>
@@ -131,7 +131,7 @@ export default function Inicio() {
           <div className="absolute -top-12 sm:left-20 lg:left-1/4 shadow-md w-80 flex-shrink-0" >
             <Image layout="responsive" className="rounded-lg" src={conoce}  alt="preview de actividad"/>
           </div>
-          <Link href="/subscribete">
+          <Link href="/subscribete" passHref>
             <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
               <div>
                 <h1 className="text-4xl font-bold capitalize mb-2">conoce todo</h1>
@@ -154,65 +154,65 @@ export default function Inicio() {
           <div className="flex flex-wrap justify-center gap-x-4 pt-4 pb-32">
 
             {/* facebook */}
-            <Link href="https:/facebook.com/arayasociados/" target="_blank">
+            <Link href="https:/facebook.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={facebook} w={25} h={25} />
+                <Image className="scale-50" src={facebook} w={25} h={25} alt="facebook logo" />
                 <p className="text-xs">Facebook</p>
               </div>
             </Link>
 
             {/* instagram */}
-            <Link href="https:/instagram.com/arayasociados/" target="_blank">
+            <Link href="https:/instagram.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={instagram} w={25} h={25} />
+                <Image className="scale-50" src={instagram} w={25} h={25} alt="instagram logo" />
                 <p className="text-xs">Instagram</p>
               </div>
             </Link>
             
             {/* linkedin */}
-            <Link href="https:/linkedin.com/arayasociados/" target="_blank">
+            <Link href="https:/linkedin.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={linkedin} w={25} h={25} />
+                <Image className="scale-50" src={linkedin} w={25} h={25} alt="linkedin logo" />
                 <p className="text-xs">Linked In</p>
               </div>
             </Link>
             
             {/* tiktok */}
-            <Link href="https:/tiktok.com/arayasociados/" target="_blank">
+            <Link href="https:/tiktok.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={tiktok} w={25} h={25} />
+                <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">TikTok</p>
               </div>
             </Link>
 
             {/* wechat */}
-            <Link href="https:/wechat.com/arayasociados/" target="_blank">
+            <Link href="https:/wechat.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={wechat} w={25} h={25} />
+                <Image className="scale-50" src={wechat} w={25} h={25} alt="wechat logo" />
                 <p className="text-xs">WeChat</p>
               </div>
             </Link>
 
             {/* weibo */}
-            <Link href="https:/weibo.com/arayasociados/" target="_blank">
+            <Link href="https:/weibo.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={weibo} w={25} h={25} />
+                <Image className="scale-50" src={weibo} w={25} h={25} alt="weibo logo" />
                 <p className="text-xs">Weibo</p>
               </div>
             </Link>
 
             {/* dou yin */}
-            <Link href="https:/douyin.com/arayasociados/" target="_blank">
+            <Link href="https:/douyin.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={tiktok} w={25} h={25} />
+                <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">Dou Yin</p>
               </div>
             </Link>
 
             {/* xiao hong shu */}
-            <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank">
+            <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
-                <Image className="scale-50" src={xiaohongshu} w={25} h={25} />
+                <Image className="scale-50" src={xiaohongshu} w={25} h={25} alt="xiaohongshu logo" />
                 <p className="text-xs">Xiao Hong Shu</p>
               </div>
             </Link>

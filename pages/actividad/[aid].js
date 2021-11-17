@@ -89,7 +89,7 @@ export default function Actividad(props){
                     <h1 className="text-3xl text-gray-700 mb-2 md:mb-4">mas informacion</h1>
                     <p>de la actividad</p>
                     <hr className="border-yellow-500 border-1 md:border-2 w-full my-8 md:mb-0 md:w-16 my-2" />
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</p>
                 </div>
                 <Link href="/subscribete"><a className="text-center md:text-left md:ml-10"><Image src={subsrcibete} alt="flecha derecha" /></a></Link>
                 </div>

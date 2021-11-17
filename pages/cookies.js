@@ -39,7 +39,7 @@ export default function Cookies(){
             <p>Esta pagina web utiliza cookies...</p>
             <p>En este caso las cookies son utilizadas...</p>
             
-            <table class="table-auto">
+            <table className="table-auto">
                 <thead>
                     <tr>
                         <th>Cookie (y proveedor)</th>

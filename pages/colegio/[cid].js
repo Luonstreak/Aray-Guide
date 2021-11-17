@@ -88,11 +88,11 @@ export default function Colegio(props){
                     <h1>caracteristicas</h1>
                     <hr className="w-8 border-2 border-yellow-500" />
                     <ul>
-                        {details.curriculum_academico.map(el => <li>{wp_terms['curriculum_academico'][el]}</li>)}
+                        {details.curriculum_academico.map(el => <li key={el}>{wp_terms['curriculum_academico'][el]}</li>)}
                         {details.entrevista_de_acceso && <li>se realiza entrevista de acceso</li>}
                         {details.nivel_minimo_de_idioma && <li>nivel minimo de idioma</li>}
-                        {details.idioma_que_se_examinara.map(el => <li>&nbsp;{wp_terms['idioma_principal_de_clases'][el]}</li>)}
-                        {details.entrevista_de_accesso && <li>se realiza entrevista de acceso"</li>}
+                        {details.idioma_que_se_examinara.map(el => <li key={el}>&nbsp;{wp_terms['idioma_principal_de_clases'][el]}</li>)}
+                        {details.entrevista_de_accesso && <li>se realiza entrevista de acceso</li>}
                         <li>{details.distribucion_de_clases.split("_").join(" ")}</li>
                     </ul>
                 </div>
@@ -113,17 +113,17 @@ export default function Colegio(props){
                     <div className="flex-1">
                         <h4>servicios generales</h4>
                         <ul>
-                            {details.servicios_ofrecidos.map(el => <li>{wp_terms['servicios_ofrecidos'][el]}</li>)}
+                            {details.servicios_ofrecidos.map(el => <li key={el}>{wp_terms['servicios_ofrecidos'][el]}</li>)}
                         </ul>
                         <h4>servicios especiales</h4>
                         <ul>
-                        {details.servicios_especiales.map(el => <li>{wp_terms['servicios_especiales'][el]}</li>)}
+                        {details.servicios_especiales.map(el => <li key={el}>{wp_terms['servicios_especiales'][el]}</li>)}
                         </ul>
                     </div>
                     <div className="flex-1">
                         <h4>comedor</h4>
                         <ul>
-                            {details.menu_especial.map(el => <li>{wp_terms['menu_especial'][el]}</li>)}
+                            {details.menu_especial.map(el => <li key={el}>{wp_terms['menu_especial'][el]}</li>)}
                         </ul>
                         <h4>control de alergias</h4>
                         <ul>
@@ -141,7 +141,7 @@ export default function Colegio(props){
                 <div className="w-full flex flex-col md:flex-row">
                     <div className="flex-1">
                         <ul>
-                            {details.equipamiento.map(el => <li>{wp_terms['equipamiento'][el]}</li>)}
+                            {details.equipamiento.map(el => <li key={el}>{wp_terms['equipamiento'][el]}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ export default function Colegio(props){
                 <h1>integracion social</h1>
                 <hr className="w-8 border-2 border-yellow-500" />
                 <ul>
-                    {details.programas_de_integracion.map(el => <li>{wp_terms['programas_de_integracion'][el]}</li>)}
+                    {details.programas_de_integracion.map(el => <li key={el}>{wp_terms['programas_de_integracion'][el]}</li>)}
                 </ul>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
@@ -163,7 +163,7 @@ export default function Colegio(props){
                 <h2 className="ml-2 uppercase font-bold">Actividades destacadas</h2>
                 <div className="flex overflow-x-scroll items-center">
                   {actividades 
-                    ? actividades.map(el => <ActivityCard key={el.guid} el={el} />) 
+                    ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
                     : <p>loading...</p>
                   }
                 </div>
@@ -192,7 +192,7 @@ export default function Colegio(props){
                 <hr className="w-8 border-2 border-yellow-500" />
                 <div className="flex overflow-x-scroll items-center">
                 {schools 
-                    ? schools.map(el => <SchoolCard key={el.guid} el={el} />) 
+                    ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} />) 
                     : <p>loading...</p>
                 }
                 </div>
