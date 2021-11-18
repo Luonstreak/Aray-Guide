@@ -68,16 +68,16 @@ export default function Inicio() {
         <div className="z-10 mx-auto w-10/12 md:w-full max-w-xl">
           <SearchInput />
         </div>
-        <h2 className="z-10 text-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">Buscar un centro educativo en otro pais nunca ha sido tan facil</h2>
+        <h2 className="z-10 te2xt-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">Buscar un centro educativo en otro pais nunca ha sido tan facil</h2>
         <div className="z-0 absolute inset-0">
           <Image priority src={banner} layout="fill" className="object-cover brightness-90" alt="hero image" />
         </div>
       </div>
       
       {/* ACTIVIDADES */}
-      <div className="container mx-auto px-2">
+      <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
-        <h1 className="uppercase font-bold mb-8 text-xl md:text-2xl lg:text-4xl">actividades destacadas</h1>
+        <h1 className="uppercase font-bold mb-8 text-2xl md:text-3xl lg:text-4xl">actividades destacadas</h1>
         <div className="flex overflow-x-scroll items-center">
           {actividades 
             ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
@@ -87,9 +87,9 @@ export default function Inicio() {
       </div>
       
       {/* SELECCION */}
-      <div className="container mx-auto px-2">
+      <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
-        <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">seleccion</h1>
+        <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">seleccion</h1>
         <p className="mb-8 uppercase text-gray-400">de la guia aray</p>
         <div className="flex overflow-x-scroll items-center gap-x-2 md:gap-x-6">
           {schools 
@@ -97,10 +97,10 @@ export default function Inicio() {
             : <p>loading...</p>
           }
         </div>
+        <hr className="container-separator" />
       </div>
 
       {/* SUBSCRIBETE */}
-      <hr className="container-separator" />
       <div className="w-screen bg-primary mb-32">
         <Link href="/subscribete" passHref>
           <div className="cursor-pointer w-full lg:w-8/12 xl:w-5/12 shadow-lg rounded bg-white p-4 md:p-6 relative md:inset-x-auto -bottom-16 flex flex-col md:flex-row justify-center md:items-center mx-auto">
@@ -115,19 +115,19 @@ export default function Inicio() {
       </div>
 
       {/* PAISES */}
-      <div className="container mx-auto px-2">
+      <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
-        <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">los paises</h1>
+        <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">los paises</h1>
         <p className="mb-8 uppercase text-gray-400">de la guia aray</p>
         <div className="flex overflow-x-scroll items-center gap-x-4 md:gap-x-6">
           {paises.map(pais => {
             return <CountryCard key={pais.name} pais={pais} />
           })}
         </div>
+        <hr className="container-separator" />
       </div>
 
       {/* CONOCE TODO SOBRE LA GUIA */}
-      <hr className="container-separator" />
       <div className="w-screen py-20 mt-32 mb-80 bg-primary relative">
           <div className="absolute -top-12 sm:left-20 lg:left-1/4 shadow-md w-80 flex-shrink-0" >
             <Image layout="responsive" className="rounded-lg" src={conoce}  alt="preview de actividad"/>
@@ -148,7 +148,7 @@ export default function Inicio() {
       </div>
 
       {/* REDES SOCIALES */}
-      <div className="w-screen sm:text-center px-2">
+      <div className="container mx-auto max-w-screen-lg md:text-center px-2">
         <hr className="container-separator" />
         <h1 className="text-4xl font-bold capitalize mb-2">siguenos en nuestras redes sociales</h1>
           <hr className="title-separator mx-auto h-1" />
@@ -187,36 +187,36 @@ export default function Inicio() {
             </Link>
 
             {/* wechat */}
-            <Link href="https:/wechat.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/wechat.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={wechat} w={25} h={25} alt="wechat logo" />
                 <p className="text-xs">WeChat</p>
               </div>
-            </Link>
+            </Link> */}
 
             {/* weibo */}
-            <Link href="https:/weibo.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/weibo.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={weibo} w={25} h={25} alt="weibo logo" />
                 <p className="text-xs">Weibo</p>
               </div>
-            </Link>
+            </Link> */}
 
             {/* dou yin */}
-            <Link href="https:/douyin.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/douyin.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">Dou Yin</p>
               </div>
-            </Link>
+            </Link> */}
 
             {/* xiao hong shu */}
-            <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={xiaohongshu} w={25} h={25} alt="xiaohongshu logo" />
                 <p className="text-xs">Xiao Hong Shu</p>
               </div>
-            </Link>
+            </Link> */}
 
 
 

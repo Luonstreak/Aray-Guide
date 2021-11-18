@@ -10,7 +10,7 @@ export default function ActivityCard({ el }){
                     <Image layout="fill" className="object-cover rounded-md" src={thumbnail}  alt="preview de actividad" />
                 </div>
                 <div className="md:ml-4">
-                    <h3 className="font-bold text-2xl text-gray-600 leading-6 uppercase mt-4">{el.title.rendered}</h3>
+                    <h3 className="font-bold text-2xl text-gray-600 leading-6 uppercase">{el.title.rendered}</h3>
                     <hr className="title-separator" />
                     <p className="text-sm">{el.ACF.descripcion.slice(0,100)}...</p>
                 </div>

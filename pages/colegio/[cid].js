@@ -68,7 +68,7 @@ export default function Colegio(props){
                         <Image src={location} width={16} height={16} />&nbsp;
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
-                    <p className="mb-2">colegio {wp_terms['model_educativo'][details.model_educativo]}</p>
+                    <p className="mb-2 capitalize">colegio {wp_terms['model_educativo'][details.model_educativo]}</p>
                     <Link href="/"><a>Descubre otros colegios</a></Link>
                 </div>
 
@@ -99,7 +99,7 @@ export default function Colegio(props){
                     <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">caracteristicas</h1>
                     <hr className="title-separator" />
                     <ul>
-                        {details.curriculum_academico.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['curriculum_academico'][el]}</p></li>)}
+                        {details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms['curriculum_academico'][el]}</p></li>)}
                         {details.entrevista_de_acceso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
                         {details.nivel_minimo_de_idioma && <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>}
                         {details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_principal_de_clases'][el]}</p></li>)}
@@ -210,7 +210,10 @@ export default function Colegio(props){
                     
                     <div className="flex mb-2 ml-8">
                         <Image src={web} width={16} height={16} />&nbsp;&nbsp;
-                        <Link href={details.direccion_web}><a><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a></Link>
+                        {details.direccion_web 
+                            ? <Link href={details.direccion_web}><a><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a></Link>
+                            : <p>no compartido</p>
+                        }
                     </div>
                 </div>
                 <div className="flex-1">

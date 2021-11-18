@@ -75,11 +75,11 @@ export default function Actividad(props){
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
                     <p className="uppercase mb-4">{details.tipo}</p>
-                    <Link href={`/colegios/${details.anfitrion.ID}?_embed`}><a className="underline uppercase">ver colegio</a></Link>
+                    <Link href={`/colegio/${details.anfitrion.ID}?_embed`}><a className="underline uppercase">{details.anfitrion.post_title}</a></Link>
                 </div>
                 <div className="md:w-1/3 mt-8 md:mt-16">
                     <h5 className="uppercase text-gray-700 font-bold text-md mb-4">fecha</h5>
-                    <p className="uppercase font-bold text-primary">del {formatDate(details.desde)} a {formatDate(details.hasta, true)}</p>
+                    <p className="uppercase font-bold text-primary">{details.desde === details.hasta ? formatDate(details.desde) : `del ${formatDate(details.desde)} a ${formatDate(details.hasta, true)}`}</p>
                 </div>
             </div>
             

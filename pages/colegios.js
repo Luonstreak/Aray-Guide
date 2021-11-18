@@ -74,7 +74,7 @@ export default function Colegios() {
 
     return (
         <div className="bg-gray-50">
-            <div className="w-screen px-2 pt-24 md:pt-32 bg-green-500 flex flex-col items-center relative">
+            <div className="w-screen px-2 pt-24 md:pt-32 bg-blue-300 flex flex-col items-center relative">
                 <SearchInput />
                 <div className="z-10 w-screen pb-4 md:pb-16 mt-4 px-2 flex gap-4 overflow-x-scroll lg:justify-center shadow-lg">
                     <Select name="pais" options={pais} />
