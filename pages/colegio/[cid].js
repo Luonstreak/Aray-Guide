@@ -7,13 +7,16 @@ import map from '/public/images/map.png'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import wp_terms from '../../util/wp_terms.json';
-
+import location from '/public/images/icons/location.svg'
+import phone from '/public/images/icons/phone.svg'
+import email from '/public/images/icons/email.svg'
+import web from '/public/images/icons/web.svg'
 
 export default function Colegio(props){
   
   const router = useRouter()
   const { cid } = router.query
-  
+    
   const [details, setDetails] = useState(null)
   const [schools, setSchools] = useState(null)
   const [actividades, setActividades] = useState(null)
@@ -22,7 +25,8 @@ export default function Colegio(props){
         if(!details){
             axios.get(`https://localhost/aray.new/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
                 if (res.data) {
-                    setDetails({ ...res.data.ACF, name: res.data.title.rendered });
+                    const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
+                    setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
@@ -44,90 +48,102 @@ export default function Colegio(props){
 
     if(!details) return <p>loading...</p> 
     else return(
-        <div className="bg-green-100">
+        <div className="bg-gray-50">
             {/* HERO */}
-            <div className="w-screen flex flex-col justify-center items-center">
-                <h1>{details.name}</h1>
-                <div clasName="flex gap-4">
-                    <p>{wp_terms['poblacion'][details.poblacion]}</p>
-                    <p>{wp_terms['provincia'][details.provincia]}</p>
+            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60">
+                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
+                <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{wp_terms['provincia'][details.provincia]} • {wp_terms['pais'][details.pais]}</p>
+                <div className="absolute inset-0 z-0">
+                    <Image priority src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
                 </div>
             </div>
             
             {/* DETALLES */}
-            <div className="container mx-auto flex flex-col md:flex-row p-4">
-                <div className="md:w-2/3">
-                    <h1>{details.name}</h1>
-                    <hr className="w-8 border-2 border-yellow-500" />
-                    <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
-                    <p>colegio {wp_terms['model_educativo'][details.model_educativo]}</p>
-                    <Link href="/"><a className="underline">Descubre otros colegios</a></Link>
+            <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4 md:py-20 md:px-0">
+
+                <div className="md:w-2/3 mb-8">
+                    <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{details.name}</h1>
+                    <hr className="title-separator mb-2" />
+                    <div className="flex mb-2">
+                        <Image src={location} width={16} height={16} />&nbsp;
+                        <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
+                    </div>
+                    <p className="mb-2">colegio {wp_terms['model_educativo'][details.model_educativo]}</p>
+                    <Link href="/"><a>Descubre otros colegios</a></Link>
                 </div>
+
                 <div className="md:w-1/3">
-                    <h4>Cursos</h4>
-                    <p className={details.cursos_ofrecidos.includes(7) ? 'text-yellow-500' : 'text-white'}>infantil</p>
-                    <p className={details.cursos_ofrecidos.includes(8) ? 'text-yellow-500' : 'text-white'}>primaria</p>
-                    <p className={details.cursos_ofrecidos.includes(9) ? 'text-yellow-500' : 'text-white'}>eso</p>
-                    <p className={details.cursos_ofrecidos.includes(10) ? 'text-yellow-500' : 'text-white'}>bachillerato</p>
+                    <h5 className="mb-2 md:mt-10 font-bold text-gray-700">Cursos</h5>
+                    <p className={`${details.cursos_ofrecidos.includes(7) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>infantil</p>
+                    <p className={`${details.cursos_ofrecidos.includes(8) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>primaria</p>
+                    <p className={`${details.cursos_ofrecidos.includes(9) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>eso</p>
+                    <p className={`${details.cursos_ofrecidos.includes(10) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>bachillerato</p>
                 </div>
+
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
             
             {/* OPINION */}
-            <div className="container mx-auto p-4">
-                <h1>opinion</h1>
-                <p>de la guia aray</p>
-                <hr className="w-8 border-2 border-yellow-500" />
-                <p>{details.descripcion}</p>
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">Opinión</h1>
+                <p className="mb-2 uppercase text-gray-400">de la guia aray</p>
+                <hr className="title-separator mb-4" />
+                {/* <p>{details.descripcion}</p> */}
+                <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
             {/* CARACTERISTICAS */}
-            <div className="container mx-auto flex flex-col md:flex-row p-4">
+            <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4">
                 <div className="md:w-2/3">
-                    <h1>caracteristicas</h1>
-                    <hr className="w-8 border-2 border-yellow-500" />
+                    <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">caracteristicas</h1>
+                    <hr className="title-separator" />
                     <ul>
-                        {details.curriculum_academico.map(el => <li key={el}>{wp_terms['curriculum_academico'][el]}</li>)}
-                        {details.entrevista_de_acceso && <li>se realiza entrevista de acceso</li>}
-                        {details.nivel_minimo_de_idioma && <li>nivel minimo de idioma</li>}
-                        {details.idioma_que_se_examinara.map(el => <li key={el}>&nbsp;{wp_terms['idioma_principal_de_clases'][el]}</li>)}
-                        {details.entrevista_de_accesso && <li>se realiza entrevista de acceso</li>}
-                        <li>{details.distribucion_de_clases.split("_").join(" ")}</li>
+                        {details.curriculum_academico.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['curriculum_academico'][el]}</p></li>)}
+                        {details.entrevista_de_acceso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
+                        {details.nivel_minimo_de_idioma && <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>}
+                        {details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_principal_de_clases'][el]}</p></li>)}
+                        {details.entrevista_de_accesso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
+                        <li><p className="uppercase mb-2">{details.distribucion_de_clases.split("_").join(" ")}</p></li>
                     </ul>
                 </div>
                 <div className="md:w-1/3">
-                    <div className="border-l-2 md:border-l-0  md:border-r-2 border-yellow-500 px-4">
-                        <h4>idioma del centro</h4>
-                        <p>{wp_terms['idioma_principal_de_clases'][details.idioma_principal_de_clases]}</p>
+                    <div className="border-l-2 md:border-l-0  md:border-r-2 border-yellow-500 px-4 text-right">
+                        <h4 className="uppercase text-lg">idioma del centro</h4>
+                        <p className="uppercase text-gray-600">{wp_terms['idioma_principal_de_clases'][details.idioma_principal_de_clases]}</p>
                     </div>
                 </div>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
             
             {/* SERVICIOS */}
-            <div className="container mx-auto p-4">
-                <h1>servicios</h1>
-                <hr className="w-8 border-2 border-yellow-500" />
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">servicios</h1>
+                <hr className="title-separator" />
                 <div className="w-full flex flex-col md:flex-row">
                     <div className="flex-1">
-                        <h4>servicios generales</h4>
+                        <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">servicios generales</h5>
                         <ul>
-                            {details.servicios_ofrecidos.map(el => <li key={el}>{wp_terms['servicios_ofrecidos'][el]}</li>)}
+                            {details.servicios_ofrecidos.map(el => <li key={el}>
+                                <p className="uppercase mb-2">
+                                    {/* <Image src={icons['servicios_ofrecidos'][el]} width={16} height={16} /> */}
+                                    {wp_terms['servicios_ofrecidos'][el]}
+                                </p>
+                            </li>)}
                         </ul>
-                        <h4>servicios especiales</h4>
+                        <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">servicios especiales</h5>
                         <ul>
-                        {details.servicios_especiales.map(el => <li key={el}>{wp_terms['servicios_especiales'][el]}</li>)}
+                        {details.servicios_especiales.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['servicios_especiales'][el]}</p></li>)}
                         </ul>
                     </div>
                     <div className="flex-1">
-                        <h4>comedor</h4>
+                        <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">comedor</h5>
                         <ul>
-                            {details.menu_especial.map(el => <li key={el}>{wp_terms['menu_especial'][el]}</li>)}
+                            {details.menu_especial.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['menu_especial'][el]}</p></li>)}
                         </ul>
-                        <h4>control de alergias</h4>
+                        <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">control de alergias</h5>
                         <ul>
-                            <li>{details.control_de_alergias ? "si" : "no"}</li>
+                            <li><p className="uppercase mb-2">{details.control_de_alergias ? "si" : "no"}</p></li>
                         </ul>
                     </div>
                 </div>
@@ -135,13 +151,13 @@ export default function Colegio(props){
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
             
             {/* INSTALACIONES */}
-            <div className="container mx-auto p-4">
-                <h1>instalaciones</h1>
-                <hr className="w-8 border-2 border-yellow-500" />
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">instalaciones</h1>
+                <hr className="title-separator" />
                 <div className="w-full flex flex-col md:flex-row">
                     <div className="flex-1">
                         <ul>
-                            {details.equipamiento.map(el => <li key={el}>{wp_terms['equipamiento'][el]}</li>)}
+                            {details.equipamiento.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['equipamiento'][el]}</p></li>)}
                         </ul>
                     </div>
                 </div>
@@ -149,18 +165,19 @@ export default function Colegio(props){
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
             
             {/* INTEGRACION SOCIAL */}
-            <div className="container mx-auto p-4">
-                <h1>integracion social</h1>
-                <hr className="w-8 border-2 border-yellow-500" />
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">integracion social</h1>
+                <hr className="title-separator" />
                 <ul>
-                    {details.programas_de_integracion.map(el => <li key={el}>{wp_terms['programas_de_integracion'][el]}</li>)}
+                    {details.programas_de_integracion.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['programas_de_integracion'][el]}</p></li>)}
                 </ul>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
             {/* ACTIVIDADES */}
-            <div className="container mx-auto p-4">
-                <h2 className="ml-2 uppercase font-bold">Actividades destacadas</h2>
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">Actividades destacadas</h1>
+                <hr className="title-separator mb-8" />
                 <div className="flex overflow-x-scroll items-center">
                   {actividades 
                     ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
@@ -171,25 +188,41 @@ export default function Colegio(props){
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
             {/* CONTACTO */}
-            <div className="container mx-auto p-4 flex flex-col md:flex-row">
+            <div className="container max-w-screen-lg mx-auto p-4 flex flex-col md:flex-row">
                 <div className="flex-1">
-                    <h1>contacto</h1>
-                    <hr className="w-8 border-2 border-yellow-500" />
-                    <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
-                    <Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>
-                    <p>{details.telefono}</p>
-                    <Link href={details.direccion_web}><a><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a></Link>
+                    <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">contacto</h1>
+                    <hr className="title-separator mb-8" />
+
+                    <div className="flex mb-2 ml-8">
+                        <Image src={location} width={16} height={16} />&nbsp;&nbsp;
+                        <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {details.codigo_postal}, {wp_terms['provincia'][details.provincia]}</p>
+                    </div>
+                    
+                    <div className="flex mb-2 ml-8">
+                        <Image src={phone} width={16} height={16} />&nbsp;&nbsp;
+                        <p>{details.telefono || 'no compartido'}</p>
+                    </div>
+                    
+                    <div className="flex mb-2 ml-8">
+                        <Image src={email} width={16} height={16} />&nbsp;&nbsp;
+                        {details.correo_electronico ? (<Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>) : (<p>no compartido</p>)}
+                    </div>
+                    
+                    <div className="flex mb-2 ml-8">
+                        <Image src={web} width={16} height={16} />&nbsp;&nbsp;
+                        <Link href={details.direccion_web}><a><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a></Link>
+                    </div>
                 </div>
                 <div className="flex-1">
                     <Image src={map} alt="map placeholder" />
                 </div>
             </div>
-            <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
+            <hr className="container-separator" />
 
-            {/* SELECCION */}
-            <div className="container mx-auto p-4">
-                <h2 className="ml-2 uppercase font-bold">te puede interesar</h2>
-                <hr className="w-8 border-2 border-yellow-500" />
+            {/* TE PUEDE INTERESAR */}
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">te puede interesar</h1>
+                <hr className="title-separator" />
                 <div className="flex overflow-x-scroll items-center">
                 {schools 
                     ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} />) 

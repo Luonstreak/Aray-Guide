@@ -29,7 +29,7 @@ a {
     font-family: 'Playfair Display', serif;
   }
 
-  p, a, .display {
+  h5, p, a, .display {
     font-family: 'Montserrat', sans-serif;
     @apply leading-snug;
   }

@@ -73,6 +73,7 @@ export default function Inicio() {
           <Image priority src={banner} layout="fill" className="object-cover brightness-90" alt="hero image" />
         </div>
       </div>
+      
       {/* ACTIVIDADES */}
       <div className="container mx-auto px-2">
         <hr className="container-separator" />

@@ -8,6 +8,10 @@ import subsrcibete from '/public/images/subscribete.png'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import wp_terms from '../../util/wp_terms.json';
+import location from '/public/images/icons/location.svg'
+import phone from '/public/images/icons/phone.svg'
+import web from '/public/images/icons/web.svg'
+import email from '/public/images/icons/email.svg'
 
 export default function Actividad(props){
 
@@ -22,7 +26,8 @@ export default function Actividad(props){
         if(!details){
             axios.get(`https://localhost/aray.new/wp-json/wp/v2/actividades/${aid}?_embed`).then(res => {
                 if (res.data) {
-                    setDetails({ ...res.data.ACF, name: res.data.title.rendered });
+                    const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
+                    setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
@@ -50,54 +55,66 @@ export default function Actividad(props){
 
     if(!details) return <p>loading...</p> 
     else return(
-        <div className="bg-green-100">
+        <div className="bg-gray-50">
             {/* HERO */}
-            <div className="w-screen flex flex-col justify-center items-center">
-                <h1>{details.name}</h1>
-                <p>{details.anfitrion.post_title}</p>
+            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60">
+                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
+                <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{details.anfitrion.post_title}</p>
+                <div className="absolute inset-0 z-0">
+                    <Image priority src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
+                </div>
             </div>
             
             {/* DETALLES */}
-            <div className="container mx-auto flex flex-col md:flex-row p-4">
-                <div className="md:w-2/3">
-                    <h1>informacion general</h1>
-                    <hr className="w-8 border-2 border-yellow-500" />
-                    <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
-                    <p>{details.tipo}</p>
-                    <Link href={`/colegios/${details.anfitrion.ID}?_embed`}><a className="underline">ver colegio</a></Link>
+            <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4">
+                <div className="md:w-2/3 mt-8">
+                    <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">informacion general</h1>
+                    <hr className="title-separator mb-8" />
+                    <div className="flex mb-2">
+                        <Image src={location} width={16} height={16} />&nbsp;
+                        <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
+                    </div>
+                    <p className="uppercase mb-4">{details.tipo}</p>
+                    <Link href={`/colegios/${details.anfitrion.ID}?_embed`}><a className="underline uppercase">ver colegio</a></Link>
                 </div>
-                <div className="md:w-1/3">
-                    <h4>fecha</h4>
-                    <p>del {formatDate(details.desde)} a {formatDate(details.hasta, true)}</p>
+                <div className="md:w-1/3 mt-8 md:mt-16">
+                    <h5 className="uppercase text-gray-700 font-bold text-md mb-4">fecha</h5>
+                    <p className="uppercase font-bold text-primary">del {formatDate(details.desde)} a {formatDate(details.hasta, true)}</p>
                 </div>
             </div>
-            <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
             
             {/* DESCRIPCION */}
-            <div className="container mx-auto p-4">
-                <h1>descripcion</h1>
-                <p>de la actividad</p>
-                <hr className="w-8 border-2 border-yellow-500" />
+            <hr className="container-separator" />
+            <div className="container max-w-screen-lg mx-auto p-4">
+                <h1 className="uppercase text-gray-700 font-bold text-xl md:text-2xl lg:text-4xl">descripción</h1>
+                <p className="mb-2 uppercase text-gray-400">de la actividad</p>
+                <hr className="title-separator mb-8" />
                 <p>{details.descripcion}</p>
             </div>
-            <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
             {/* MAS INFORMACION */}
-            <div className="w-screen bg-primary">
-                <div className="container mx-auto py-10 md:rounded bg-white p-4 flex flex-col md:flex-row content-center">
-                <div>
-                    <h1 className="text-3xl text-gray-700 mb-2 md:mb-4">mas informacion</h1>
-                    <p>de la actividad</p>
-                    <hr className="border-yellow-500 border-1 md:border-2 w-full my-8 md:mb-0 md:w-16 my-2" />
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s</p>
-                </div>
-                <Link href="/subscribete"><a className="text-center md:text-left md:ml-10"><Image src={subsrcibete} alt="flecha derecha" /></a></Link>
-                </div>
+            <hr className="container-separator" />
+            <div className="w-screen py-20 mt-32 mb-80 bg-primary relative">
+                <Link href="/subscribete" passHref>
+                    <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
+                    <div>
+                        <h1 className="text-4xl font-bold capitalize mb-2">mas informacion</h1>
+                        <p className="text-gray-500 mb-4">de la actividad</p>
+                        <hr className="title-separator" />
+                        <p className="mb-2">Descubre todo lo que necesitas saber sobre la guia de colegios mas completa que Aray ha desarollado para que todo sea mas comodo y sensillo para ti</p>
+                    </div>
+                    <div className="mx-auto md:w-40 mt-4 md:mt-0">
+                        <Image src={subsrcibete} width={50} height={50} alt="flecha derecha" />
+                    </div>
+                    </div>
+                </Link>
             </div>
 
             {/* ACTIVIDADES */}
-            <div className="container mx-auto p-4">
-                <h2 className="ml-2 uppercase font-bold">Actividades destacadas</h2>
+            <hr className="container-separator" />
+            <div className="container max-w-screen-lg mx-auto p-4">
+            <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">Actividades destacadas</h1>
+                <hr className="title-separator mb-8" />
                 <div className="flex overflow-x-scroll items-center">
                 {actividades 
                     ? actividades.map(el => <ActivityCard key={el.guid} el={el} />) 
@@ -105,27 +122,40 @@ export default function Actividad(props){
                 }
                 </div>
             </div>
-            <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
             {/* CONTACTO */}
-            <div className="container mx-auto p-4 flex flex-col md:flex-row">
+            <hr className="container-separator" />
+            <div className="container max-w-screen-lg mx-auto p-4 flex flex-col md:flex-row">
                 <div className="flex-1">
-                    <h1>contacto</h1>
-                    <hr className="w-8 border-2 border-yellow-500" />
-                    <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
-                    <p>{details.telefono}</p>
-                    <Link href={details.web}><a><span className="underline">{details.web.replace(/https:\/\/|http:\/\//gi,"")}</span><span className="text-yellow-500">&#x27F6;</span></a></Link>
+                    <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">contacto</h1>
+                    <hr className="title-separator mb-8" />
+
+                    <div className="flex mb-2 ml-8">
+                        <Image src={location} width={16} height={16} />&nbsp;&nbsp;
+                        <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
+                    </div>
+
+                    <div className="flex mb-2 ml-8">
+                        <Image src={phone} width={16} height={16} />&nbsp;&nbsp;
+                        <p>{details.telefono || 'no compartido'}</p>
+                    </div>
+                    
+                    <div className="flex mb-2 ml-8">
+                        <Image src={email} width={16} height={16} />&nbsp;&nbsp;
+                        {details.correo_electronico ? (<Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>) : (<p>no compartido</p>)}
+                    </div>
+                    
                 </div>
                 <div className="flex-1">
                     <Image src={map} alt="map placeholder" />
                 </div>
             </div>
-            <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
+            <hr className="container-separator" />
 
             {/* SELECCION */}
-            <div className="container mx-auto p-4">
-                <h2 className="ml-2 uppercase font-bold">te puede interesar</h2>
-                <hr className="w-8 border-2 border-yellow-500" />
+            <div className="container max-w-screen-lg mx-auto pb-8 md:pb-16 p-4">
+                <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">te puede interesar</h1>
+                <hr className="title-separator" />
                 <div className="flex overflow-x-scroll items-center">
                 {schools 
                     ? schools.map(el => <SchoolCard key={el.guid} el={el} />) 
