@@ -12,7 +12,7 @@ export default function Navbar(props){
                     </Link>
                 </button>
                 <div className="flex align-item-center flex-nowrap overflow-x-scroll whitespace-nowrap">
-                    <button className="bg-black bg-opacity-0 hover:bg-opacity-20 rounded-lg px-4 py-2 mr-2"><Link href="/colegios"><a className="text-white md:text-xl">Colegios</a></Link></button>
+                    <button className="bg-black bg-opacity-0 hover:bg-opacity-20 rounded-lg px-4 py-2 mr-2"><Link href="/buscar"><a className="text-white md:text-xl">Colegios</a></Link></button>
                     <button className="bg-black bg-opacity-0 hover:bg-opacity-20 rounded-lg px-4 py-2 mr-2"><Link href="/sobre"><a className="text-white md:text-xl">Sobre la guia</a></Link></button>
                     <button className="bg-black bg-opacity-0 hover:bg-opacity-20 rounded-lg px-4 py-2"><Link href="/contacto"><a className="text-white md:text-xl">Contacto</a></Link></button>
                 </div>

@@ -1,16 +1,17 @@
 import { useRouter } from 'next/router'
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 import SchoolCard from '../../components/SchoolCard' 
 import ActivityCard from '../../components/ActivityCard' 
-import map from '/public/images/map.png'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import wp_terms from '../../util/wp_terms.json';
+import wp_terms from '../../util/wp_terms.json'
 import location from '/public/images/icons/location.svg'
 import phone from '/public/images/icons/phone.svg'
 import email from '/public/images/icons/email.svg'
 import web from '/public/images/icons/web.svg'
+import Map from '../../components/Map'
+import Spinner from '../../components/Spinner'
 
 export default function Colegio(props){
   
@@ -22,8 +23,8 @@ export default function Colegio(props){
   const [actividades, setActividades] = useState(null)
 
     useEffect(() => {
-        if(!details){
-            axios.get(`https://localhost/aray.new/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
+        if(!details && cid){
+            axios.get(`http://localhost/aray.new/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
                     setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
@@ -31,14 +32,14 @@ export default function Colegio(props){
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
         if(!actividades){
-            axios.get('https://localhost/aray.new/wp-json/wp/v2/actividades?_embed').then(res => {
+            axios.get('http://localhost/aray.new/wp-json/wp/v2/actividades?_embed').then(res => {
                 if (res.data) {
                     setActividades(res.data);
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Actviades"'));
         }
         if(!schools){
-          axios.get('https://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
+          axios.get('http://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
             if (res.data) {
                 setSchools(res.data);
             }
@@ -46,7 +47,8 @@ export default function Colegio(props){
         }
     });
 
-    if(!details) return <p>loading...</p> 
+    console.log(details)
+    if(!details) return <Spinner />
     else return(
         <div className="bg-gray-50">
             {/* HERO */}
@@ -99,10 +101,10 @@ export default function Colegio(props){
                     <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">caracteristicas</h1>
                     <hr className="title-separator" />
                     <ul>
-                        {details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms['curriculum_academico'][el]}</p></li>)}
+                        {details.curriculum_academico && details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms['curriculum_academico'][el]}</p></li>)}
                         {details.entrevista_de_acceso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
                         {details.nivel_minimo_de_idioma && <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>}
-                        {details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_principal_de_clases'][el]}</p></li>)}
+                        {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clase'][el]}</p></li>)}
                         {details.entrevista_de_accesso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
                         <li><p className="uppercase mb-2">{details.distribucion_de_clases.split("_").join(" ")}</p></li>
                     </ul>
@@ -110,7 +112,7 @@ export default function Colegio(props){
                 <div className="md:w-1/3">
                     <div className="border-l-2 md:border-l-0  md:border-r-2 border-yellow-500 px-4 text-right">
                         <h4 className="uppercase text-lg">idioma del centro</h4>
-                        <p className="uppercase text-gray-600">{wp_terms['idioma_principal_de_clases'][details.idioma_principal_de_clases]}</p>
+                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clase'][details.idioma_principal_de_clases]}</p>
                     </div>
                 </div>
             </div>
@@ -169,7 +171,7 @@ export default function Colegio(props){
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">integracion social</h1>
                 <hr className="title-separator" />
                 <ul>
-                    {details.programas_de_integracion.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['programas_de_integracion'][el]}</p></li>)}
+                    {details.programas_de_integracion && details.programas_de_integracion.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['programas_de_integracion'][el]}</p></li>)}
                 </ul>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
@@ -217,7 +219,7 @@ export default function Colegio(props){
                     </div>
                 </div>
                 <div className="flex-1">
-                    <Image src={map} alt="map placeholder" />
+                    <Map markers={[{ ACF: details }]} className="h-64" zoomLevel={8} center={details} />
                 </div>
             </div>
             <hr className="container-separator" />

@@ -1,0 +1,14 @@
+{
+    "provincia": "Provincia",
+    "pais": "Pais",
+    "poblacion": "Poblacion",
+    "model_educativo": "Modelo Educativo",
+    "idioma_de_clase": "Idioma de clase",
+    "cursos_ofrecidos": "Cursos Ofrecidos",
+    "servicios_ofrecidos": "Servicios Ofrecidos",
+    "actividades_extraescolares": "Actividades Extraescolares",
+    "menu_especial": "Menu Especial",
+    "equipamiento": "Equipamiento",
+    "programa_de_integracion": "Programa de integracon",
+    "curriculum_academico": "Curriculo Academico"
+}

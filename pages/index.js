@@ -17,6 +17,7 @@ import xiaohongshu from '/public/images/icons/xiaohongshu.svg';
 import wechat from '/public/images/icons/wechat.svg';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 export default function Inicio() {
 
@@ -24,16 +25,18 @@ export default function Inicio() {
   const [actividades, setActividades] = useState(null)
   const [paises, setPaises] = useState([{ name: 'españa'}, { name: 'francia' },{ name: 'italia' },{ name: 'alemania' },{ name: 'china' } ])
 
+  const router = useRouter();
+
   useEffect(() => {
     if(!schools){
-      axios.get('https://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
+      axios.get('http://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
         if (res.data) {
           setSchools(res.data);
         }
       }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
     }
     if(!actividades){
-      axios.get('https://localhost/aray.new/wp-json/wp/v2/actividades?_embed').then(res => {
+      axios.get('http://localhost/aray.new/wp-json/wp/v2/actividades?_embed').then(res => {
         if (res.data) {
           setActividades(res.data);
         }
@@ -43,7 +46,7 @@ export default function Inicio() {
       let paisesWithData = []
       paises.map(({ name }) => {
         paisesWithData.push({ name, numeroDeColegios: 0 });
-        // axios.get(`https://localhost/colegios?pais=${paisId}`).then(res => {
+        // axios.get(`http://localhost/colegios?pais=${paisId}`).then(res => {
         //   if (res.data) {
         //     paisesWithData.push({})
         //   }
@@ -52,6 +55,10 @@ export default function Inicio() {
       });
     }
   })
+
+  const submitSearch = term => {
+    router.push(`/buscar?q=${term}`)
+  }
 
   return (
     <div className="bg-gray-50">
@@ -66,7 +73,7 @@ export default function Inicio() {
       {/* HERO SEARCH */}
       <div className="w-screen h-80 lg:h-96 flex flex-col justify-center content-center bg-primary relative">
         <div className="z-10 mx-auto w-10/12 md:w-full max-w-xl">
-          <SearchInput />
+          <SearchInput onChange={submitSearch} />
         </div>
         <h2 className="z-10 te2xt-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">Buscar un centro educativo en otro pais nunca ha sido tan facil</h2>
         <div className="z-0 absolute inset-0">

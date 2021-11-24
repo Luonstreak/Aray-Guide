@@ -3,7 +3,7 @@
         "29": "Britanico",
         "3": "Internacional"
     },
-    "idioma_principal_de_clases": {
+    "idioma_de_clase": {
         "38": "Alemán",
         "4": "Castellano",
         "70": "Catalán",
@@ -48,8 +48,8 @@
         "12": "España"
     },
     "equipamiento": {
-        "40": "Adaptado para personas con minusvalía",
-        "41": "Aire acondicionado",
+        "41": "Adaptado para personas con minusvalía",
+        "40": "Aire acondicionado",
         "14": "Campo de futbol",
         "15": "Campo de tenis",
         "56": "Instalaciones olímpicas",
