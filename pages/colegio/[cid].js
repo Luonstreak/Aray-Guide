@@ -12,6 +12,36 @@ import email from '/public/images/icons/email.svg'
 import web from '/public/images/icons/web.svg'
 import Map from '../../components/Map'
 import Spinner from '../../components/Spinner'
+import curriculum from '/public/images/icons/curriculum_academico.svg'
+import entrevista from '/public/images/icons/entrevista_de_acceso.svg'
+import nivel_minimo from '/public/images/icons/nivel_minimo_de_idioma.svg'
+import distribucion from '/public/images/icons/distribucion.svg'
+import transporte from '/public/images/icons/transporte.svg'
+import comedor from '/public/images/icons/comedor.svg'
+import horario_matutino from '/public/images/icons/horario_matutino.svg'
+import horario_vespertino from '/public/images/icons/horario_vespertino.svg'
+import seguro from '/public/images/icons/seguro_de_salud.svg'
+import alojamiento from '/public/images/icons/alojamiento.svg'
+import logopeda from '/public/images/icons/logopeda.svg'
+import psicologia from '/public/images/icons/psicologia.svg'
+import bajo_en_grasas from '/public/images/icons/bajo_en_grasas.svg'
+import halal from '/public/images/icons/halal.svg'
+import hipercalorico from '/public/images/icons/hipercalorico.svg'
+import diabetico from '/public/images/icons/diabetico.svg'
+import sin_gluten from '/public/images/icons/sin_gluten.svg'
+import sin_lactosa from '/public/images/icons/sin_lactosa.svg'
+import vegano from '/public/images/icons/vegano.svg'
+import si from '/public/images/icons/si.svg'
+import accesible from '/public/images/icons/accesible.svg'
+import aire_acondicionado from '/public/images/icons/aire_acondicionado.svg'
+import campo_de_futbol from '/public/images/icons/campo_de_futbol.svg'
+import campo_de_tennis from '/public/images/icons/campo_de_tennis.svg'
+import instalaciones_olimpicas from '/public/images/icons/instalaciones_olimpicas.svg'
+import piscina from '/public/images/icons/piscina.svg'
+import igualdad from '/public/images/icons/igualdad.svg'
+import integracion_social from '/public/images/icons/integracion_social.svg'
+import prevencion_acoso from '/public/images/icons/prevencion_acoso.svg'
+
 
 export default function Colegio(props){
   
@@ -47,7 +77,43 @@ export default function Colegio(props){
         }
     });
 
-    console.log(details)
+    const icons_servicios_generales = {
+        "18": alojamiento,
+        "20": comedor,
+        "22": horario_matutino,
+        "23": horario_vespertino,
+        "21": seguro,
+        "19": transporte,
+    }
+    const icons_servicios_especiales = {
+        "28": logopeda,
+        "49": psicologia
+    }
+    const icons_comedor = {
+        "47": bajo_en_grasas,
+        "27": halal,
+        "46": hipercalorico,
+        "48": diabetico,
+        "43": sin_gluten,
+        "44": sin_lactosa,
+        "45": vegano,
+        "57": vegano
+    }
+    const icons_equipamiento = {
+        "41": accesible,
+        "40": aire_acondicionado,
+        "14": campo_de_futbol,
+        "15": campo_de_tennis,
+        "56": instalaciones_olimpicas,
+        "17": piscina,
+        "16": piscina
+    }
+    const icons_integracion = {
+        "52": igualdad,
+        "51": integracion_social,
+        "50": prevencion_acoso
+    }
+
     if(!details) return <Spinner />
     else return(
         <div className="bg-gray-50">
@@ -101,18 +167,48 @@ export default function Colegio(props){
                     <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">caracteristicas</h1>
                     <hr className="title-separator" />
                     <ul>
-                        {details.curriculum_academico && details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms['curriculum_academico'][el]}</p></li>)}
-                        {details.entrevista_de_acceso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
-                        {details.nivel_minimo_de_idioma && <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>}
-                        {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clases'][el]}</p></li>)}
+                        {details.curriculum_academico && <div className="flex items-start mt-4">
+                            <div className="flex-shrink-0">
+                                <Image src={curriculum} width={24} height={24}/>
+                            </div>
+                            <div className="ml-2">
+                                {details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms['curriculum_academico'][el]}</p></li>)}
+                            </div>
+                        </div>}
+
+                        {details.entrevista_de_acceso && <div className="flex items-start mt-2">
+                            <div className="flex-shrink-0">
+                                <Image src={entrevista} width={24} height={24}/>
+                            </div>
+                            <div className="ml-2">
+                                <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>
+                            </div>
+                        </div>}
+
+                        {details.nivel_minimo_de_idioma && <div className="flex items-start mt-2">
+                            <div className="flex-shrink-0">
+                                <Image src={nivel_minimo} width={24} height={24}/>
+                            </div>
+                            <div className="ml-2">
+                                <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>
+                                {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clase'][el]}</p></li>)}
+                            </div>
+                        </div>}
                         {details.entrevista_de_accesso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
-                        <li><p className="uppercase mb-2">{details.distribucion_de_clases.split("_").join(" ")}</p></li>
+                        <div className="flex items-start mt-2">
+                            <div className="flex-shrink-0">
+                                <Image src={distribucion} width={24} height={24}/>
+                            </div>
+                            <div className="ml-2">
+                                <li><p className="uppercase mb-2">{details.distribucion_de_clases.split("_").join(" ")}</p></li>
+                            </div>
+                        </div>
                     </ul>
                 </div>
                 <div className="md:w-1/3">
-                    <div className="border-l-2 md:border-l-0  md:border-r-2 border-yellow-500 px-4 text-right">
+                    <div className="border-l-2 md:border-l-0  md:border-r-2 border-primary px-4 text-right">
                         <h4 className="uppercase text-lg">idioma del centro</h4>
-                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clases'][details.idioma_de_clases]}</p>
+                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clase'][details.idioma_de_clases]}</p>
                     </div>
                 </div>
             </div>
@@ -126,26 +222,35 @@ export default function Colegio(props){
                     <div className="flex-1">
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">servicios generales</h5>
                         <ul>
-                            {details.servicios_ofrecidos.map(el => <li key={el}>
-                                <p className="uppercase mb-2">
-                                    {/* <Image src={icons['servicios_ofrecidos'][el]} width={16} height={16} /> */}
-                                    {wp_terms['servicios_ofrecidos'][el]}
-                                </p>
+                            {details.servicios_ofrecidos.map(el => <li key={el} className="flex items-center mb-4">
+                                <Image src={icons_servicios_generales[el]} width={24} height={24}/>
+                                <p className="uppercase ml-2">&nbsp;{wp_terms['servicios_ofrecidos'][el]}</p>
                             </li>)}
                         </ul>
+                    </div>
+                    <div className="flex-1">
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">servicios especiales</h5>
                         <ul>
-                        {details.servicios_especiales.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['servicios_especiales'][el]}</p></li>)}
+                            {details.servicios_especiales.map(el => <li key={el} className="flex items-center mb-4">
+                                <Image src={icons_servicios_especiales[el]} width={24} height={24}/>
+                                <p className="uppercase ml-2">{wp_terms['servicios_especiales'][el]}</p>
+                            </li>)}
                         </ul>
                     </div>
                     <div className="flex-1">
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">comedor</h5>
                         <ul>
-                            {details.menu_especial.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['menu_especial'][el]}</p></li>)}
+                            {details.menu_especial.map(el => <li key={el} className="flex items-center mb-4">
+                                <Image src={icons_comedor[el]} width={24} height={24}/>
+                                <p className="uppercase ml-2">{wp_terms['menu_especial'][el]}</p>
+                            </li>)}
                         </ul>
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">control de alergias</h5>
                         <ul>
-                            <li><p className="uppercase mb-2">{details.control_de_alergias ? "si" : "no"}</p></li>
+                            <li className="flex items-center mb-4">
+                                {details.control_de_alergias && <Image src={si} width={24} height={24}/>}
+                                <p className="uppercase ml-2">{details.control_de_alergias ? "si" : "no"}</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -159,7 +264,10 @@ export default function Colegio(props){
                 <div className="w-full flex flex-col md:flex-row">
                     <div className="flex-1">
                         <ul>
-                            {details.equipamiento.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['equipamiento'][el]}</p></li>)}
+                            {details.equipamiento.map(el => <li key={el} className="flex items-center mt-4">
+                                <Image src={icons_equipamiento[el]} width={24} height={24}/>
+                                <p className="uppercase ml-2">{wp_terms['equipamiento'][el]}</p>
+                            </li>)}
                         </ul>
                     </div>
                 </div>
@@ -171,7 +279,10 @@ export default function Colegio(props){
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">integracion social</h1>
                 <hr className="title-separator" />
                 <ul>
-                    {details.programas_de_integracion && details.programas_de_integracion.map(el => <li key={el}><p className="uppercase mb-2">{wp_terms['programas_de_integracion'][el]}</p></li>)}
+                    {details.programas_de_integracion && details.programas_de_integracion.map(el => <li key={el} className="flex items-center mt-4">
+                        <Image src={icons_integracion[el]} width={24} height={24}/>
+                        <p className="uppercase ml-2">{wp_terms['programas_de_integracion'][el]}</p>
+                    </li>)}
                 </ul>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
