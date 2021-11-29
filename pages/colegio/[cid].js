@@ -104,7 +104,7 @@ export default function Colegio(props){
                         {details.curriculum_academico && details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms['curriculum_academico'][el]}</p></li>)}
                         {details.entrevista_de_acceso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
                         {details.nivel_minimo_de_idioma && <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>}
-                        {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clase'][el]}</p></li>)}
+                        {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clases'][el]}</p></li>)}
                         {details.entrevista_de_accesso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
                         <li><p className="uppercase mb-2">{details.distribucion_de_clases.split("_").join(" ")}</p></li>
                     </ul>
@@ -112,7 +112,7 @@ export default function Colegio(props){
                 <div className="md:w-1/3">
                     <div className="border-l-2 md:border-l-0  md:border-r-2 border-yellow-500 px-4 text-right">
                         <h4 className="uppercase text-lg">idioma del centro</h4>
-                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clase'][details.idioma_principal_de_clases]}</p>
+                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clases'][details.idioma_de_clases]}</p>
                     </div>
                 </div>
             </div>

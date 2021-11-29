@@ -11,6 +11,8 @@ import filterIndex from '../util/filterIndex.json'
 import close from '/public/images/icons/close.svg'
 import wp_terms from '../util/wp_terms.json'
 import Map from '../components/Map'
+import Spinner from '../components/Spinner'
+
 export default function Buscar() {
 
     const router = useRouter();
@@ -37,7 +39,6 @@ export default function Buscar() {
     ];
 
     const fetchFilterOptions = async () => {
-        console.log('--> fetching filter options')
         Promise.all(filters.map(filter => axios.get(`http://localhost/aray.new/wp-json/wp/v2/${filter}`).then(res => res.data)))
             .then(filterOptions => {
                 // TODO: REFACTOR THIS IF POSSIBLE OPTIMOZE PERFORMANCE
@@ -56,7 +57,6 @@ export default function Buscar() {
     useEffect(() => {
         // fetch schools on load
         if(!schools){
-            console.log('----> fetching schools')
             axios.get('http://localhost/aray.new/wp-json/wp/v2/colegios?_embed').then(res => {
                 if (res.data) {
                 setSchools(res.data);
@@ -72,7 +72,6 @@ export default function Buscar() {
 
         // if filters exist, filter schools
         if(schools && filtersApplied){
-            console.log('------> filtering schools')
             let filteredSchools = [...schools];
             Object.entries(filtersApplied).forEach(([filter, val]) => {
                 filteredSchools = filteredSchools.filter(school => {
@@ -125,7 +124,6 @@ export default function Buscar() {
         delete newQ[field];
         router.push({ pathname, query: newQ });
     }
-
     return (
         <div className="bg-gray-50">
             <div className="w-screen px-2 pt-24 md:pt-32 pb-8 md:pb-16 bg-gray-100 flex flex-col items-center relative">
@@ -149,19 +147,39 @@ export default function Buscar() {
                         label={filterIndex['poblacion']}
                         onChange={onFilterChange}
                         options={filterOptions['poblacion']}
-                        defaultSelected={router.query['poblacion']} 
+                        value={filtersApplied['poblacion']} 
                     />
                     <Select
                         name="pais"
                         label={filterIndex['pais']}
                         onChange={onFilterChange}
                         options={filterOptions['pais']}
-                        defaultSelected={router.query['pais']}
+                        value={filtersApplied['pais']} 
                     />
-                    <Select name="curriculum_academico" label={filterIndex['curriculum_academico']} onChange={onFilterChange} options={filterOptions['curriculum_academico']} defaultSelected={router.query['curriculum_academico']} />
-                    <Select name="equipamiento" label={filterIndex['equipamiento']} onChange={onFilterChange} options={filterOptions['equipamiento']} defaultSelected={router.query['equipamiento']} />
-                    <Select name="menu_especial" label={filterIndex['menu_especial']} onChange={onFilterChange} options={filterOptions['menu_especial']} defaultSelected={router.query['menu_especial']} />
-                    <Select name="idioma_de_clase" label={filterIndex['idioma_de_clase']} onChange={onFilterChange} options={filterOptions['idioma_de_clase']} defaultSelected={router.query['idioma_de_clase']} />
+                    <Select name="curriculum_academico"
+                        label={filterIndex['curriculum_academico']}
+                        onChange={onFilterChange}
+                        options={filterOptions['curriculum_academico']}
+                        value={filtersApplied['curriculum_academico']} 
+                    />
+                    <Select name="equipamiento"
+                        label={filterIndex['equipamiento']}
+                        onChange={onFilterChange}
+                        options={filterOptions['equipamiento']}
+                        value={filtersApplied['equipamiento']} 
+                    />
+                    <Select name="menu_especial"
+                        label={filterIndex['menu_especial']}
+                        onChange={onFilterChange}
+                        options={filterOptions['menu_especial']}
+                        value={filtersApplied['menu_especial']} 
+                    />
+                    <Select name="idioma_de_clase"
+                        label={filterIndex['idioma_de_clase']}
+                        onChange={onFilterChange}
+                        options={filterOptions['idioma_de_clase']}
+                        value={router.query['idioma_de_clase']} 
+                    />
                 </div>
                 <div className="hidden md:block flex-shrink-0 mt-4 ml-4">
                     <Switch
