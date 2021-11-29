@@ -22,7 +22,7 @@ export default function Cookies(){
     ];
 
     return (
-        <div className="container mx-auto">
+        <div className="container max-w-screen-lg mx-auto">
             <div className="flex flex-col md:flex-row md:justify-between pt-24">
                 <div>
                     <h1>politica de cookies</h1>

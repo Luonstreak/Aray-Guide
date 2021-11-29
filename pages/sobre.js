@@ -9,7 +9,7 @@ export default function Sobre(){
                 <h1 className="text-white text-4xl font-bold mt-2 uppercase">Sobre la guia</h1>
                 <p className="text-white text-sm uppercase">Descrubre lo que necesitas saber</p>
             </div>
-            <div className="container mx-auto bg-white">
+            <div className="container max-w-screen-lg mx-auto bg-white">
                 <div className="pt-20 pb-10 px-4 w-full lg:w-1/2 mx-auto">
                     <h2 className="text-4xl font-bold">Que es la guia aray?</h2>
                     <hr className="title-separator" />

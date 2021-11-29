@@ -140,7 +140,7 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className="container mx-auto py-4 px-2 flex justify-between">
+            <div className="container max-w-screen-lg mx-auto py-4 px-2 flex justify-between">
                 <div className="flex gap-4 overflow-x-scroll pb-4">
                     <Select
                         name="poblacion"
@@ -190,7 +190,7 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 md:px-0">
+            <div className="container max-w-screen-lg mx-auto px-4 md:px-0">
                 {/* APPLIED FILTER LABELS*/}
                 <div className="flex gap-2 mb-4 overflow-x-scroll flex-nowrap md:flex-wrap">
                     {Object.entries(filtersApplied).map(([key, val], index) => (
@@ -212,7 +212,7 @@ export default function Buscar() {
                     />
                 </div> */}
             </div>
-            <div className="container mx-auto py-4 flex">
+            <div className="container max-w-screen-lg mx-auto py-4 flex">
                 {schools
                     ? Object.keys(filtersApplied).length > 0
                         ? (filteredSchools.length > 0)
