@@ -37,7 +37,7 @@ class Map extends React.Component {
         new google.maps.Marker({
           label: { text: String(index + 1), color: "#ffffff" },
           // icon: {
-          //   url: "http://localhost/aray.new/wp-content/uploads/2021/11/placeholder-2.png",
+          //   url: "http://api.aray.guide/wp-content/uploads/2021/11/placeholder-2.png",
           //   size: new google.maps.Size(32, 32),
           //   labelOrigin: new google.maps.Point(0,0),
           // },
