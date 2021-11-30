@@ -126,7 +126,7 @@ export default function Cookies(){
             <hr className="content-separator my-20" />
                 
             {/* TODO: build specific subpages named below */}
-            {/* <p className="text-lg text-gray-500 mb-4">si desea mas informacion sobre los tipos de cookies de seguimiento y analisis de datos de Google <a href="https://www.aray.guide/politica-de-cookies/#" target="_blank">haga click aqui</a></p>
+            {/* <p className="text-lg text-gray-500 mb-4">si desea mas informacion sobre los tipos de cookies de seguimiento y analisis de datos de Google <a href="https://www.aray.guide/politica-de-cookies/#" target="_blank" rel="noreferrer">haga click aqui</a></p>
             <p className="text-lg text-gray-500 mb-4">para informarce como borrar las cookies de su explorador:</p>
             <ul>
                 <li><Link href="#"><a clasName="underline">Firefox</a></Link></li>

@@ -168,7 +168,7 @@ export default function Inicio() {
           <div className="flex flex-wrap justify-center gap-x-4 pt-4 pb-32">
 
             {/* facebook */}
-            <a href="https:/facebook.com/arayasociados/" target="_blank">
+            <a href="https:/facebook.com/arayasociados/" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={facebook} w={25} h={25} alt="facebook logo" />
                 <p className="text-xs">Facebook</p>
@@ -176,7 +176,7 @@ export default function Inicio() {
             </a>
 
             {/* instagram */}
-            <a href="https://www.instagram.com/arayasociados" target="_blank">
+            <a href="https://www.instagram.com/arayasociados" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={instagram} w={25} h={25} alt="instagram logo" />
                 <p className="text-xs">Instagram</p>
@@ -184,7 +184,7 @@ export default function Inicio() {
             </a>
             
             {/* linkedin */}
-            <a href="https://www.linkedin.com/company/ara%26asociados/" target="_blank">
+            <a href="https://www.linkedin.com/company/ara%26asociados/" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={linkedin} w={25} h={25} alt="linkedin logo" />
                 <p className="text-xs">Linked In</p>
@@ -192,7 +192,7 @@ export default function Inicio() {
             </a>
             
             {/* tiktok */}
-            <a href="https:/tiktok.com/arayasociados/" target="_blank">
+            <a href="https:/tiktok.com/arayasociados/" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">TikTok</p>
@@ -200,7 +200,7 @@ export default function Inicio() {
             </a>
 
             {/* wechat */}
-            {/* <Link href="https:/wechat.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/wechat.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={wechat} w={25} h={25} alt="wechat logo" />
                 <p className="text-xs">WeChat</p>
@@ -208,7 +208,7 @@ export default function Inicio() {
             </Link> */}
 
             {/* weibo */}
-            {/* <Link href="https:/weibo.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/weibo.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={weibo} w={25} h={25} alt="weibo logo" />
                 <p className="text-xs">Weibo</p>
@@ -216,7 +216,7 @@ export default function Inicio() {
             </Link> */}
 
             {/* dou yin */}
-            {/* <Link href="https:/douyin.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/douyin.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">Dou Yin</p>
@@ -224,7 +224,7 @@ export default function Inicio() {
             </Link> */}
 
             {/* xiao hong shu */}
-            {/* <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank" passHref>
+            {/* <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={xiaohongshu} w={25} h={25} alt="xiaohongshu logo" />
                 <p className="text-xs">Xiao Hong Shu</p>

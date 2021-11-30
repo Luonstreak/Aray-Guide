@@ -95,7 +95,7 @@ export default function Actividad(props){
             {/* MAS INFORMACION */}
             <hr className="container-separator" />
             <div className="w-screen py-20 mt-32 mb-80 bg-primary relative">
-                <a href={details.web} target="_blank">
+                <a href={details.web} target="_blank" rel="noreferrer">
                     <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
                         <div>
                             <h1 className="text-4xl font-bold capitalize mb-2">mas informacion</h1>
