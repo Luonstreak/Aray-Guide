@@ -1,7 +1,136 @@
+import condiciones from '/public/images/condiciones.jpg'
+import Image from 'next/image'
+
 export default function Condiciones(){
     return (
-        <div className="container max-w-screen-lg mx-auto">
-            condiciones
+        <>
+        {/* HERO */}
+        <div className="w-screen flex flex-col justify-center items-center relative py-20 md:py-32 lg:py-60">
+            <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">Aviso Legal y Condiciones de uso</h1>
+            <div className="absolute inset-0 z-0">
+                <Image priority src={condiciones} layout="fill" className="object-cover" alt="hero image" />
+            </div>
         </div>
+        <div className="container max-w-screen-lg mx-auto px-16">
+            <h2 className="text-4xl font-bold pt-16">Description</h2>
+            <hr className="title-separator mb-8" />
+            <p className="text-lg text-gray-600 mb-4"><strong>ARA Y ASOCIADOS SVA, S.L.</strong>, responsable del sitio Web, en adelante el RESPONSABLE, pone a disposición de los usuarios el presente documento, con el que pretende dar cumplimiento a las obligaciones dispuestas en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), BOE N.º 166, así como informar a todos los usuarios del sitio Web respecto a cuáles son las condiciones de uso. </p>
+            <p className="text-lg text-gray-600 mb-4"><strong>ARA Y ASOCIADOS SVA, S.L.</strong>, le da la bienvenida al sitio Web www.aray.guide (en adelante, el Sitio Web o la Guía Aray). Estas “Condiciones de Uso” tiene como finalidad establecer las condiciones para el uso del presente Sitio Web, así como el resto de servicios e informaciones que ofrecemos.</p>
+            <p className="text-lg text-gray-600 mb-4"><strong>ARA Y ASOCIADOS SVA, S.L.</strong> se reserva el derecho de modificar cualquier tipo de información que pudiera aparecer en el sitio Web, sin que exista obligación de preavisar o poner en conocimiento de los usuarios dichas obligaciones, entendiéndose como suficiente la publicación en el sitio Web de <strong>ARA Y ASOCIADOS SVA, S.L.</strong></p>
+            <ol className="list-decimal text-lg text-gray-600 mb-4">
+                <li className="mb-4">
+                    <strong>Datos identificativos</strong>
+                    <ul className="mt-2 list-disc pl-8">
+                        <li><strong>Nombre de dominio:&nbsp;</strong><a href="https://www.aray.guide" target="_blank">www.aray.guide</a></li>
+                        <li><strong>Nombre comercial:&nbsp;</strong> GUÍA ARAY</li>
+                        <li><strong>Representante legal:&nbsp;</strong> ARA Y ASOCIADOS SVA, S.L.</li>
+                        <li><strong>C.I.F:&nbsp;</strong> B54635321</li>
+                        <li><strong>Teléfono:&nbsp;</strong> 965 20 15 96</li>
+                        <li><strong>Domicilio profesional:&nbsp;</strong> Paseo de la Explanada, 2, Principal Derecha, 03002, Alicante, Alicante</li>
+                        <li><strong>e-mail:&nbsp;</strong> <a href="mailto:info@arayasociados.com">info@arayasociados.com</a></li>
+                    </ul>
+                </li>
+                <li className="mb-4">
+                    <strong>Sobre el sitio web</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">Al acceder al Sitio Web, usted acepta este Aviso Legal y Condiciones de uso.</p>
+                    <p className="text-lg text-gray-600 mb-4">Debe leer todas las Condiciones de uso antes de utilizar el Sitio Web. Si lo considera necesario, puede guardar y/o imprimir una copia de estas Condiciones de uso para futuras referencias. No obstante, nos reservamos el derecho de modificar cualquier tipo de información que pudiera aparecer en el sitio Web, sin que exista obligación de preavisar o poner en conocimiento de los usuarios dichas obligaciones, entendiéndose como suficiente la publicación en el presente Sitio Web. </p>
+                    <p className="text-lg text-gray-600 mb-4">El Presente Sitio Web tratará datos personales que se regirán por nuestra Política de Privacidad, que describe las finalidades y los principios que aplicamos para garantizar el correcto tratamiento de sus datos personales.  </p>
+                    <p className="text-lg text-gray-600 mb-4">Al mismo tiempo, puede visitar nuestra Política de Cookies para conocer cómo empleamos las cookies y las finalidades que utilizamos. No utilizaremos cookies sin el previo consentimiento, salvo aquellas necesarias para el funcionamiento del presente Sitio Web. </p>
+                    <p className="text-lg text-gray-600 mb-4">Toda persona que acceda a este sitio Web asume el papel de Usuario, comprometiéndose a la observancia y cumplimiento riguroso de las disposiciones aquí dispuestas, así como a cualquier otra disposición legal que fuera de aplicación.</p>
+                </li>
+                <li className="mb-4">
+                    <strong>Acceso al sitio web</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">El acceso a nuestro Sitio Web ose permite con carácter temporal y nos reservamos el derecho de retirar o modificar cualquiera o todo el Sitio Web sin previo aviso. Podemos suspender el acceso al Sitio Web y/o a periódicamente para llevar a cabo un mantenimiento de emergencia o programado o por cualquier otra razón en cualquier momento. Nos reservamos el derecho, a nuestra entera discreción, de corregir cualquier error u omisión en cualquier parte del Sitio Web y de realizar cualquier cambio en las características, funcionalidad o contenido del Sitio Web en cualquier momento. Nos reservamos el derecho, a nuestra entera discreción, de editar o eliminar cualquier documento, información u otro contenido del Sitio Web </p>
+                    <p className="text-lg text-gray-600 mb-4">El acceso a nuestro Sitio Web depende de la disponibilidad de la Web mundial. Declinamos toda responsabilidad por la incapacidad de usted o del público en general para acceder a nuestro Sitio Web que surja por circunstancias fuera de nuestro control razonable. </p>
+                    <p className="text-lg text-gray-600 mb-4">Se le informa de los riesgos inherentes al uso de Internet, en particular el hecho de que la transmisión de datos no es segura, y representa que usted tiene la experiencia y los medios necesarios para acceder y utilizar el Sitio Web. </p>
+                    <p className="text-lg text-gray-600 mb-4">Usted también es responsable de asegurarse de que todas las personas que accedan al Sitio Web a través de su conexión a Internet conozcan estas Condiciones de uso y las cumplan. </p>
+                    <p className="text-lg text-gray-600 mb-4">Tenemos el derecho de desactivar su acceso a nuestro Sitio Web en cualquier momento si, a nuestro parecer, no ha cumplido con alguna de las disposiciones de las Condiciones de uso, o con los términos de cualquier otra condición de uso o política que se aplique a los servicios o características ofrecidas a través del Sitio Web. </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Uso del sitio web</strong>
+                    <p className="mt-2 text-lg text-gray-500 mb-4">El usuario se obliga a hacer un uso correcto del portal de conformidad con la Ley y el presente Aviso Legal, así como las demás condiciones, reglamentos e instrucciones que en su caso pudieran ser de aplicación. </p>
+                    <p className="text-lg text-gray-500 mb-4">Queda expresamente prohibido el uso del portal con fines lesivos de bienes o intereses directos o indirectos de la Guía Aray, de su responsable Aray Asociados, de terceros o, en general, cualquier otra forma de actuación que perjudique, daño, sobrecargue o inutilice las redes, servidores y demás equipos informativos o productos y aplicaciones informáticas del titular del Sitio Web. </p>
+                    <p className="text-lg text-gray-500 mb-4">En particular, y a menos que nosotros lo permitamos expresamente por escrito, no está autorizado, entre otras conductas: </p>
+                    <ul className="list-disc pl-8">
+                        <li>utilizar nuestro Sitio Web de manera ilegal o fraudulenta o para tales propósitos, para recabar datos personales identificables, o para hacerse pasar por otros usuarios; </li>
+                        <li>utilizar nuestro Sitio Web de cualquier manera para manipular o distorsionar, o minar la integridad y exactitud de cualquier reseña, descripción, calificación o contenido, o tomar cualquier acción para interferir, dañar o interrumpir cualquier parte de nuestro Sitio Web o las características o servicios que se ofrecen; </li>
+                        <li>utilizar nuestro Sitio Web para enviar, recibir, cargar/publicar, descargar a sabiendas, cualquier material que no cumpla con nuestros estándares de contenido; </li>
+                        <li>utilizar nuestro Sitio Web para transmitir o facilitar la transmisión de material publicitario o promocional no solicitado o no autorizado; </li>
+                        <li>utilizar nuestro Sitio Web para transmitir cualquier dato, o cargar en nuestro Sitio Web cualquier dato que contenga virus, caballos de Troya, gusanos, bombas de tiempo, registradores de pulsaciones de teclas, spyware, adware o cualquier otro programa dañino o código informático similar diseñado para afectar negativamente el funcionamiento de cualquier software o hardware informático; </li>
+                        <li>interferir con las características relacionadas con la seguridad de nuestro Sitio Web; </li>
+                        <li>descompilar, realizar ingeniería inversa o desensamblar cualquier parte de nuestro Sitio Web; </li>
+                        <li>usar cualquier robot, araña, otro dispositivo automático o proceso manual para monitorear o copiar nuestras páginas Web o el contenido de nuestro Sitio Web, o usar software de monitoreo de red para determinar la arquitectura o extraer datos de uso de nuestro Sitio Web; o </li>
+                        <li>participar en cualquier conducta que restrinja o inhiba a cualquier otro usuario de utilizar o disfrutar de nuestro Sitio Web.</li>
+                    </ul>
+                </li>
+                <li className="mb-4">
+                    <strong>Nuestros materiales</strong>
+                    <p className="mt-2 text-lg text-gray-500 mb-4">Todos los derechos de autor, derechos de base de datos, marcas registradas, derechos de propiedad intelectual y otros derechos de propiedad que subsistan en nuestro Sitio Web y cualquier contenido que se ponga a su disposición desde el Sitio Web, seguirán siendo de nuestra propiedad o propiedad de nuestros otorgantes de licencias. Todos estos derechos están expresamente reservados.</p>
+                    <p className="text-lg text-gray-500 mb-4">Sujeto a estas Condiciones de uso, le otorgamos un derecho no exclusivo, intransferible, revocable y limitado para acceder, ver e imprimir una (1) copia de cualquier página del Sitio Web y los datos, información, gráficos de software, imágenes, texto, mensajes y otros contenidos que aparecen en el Sitio Web («Materiales») en un solo dispositivo estrictamente de acuerdo con este Aviso Legal y Condiciones de uso.</p>
+                    <p className="text-lg text-gray-500 mb-4">Solo puede ver, imprimir y utilizar los Materiales para su uso personal y no comercial. Nos reservamos expresamente todos los derechos de propiedad intelectual sobre el Sitio Web, la y los Materiales, y su uso del Sitio Web, y los Materiales está sujeto a las siguientes restricciones. Le está estrictamente prohibido:</p>
+                    <ul className="list-disc pl-8">
+                        <li>eliminar cualquier aviso de derechos de autor u otros avisos de propiedad contenidos en los Materiales;</li>
+                        <li>modificar los Materiales de cualquier manera o reproducirlos o exhibirlos públicamente, ejecutarlos, distribuirlos o utilizarlos de cualquier otra manera para cualquier propósito público o comercial; transferir los Materiales a terceros;</li>
+                        <li>usar cualquier Material del Sitio Web de cualquier manera que pueda infringir cualquier derecho de autor, derecho de propiedad intelectual, derecho de propiedad o derecho de propiedad de nosotros o de terceros; o</li>
+                        <li>reproducir, modificar, exhibir, ejecutar, publicar, distribuir, diseminar, difundir, enmarcar, comunicar al público o circular a terceros o explotar este Sitio Web y/o los Materiales de cualquier manera; sin nuestro consentimiento previo por escrito.</li>
+                        <li>nos reservamos expresamente todos los derechos sobre la marca comercial «GUÍA ARAY», su logotipo y todas las demás marcas de servicio, nombres comerciales u otras marcas comerciales relacionadas con nuestro Sitio Web. Otras marcas comerciales, productos y nombres de empresas mencionados en el Sitio Web pueden ser marcas comerciales de sus respectivos propietarios o licenciatarios y los derechos sobre dichas marcas están expresamente reservados a los respectivos propietarios o licenciatario.</li>
+                    </ul>
+                </li>
+                <li className="mb-4">
+                    <strong>Información publicada</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">La Guía Aray recaba el consentimiento para la aparición de todos los Colegios en la presente guía. Además, toda la información que publicamos está facilitada por el propio centro docente, incluido datos personales como fotos y/o imágenes de docentes, menores o cualquier tercero. La Guía Aray utiliza esta información, así como el resto datos personales facilitados (incluida la imagen y/o voz), estrictamente con la finalidad de su incorporación en la Guía a efectos informativos.  </p>
+                    <p className="text-lg text-gray-600 mb-4">Todos los centros docentes, en el momento de su autorización a aparecer en la Guía Aray, expresan haber cumplido la normativa de protección de datos, especialmente en lo referido al uso y la cesión de datos de los menores de edad, incluidos el consentimiento expreso de sus padres/madres/tutores. La Guía Aray no se responsabilizará de ningún incumplimiento de la normativa de protección de datos en lo referido a los datos personales facilitados por los Colegios. </p>
+                    <p className="text-lg text-gray-600 mb-4">Si confía en cualquier opinión, consejo, declaración u otra información será bajo su propio riesgo. En la máxima medida permitida por la ley, declinamos toda responsabilidad que surja de la confianza depositada en dicha información y todos los términos, representaciones, condiciones o garantías que pudieran estar implícitas en estas Condiciones de uso quedan excluidas por el presente documento. </p>
+                    <p className="text-lg text-gray-600 mb-4">Los Materiales pueden contener inexactitudes y errores tipográficos. Los comentarios, descripciones de Colegios, reseñas y otros materiales publicados en nuestro Sitio Web no pretenden servir de consejo y no se debe confiar en ellos. Las reseñas de Colegios que aparecen en el Sitio Web las publican otros usuarios y, aunque nos esforzamos por controlar el contenido de dichas reseñas, no podemos garantizar que sean exactas ni que cumplan con estas Condiciones de uso. </p>
+                    <p className="text-lg text-gray-600 mb-4">Las reseñas recogen únicamente la opinión pertinente del usuario que las ha publicado, no recoge nuestra opinión ni la de ninguno de nuestros afiliados, socios comerciales, directores o empleados y, por consiguiente, declinamos toda responsabilidad por la exactitud, objetividad o contenido de dichas reseñas. </p>
+                    <p className="text-lg text-gray-600 mb-4">Si tiene alguna duda acerca del contenido de cualquier reseña en este Sitio Web, póngase en contacto con nosotros a través de las direcciones que aparecen al final de estas Condiciones de uso</p>
+                </li>
+                <li className="mb-4">
+                    <strong>Exención de responsabilidades</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">El RESPONSABLE se exime de cualquier tipo de responsabilidad derivada de la información publicada en su sitio Web relativa a la información de los colegios. La información publicará sobre los colegios se mantendrá actualizada y revisada, pero en cualquier caso Guía Aray. no se responsabiliza de la veracidad de la misma. Los datos e información publicada son facilitados por los Colegios, quienes serán responsables de la información y contenido que les identifique.  </p>
+                    <p className="text-lg text-gray-600 mb-4">Específicamente, excluimos toda responsabilidad que surja de: </p>
+                    <p className="text-lg text-gray-600 mb-4">Las informaciones, datos y cualquier otro contenido proporcionado por los Colegios en la elaboración de la presente Guía Aray. </p>
+                    <p className="text-lg text-gray-600 mb-4">Los servicios prestados y la calidad de los mismos, total o parcial, por los colegios a los Usuarios, tras el uso de los mismos de la presente Guía en la selección de centro docente.  </p>
+                    <p className="text-lg text-gray-600 mb-4">En la máxima medida permitida por la ley, excluimos toda responsabilidad relativa a todas las garantías, términos, condiciones y representaciones que de otro modo estarían implícitas por la ley en relación con este Sitio Web y el Servicio de contacto y/o reserva, incluyendo, pero sin limitarse a, garantías y condiciones implícitas de calidad satisfactoria y aptitud para un propósito en particular. No nos hará responsables de ningún daño que resulte de su acceso (incluyendo cualquier software o sistema que usted utilice para acceder) a nuestro Sitio Web, incluyendo, pero no limitado a, daños a cualquier ordenador, software o sistema o dispositivo portátil que utilice para acceder al mismo </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Derechos de propiedad industrial e intelectual</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">El sitio Web, incluyendo a título enunciativo, pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, texto y/o gráficos, son propiedad del RESPONSABLE o, si es el caso, dispone de licencia o autorización expresa por parte de los autores. Todos los contenidos del sitio Web se encuentran debidamente protegidos por la normativa de propiedad intelectual e industrial, así como inscritos en los registros públicos correspondientes. </p>
+                    <p className="text-lg text-gray-600 mb-4">Independientemente de la finalidad para la que fueran destinados, la reproducción total o parcial, uso, explotación, distribución y comercialización, requiere en todo caso la autorización escrita previa por parte del RESPONSABLE. Cualquier uso no autorizado previamente se considera un incumplimiento grave de los derechos de propiedad intelectual o industrial del autor. </p>
+                    <p className="text-lg text-gray-600 mb-4">Los diseños, logotipos, texto y/o gráficos ajenos al RESPONSABLE y que pudieran aparecer en el sitio Web, pertenecen a sus respectivos propietarios, siendo ellos mismos responsables de cualquier posible controversia que pudiera suscitarse respecto a los mismos. El RESPONSABLE autoriza expresamente a que terceros puedan redirigir directamente a los contenidos concretos del sitio Web, y en todo caso redirigir al sitio Web principal de <a href="https://www.aray.guide" target="_blank">www.aray.guide</a></p>
+                    <p className="text-lg text-gray-600 mb-4">El RESPONSABLE reconoce a favor de sus titulares los correspondientes derechos de propiedad intelectual e industrial, no implicando su sola mención o aparición en el sitio Web la existencia de derechos o responsabilidad alguna sobre los mismos, como tampoco respaldo, patrocinio o recomendación por parte del mismo. </p>
+                    <p className="text-lg text-gray-600 mb-4">Para realizar cualquier tipo de observación respecto a posibles incumplimientos de los derechos de propiedad intelectual o industrial, así como sobre cualquiera de los contenidos del sitio Web, puede hacerlo a través del correo electrónico <a href="mailto:info@arayasociados.com">info@arayasociados.com</a> </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Uso de cookies</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">Este Sitio Web puede utilizar cookies técnicas (pequeños archivos de información que el servidor envía al ordenador de quien accede a la página) para llevar a cabo determinadas funciones que son consideradas imprescindibles para el correcto funcionamiento y visualización del sitio. Las cookies utilizadas tienen, en todo caso, carácter temporal, con la única finalidad de hacer más eficaz la navegación, y desaparecen al terminar la sesión del usuario. En ningún caso, estas cookies proporcionan por sí mismas datos de carácter personal y no se utilizarán para la recogida de los mismos. </p>
+                    <p className="text-lg text-gray-600 mb-4">Mediante el uso de cookies también es posible que el servidor donde se encuentra la Web reconozca el navegador utilizado por el usuario con la finalidad de que la navegación sea más sencilla, permitiendo, por ejemplo, el acceso de los usuarios que se hayan registrado previamente a las áreas, servicios, promociones o concursos reservados exclusivamente a ellos sin tener que registrarse en cada visita. También se pueden utilizar para medir la audiencia, parámetros de tráfico, controlar el progreso y número de entradas, etc., siendo en estos casos cookies prescindibles técnicamente, pero beneficiosas para el usuario. Este Sitio Web no instalará cookies prescindibles sin el consentimiento previo del usuario. </p>
+                    <p className="text-lg text-gray-600 mb-4">Este Sitio Web utiliza cookies propias y de terceros para fines analíticos y para mostrarle publicidad personalizada en base a un perfil elaborado a partir de sus hábitos de navegación (por ejemplo, páginas visitadas). A todo usuario que visita la Web se le informa del uso de estas cookies mediante un banner flotante. En el caso de aceptar su uso, el banner desaparecerá, aunque en todo momento podrá revocar el consentimiento y obtener más información consultando nuestra Política de cookies. </p>
+                    <p className="text-lg text-gray-600 mb-4">El usuario tiene la posibilidad de configurar su navegador para ser alertado de la recepción de cookies y para impedir su instalación en su equipo. Por favor, consulte las instrucciones de su navegador para ampliar esta información. </p>
+                    <p className="text-lg text-gray-600 mb-4">Para más información sobre las cookies que tiene nuestra Web, consulte nuestra Política de Cookies. </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Política de enlaces</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">Desde el Sitio Web, es posible que se redirija a contenidos de terceros sitios Web. Dado que Guía Aray no puede controlar siempre los contenidos introducidos por terceros en sus respectivos sitios Web, no asume ningún tipo de responsabilidad respecto a dichos contenidos. En todo caso, procederá a la retirada inmediata de cualquier contenido que pudiera contravenir la legislación nacional o internacional, la moral o el orden público, procediendo a la retirada inmediata de la redirección a dicho sitio Web, poniendo en conocimiento de las autoridades competentes el contenido en cuestión. </p>
+                    <p className="text-lg text-gray-600 mb-4">Guía Aray no se hace responsable de la información y contenidos almacenados, a título enunciativo, pero no limitativo, en foros, chats, generadores de blogs, comentarios, redes sociales o cualquier otro medio que permita a terceros publicar contenidos de forma independiente en la presente página Web. Sin embargo, y en cumplimiento de lo dispuesto en los artículos 11 y 16 de la LSSICE, se pone a disposición de todos los usuarios, autoridades y fuerzas de seguridad, colaborando de forma activa en la retirada o, en su caso, bloqueo de todos aquellos contenidos que puedan afectar o contravenir la legislación nacional o internacional, los derechos de terceros o la moral y el orden público. En caso de que el usuario considere que existe en el sitio Web algún contenido que pudiera ser susceptible de esta clasificación, se ruega lo notifique de forma inmediata al administrador del sitio Web. </p>
+                    <p className="text-lg text-gray-600 mb-4">Este Sitio Web se ha revisado y probado para que funcione correctamente. En principio, puede garantizarse el correcto funcionamiento los 365 días del año, 24 horas al día. Sin embargo, el RESPONSABLE no descarta la posibilidad de que existan ciertos errores de programación, o que acontezcan causas de fuerza mayor, catástrofes naturales, huelgas o circunstancias semejantes que hagan imposible el acceso a la página Web. </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Direcciones IP</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">Los servidores del sitio Web podrán detectar de manera automática la dirección IP y el nombre de dominio utilizados por el usuario. Una dirección IP es un número asignado automáticamente a un ordenador cuando este se conecta a Internet. Toda esta información se registra en un fichero de actividad del servidor debidamente inscrito que permite el posterior procesamiento de los datos con el fin de obtener mediciones únicamente estadísticas que permitan conocer el número de impresiones de páginas, el número de visitas realizadas a los servidores Web, el orden de visitas, el punto de acceso, etc. </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Cambios en las Condiciones de uso</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">El presente Aviso Legal y Condiciones de Uso se mantendrán actualizadas y revisadas periódicamente. Así, Guía Aray podrá modificar el contenido del presente documento si necesidad de aviso, surtiendo efecto las anteriores modificaciones en el momento de su publicación en la Web. </p>
+                </li>
+                <li className="mb-4">
+                    <strong>Ley aplicable y jurisdicción.</strong>
+                    <p className="mt-2 text-lg text-gray-600 mb-4">Para la resolución de todas las controversias o cuestiones relacionadas con el presente sitio Web o de las actividades en él desarrolladas, será de aplicación la legislación española, a la que se someten expresamente las partes, siendo competentes para la resolución de todos los conflictos derivados o relacionados con su uso los Juzgados y Tribunales más cercanos a la ciudad de Alicante.</p>
+                </li>
+            </ol>
+            <p className="text-lg text-gray-600 text-center my-8"><strong>Última actualización:</strong> SEPTIEMBRE 2021</p>
+            <hr className="container-separator" />
+        </div>
+        </>
     )
 }

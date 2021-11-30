@@ -162,36 +162,36 @@ export default function Inicio() {
           <div className="flex flex-wrap justify-center gap-x-4 pt-4 pb-32">
 
             {/* facebook */}
-            <Link href="https:/facebook.com/arayasociados/" target="_blank" passHref>
+            <a href="https:/facebook.com/arayasociados/" target="_blank">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={facebook} w={25} h={25} alt="facebook logo" />
                 <p className="text-xs">Facebook</p>
               </div>
-            </Link>
+            </a>
 
             {/* instagram */}
-            <Link href="https:/instagram.com/arayasociados/" target="_blank" passHref>
+            <a href="https://www.instagram.com/arayasociados" target="_blank">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={instagram} w={25} h={25} alt="instagram logo" />
                 <p className="text-xs">Instagram</p>
               </div>
-            </Link>
+            </a>
             
             {/* linkedin */}
-            <Link href="https:/linkedin.com/arayasociados/" target="_blank" passHref>
+            <a href="https://www.linkedin.com/company/ara%26asociados/" target="_blank">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={linkedin} w={25} h={25} alt="linkedin logo" />
                 <p className="text-xs">Linked In</p>
               </div>
-            </Link>
+            </a>
             
             {/* tiktok */}
-            <Link href="https:/tiktok.com/arayasociados/" target="_blank" passHref>
+            <a href="https:/tiktok.com/arayasociados/" target="_blank">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">TikTok</p>
               </div>
-            </Link>
+            </a>
 
             {/* wechat */}
             {/* <Link href="https:/wechat.com/arayasociados/" target="_blank" passHref>

@@ -11,10 +11,9 @@ export default function Footer(props){
                 <p className="text-white capitalize font-bold text-left pl-2">aray</p>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-center gap-4">
-                <Link href="/condiciones"><a className="text-white capitalize">condiciones de uso</a></Link>
+                <Link href="/condiciones"><a className="text-white capitalize">aviso legal y condiciones de uso</a></Link>
                 <Link href="/cookies"><a className="text-white capitalize">cookies</a></Link>
                 <Link href="/privacidad"><a className="text-white capitalize">politica de privacidad</a></Link>
-                <Link href="/legal"><a className="text-white capitalize">aviso legal</a></Link>
             </div>
         </div>
     )

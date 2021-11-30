@@ -1,7 +1,7 @@
 export default function Select(props){
     
     const variants = {
-        default: "bg-gray-200 text-gray-700 outline-none mt-1 ring-primarylight focus:ring focus:ring-primary",
+        default: "bg-gray-200 text-gray-700 outline-none mt-1 ring-primarylight",
         text: "bg-gray-50 text-gray-700 focus:text-gray-800 hover:bg-gray-100 outline-none"
     }
     const { name, label, value = null, options, multi, variant = 'default', onChange = () => {}} = props;

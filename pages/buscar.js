@@ -140,7 +140,7 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className="container max-w-screen-lg mx-auto py-4 px-2 flex justify-between">
+            <div className="container max-w-screen-lg mx-auto py-4">
                 <div className="flex gap-4 overflow-x-scroll pb-4">
                     <Select
                         name="poblacion"
@@ -181,13 +181,6 @@ export default function Buscar() {
                         value={router.query['idioma_de_clase']} 
                     />
                 </div>
-                <div className="hidden md:block flex-shrink-0 mt-4 ml-4">
-                    <Switch
-                        label="show map"
-                        onChange={() => setShowMap(!showMap)}
-                        active={showMap} 
-                    />
-                </div>
             </div>
 
             <div className="container max-w-screen-lg mx-auto px-4 md:px-0">
@@ -200,7 +193,16 @@ export default function Buscar() {
                         </div>
                     ))}
                 </div>
-                <h2 className="text-xl md:text-3xl text-gray-700 uppercase font-bold">Resultados de tu busqueda</h2>
+                <div className="flex justify-between items-center">
+                    <h2 className="text-xl md:text-3xl text-gray-700 font-bold">Resultados de tu busqueda</h2>
+                    <div className="hidden md:block flex-shrink-0">
+                        <Switch
+                            label="show map"
+                            onChange={() => setShowMap(!showMap)}
+                            active={showMap} 
+                        />
+                    </div>
+                </div>
                 <hr className="title-separator" />
                 {/* <div className="flex flex-wrap gap-4 items-centermd:pt-4">
                     <p className="w-full text-center md:text-left text-gray-500 text-md uppercase mt-4 md:mt-0">{filteredSchools ? `${filteredSchools.length} resultado${filteredSchools.length === 1 ? '' : 's'}` : schools ? `${schools.length} resultado${schools.length === 1 ? '' : 's'}` : 'cargando resultados'}</p>
@@ -212,16 +214,16 @@ export default function Buscar() {
                     />
                 </div> */}
             </div>
-            <div className="container max-w-screen-lg mx-auto py-4 flex">
+            <div className="container max-w-screen-lg mx-auto pt-4 pb-16 flex">
                 {schools
                     ? Object.keys(filtersApplied).length > 0
                         ? (filteredSchools.length > 0)
-                            ? <div className={`grid grid-cols-1 gap-0 md:gap-8 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
+                            ? <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
                                 {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i, ...el }} grid />)}
                             </div> 
                             : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">No hay colegios con esos parametros.</p>
                         : (
-                            <div className={`grid grid-cols-1 gap-0 md:gap-8 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
+                            <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
                                 {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
                         )
