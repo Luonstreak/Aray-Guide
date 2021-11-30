@@ -95,19 +95,19 @@ export default function Actividad(props){
             {/* MAS INFORMACION */}
             <hr className="container-separator" />
             <div className="w-screen py-20 mt-32 mb-80 bg-primary relative">
-                <Link href="/subscribete" passHref>
+                <a href={details.web} target="_blank">
                     <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
-                    <div>
-                        <h1 className="text-4xl font-bold capitalize mb-2">mas informacion</h1>
-                        <p className="text-gray-500 mb-4">de la actividad</p>
-                        <hr className="title-separator" />
-                        <p className="mb-2">Descubre todo lo que necesitas saber sobre la guia de colegios mas completa que Aray ha desarollado para que todo sea mas comodo y sensillo para ti</p>
+                        <div>
+                            <h1 className="text-4xl font-bold capitalize mb-2">mas informacion</h1>
+                            <p className="text-gray-500 mb-4">de la actividad</p>
+                            <hr className="title-separator" />
+                            <p className="mb-2">Descubre todo lo que necesitas saber sobre la guia de colegios mas completa que Aray ha desarollado para que todo sea mas comodo y sensillo para ti</p>
+                        </div>
+                        <div className="mx-auto md:w-40 mt-4 md:mt-0">
+                            <Image src={subsrcibete} width={50} height={50} alt="flecha derecha" />
+                        </div>
                     </div>
-                    <div className="mx-auto md:w-40 mt-4 md:mt-0">
-                        <Image src={subsrcibete} width={50} height={50} alt="flecha derecha" />
-                    </div>
-                    </div>
-                </Link>
+                </a>
             </div>
 
             {/* ACTIVIDADES */}

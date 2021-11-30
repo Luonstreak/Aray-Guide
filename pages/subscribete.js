@@ -15,7 +15,7 @@ export default function Subscribete(){
                     <p className="text-white text-lg text-right">de la guia aray</p>
                 </div>
             </div>
-            <div className="w-full lg:w-2/3 lg:h-screen bg-white px-4 md:px-40 lg:pt-40 lg:pb-32">
+            <div className="w-full lg:w-2/3 lg:h-screen bg-white px-4 md:px-40 pt-20 lg:pt-40 pb-12 lg:pb-32">
                 <h2 className="text-4xl font-bold uppercase">Rellena tus datos</h2>
                 <p className="mb-10 uppercase mt-2">para recibir nuestra newsletter</p>
                 <input

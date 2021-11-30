@@ -23,7 +23,13 @@ export default function Inicio() {
 
   const [schools, setSchools] = useState(null)
   const [actividades, setActividades] = useState(null)
-  const [paises, setPaises] = useState([{ name: 'españa'}, { name: 'francia' },{ name: 'italia' },{ name: 'alemania' },{ name: 'china' } ])
+  const [paises, setPaises] = useState([
+    { name: 'españa', id: '12' },
+    { name: 'francia', id: '' },
+    { name: 'italia', id: '' },
+    { name: 'alemania', id: '' },
+    { name: 'china', id: '' }
+  ])
 
   const router = useRouter();
 
