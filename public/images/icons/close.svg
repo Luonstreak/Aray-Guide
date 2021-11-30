@@ -1,3 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50"
+	 style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<path sketch:type="MSShapeGroup" class="st0" d="M25,20.5L4.5,0L0,4.5L20.5,25L0,45.5L4.5,50L25,29.5L45.5,50l4.5-4.5L29.5,25
+	L50,4.5L45.5,0L25,20.5z"/>
 </svg>

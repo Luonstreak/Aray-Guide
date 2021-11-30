@@ -17,7 +17,7 @@ export default function SearchInput(props){
                 onChange={e => setTerm(e.target.value)}
                 value={term}
             />
-            <button className="absolute top-4 right-4" onClick={() => props.onChange(term)}>
+            <button className="absolute top-2 lg:top-4 right-4" onClick={() => term && props.onChange(term)}>
                 <Image src={magnifier} width={32} height={32} />
             </button>
         </div>
