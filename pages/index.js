@@ -93,7 +93,9 @@ export default function Inicio() {
         <h1 className="uppercase font-bold mb-8 text-2xl md:text-3xl lg:text-4xl">actividades destacadas</h1>
         <div className="flex overflow-x-scroll items-center">
           {actividades 
-            ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
+            ? actividades.length > 0
+              ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
+              : <p className="text-lg text-gray-500 text-center w-full">No hay actividades en este momento</p>
             : <p>loading...</p>
           }
         </div>

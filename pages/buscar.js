@@ -1,14 +1,12 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router'
-import graduation from '/public/images/graduation.jpg'
 import Select from '../components/Select'
 import SchoolCard from '../components/SchoolCard'
 import Switch from '../components/Switch'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import filterIndex from '../util/filterIndex.json'
 import close from '/public/images/icons/close.svg'
+import graduation from '/public/images/graduation.jpg'
 import wp_terms from '../util/wp_terms.json'
 import Map from '../components/Map'
 import Spinner from '../components/Spinner'
@@ -28,7 +26,7 @@ export default function Buscar() {
         "pais",
         "poblacion",
         "modelo_educativo",
-        "idioma_de_clase",
+        "idioma_de_clases",
         "cursos_ofrecidos",
         "servicios_ofrecidos",
         "actividades_extraescolares",
@@ -38,6 +36,21 @@ export default function Buscar() {
         "curriculum_academico"
     ];
 
+    const filterIndex = {
+        "provincia": "Provincia",
+        "pais": "Pais",
+        "poblacion": "Poblacion",
+        "model_educativo": "Modelo Educativo",
+        "idioma_de_clases": "Idioma de clases",
+        "cursos_ofrecidos": "Cursos Ofrecidos",
+        "servicios_ofrecidos": "Servicios Ofrecidos",
+        "actividades_extraescolares": "Actividades Extraescolares",
+        "menu_especial": "Menu Especial",
+        "equipamiento": "Equipamiento",
+        "programa_de_integracion": "Programa de integracon",
+        "curriculum_academico": "Curriculo Academico"
+    }
+    
     const fetchFilterOptions = async () => {
         Promise.all(filters.map(filter => axios.get(`https://api.aray.guide/wp-json/wp/v2/${filter}`).then(res => res.data)))
             .then(filterOptions => {
@@ -57,7 +70,7 @@ export default function Buscar() {
     useEffect(() => {
         // fetch schools on load
         if(!schools){
-            axios.get('https://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
+            axios.get('https://api.aray.guide/wp-json/wp/v2/colegios?per_page=100&_embed').then(res => {
                 if (res.data) {
                 setSchools(res.data);
                 }
@@ -136,7 +149,7 @@ export default function Buscar() {
                     defaultValue={router.query.q}
                 />
                 <div className="absolute inset-0 z-0">
-                    {/* <Image priority src={graduation} layout="fill" className="object-cover object-bottom brightness-50" alt="hero image" /> */}
+                    <Image priority src={graduation} layout="fill" className="object-cover object-bottom brightness-50" alt="hero image" />
                 </div>
             </div>
 
@@ -174,11 +187,11 @@ export default function Buscar() {
                         options={filterOptions['menu_especial']}
                         value={filtersApplied['menu_especial']} 
                     />
-                    <Select name="idioma_de_clase"
-                        label={filterIndex['idioma_de_clase']}
+                    <Select name="idioma_de_clases"
+                        label={filterIndex['idioma_de_clases']}
                         onChange={onFilterChange}
-                        options={filterOptions['idioma_de_clase']}
-                        value={router.query['idioma_de_clase']} 
+                        options={filterOptions['idioma_de_clases']}
+                        value={router.query['idioma_de_clases']} 
                     />
                 </div>
             </div>

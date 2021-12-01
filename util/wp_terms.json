@@ -1,11 +1,11 @@
 {
-    "idioma_de_clase": { 
-        "3" : "Castellano",
-        "4" : "Ingles",
-        "5" : "Frances",
-        "6" : "Alemán",
-        "7" : "Chino",
-        "49" : "Otros"
+    "idioma_de_clases": { 
+        "158" : "Alemán",
+        "159" : "Castellano",
+        "160" : "Chino",
+        "161" : "Frances",
+        "162" : "Ingles",
+        "163" : "Otros" 
     },
     
     "modelo_educativo": { 

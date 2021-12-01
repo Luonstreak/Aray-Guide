@@ -120,7 +120,7 @@ export default function Colegio(props){
             {/* HERO */}
             <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60">
                 <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
-                <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{wp_terms['provincia'][details.provincia]} • {wp_terms['pais'][details.pais]}</p>
+                <p className="z-10 text-white lg:text-2xl lg:text-gray-300 capitalize">{wp_terms['provincia'][details.provincia]} • {wp_terms['pais'][details.pais]}</p>
                 <div className="absolute inset-0 z-0">
                     <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
                 </div>
@@ -191,7 +191,7 @@ export default function Colegio(props){
                             </div>
                             <div className="ml-2">
                                 <li><p className="uppercase mb-2">nivel minimo de idioma</p></li>
-                                {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clase'][el]}</p></li>)}
+                                {details.idioma_que_se_examinara && details.idioma_que_se_examinara.map(el => <li key={el}><p className="uppercase mb-2"><span className="text-primary">•</span> {wp_terms['idioma_de_clases'][el]}</p></li>)}
                             </div>
                         </div>}
                         {details.entrevista_de_accesso && <li><p className="uppercase mb-2">se realiza entrevista de acceso</p></li>}
@@ -208,7 +208,7 @@ export default function Colegio(props){
                 <div className="md:w-1/3">
                     <div className="border-l-2 md:border-l-0  md:border-r-2 border-primary px-4 text-right">
                         <h4 className="uppercase text-lg">idioma del centro</h4>
-                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clase'][details.idioma_de_clases]}</p>
+                        <p className="uppercase text-gray-600">{wp_terms['idioma_de_clases'][details.idioma_de_clases]}</p>
                     </div>
                 </div>
             </div>
@@ -298,7 +298,7 @@ export default function Colegio(props){
                   {actividades 
                     ? actividades.length > 0
                         ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />)
-                        : <p>No hay Actviades en este momento</p>
+                        : <p className="text-lg text-gray-500 text-center w-full">No hay actividades en este momento</p>
                     : <p>loading...</p>
                   }
                 </div>
