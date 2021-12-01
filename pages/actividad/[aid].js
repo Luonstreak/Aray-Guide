@@ -24,7 +24,7 @@ export default function Actividad(props){
 
     useEffect(() => {
         if(!details){
-            axios.get(`http://api.aray.guide/wp-json/wp/v2/actividades/${aid}?_embed`).then(res => {
+            axios.get(`https://api.aray.guide/wp-json/wp/v2/actividades/${aid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
                     setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
@@ -32,14 +32,14 @@ export default function Actividad(props){
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
         if(!actividades){
-            axios.get('http://api.aray.guide/wp-json/wp/v2/actividades?_embed').then(res => {
+            axios.get('https://api.aray.guide/wp-json/wp/v2/actividades?_embed').then(res => {
                 if (res.data) {
                     setActividades(res.data);
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Actviades"'));
         }
         if(!schools){
-          axios.get('http://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
+          axios.get('https://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
             if (res.data) {
                 setSchools(res.data);
             }

@@ -39,7 +39,7 @@ export default function Buscar() {
     ];
 
     const fetchFilterOptions = async () => {
-        Promise.all(filters.map(filter => axios.get(`http://api.aray.guide/wp-json/wp/v2/${filter}`).then(res => res.data)))
+        Promise.all(filters.map(filter => axios.get(`https://api.aray.guide/wp-json/wp/v2/${filter}`).then(res => res.data)))
             .then(filterOptions => {
                 // TODO: REFACTOR THIS IF POSSIBLE OPTIMOZE PERFORMANCE
                 const parsedFilters = filterOptions.reduce((acc,filter) => {
@@ -57,7 +57,7 @@ export default function Buscar() {
     useEffect(() => {
         // fetch schools on load
         if(!schools){
-            axios.get('http://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
+            axios.get('https://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
                 if (res.data) {
                 setSchools(res.data);
                 }

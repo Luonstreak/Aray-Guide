@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'aray.guide'],
+    domains: ['localhost', 'api.aray.guide', 'aray.guide'],
   },
 }
