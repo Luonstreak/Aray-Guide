@@ -12,7 +12,7 @@ export default function SchoolCard({ el, grid }){
                     <Image loader={myLoader} layout="fill" className="object-cover rounded-t-lg" src={thumbnail} alt="preview de colegio" />
                 </div>
                 <div className="px-4 py-2 h-40">
-                    <p className="uppercase text-sm my-1">colegio {wp_terms['model_educativo'][el.ACF.model_educativo]}</p>
+                    <p className="uppercase text-sm my-1">colegio {wp_terms['modelo_educativo'][el.ACF.modelo_educativo]}</p>
                     <h2 className="font-bold text-2xl text-gray-700">{el.i && `${el.i + 1}.`} {el.title.rendered}</h2>
                     {/* TODO: build rating system with elemnts underneath */}
                     {/* <div className="flex my-4">

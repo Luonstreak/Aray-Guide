@@ -34,7 +34,7 @@ export default function Buscar() {
         "actividades_extraescolares",
         "menu_especial",
         "equipamiento",
-        "programa_de_integracion",
+        "programas_de_integracion",
         "curriculum_academico"
     ];
 

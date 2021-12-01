@@ -41,7 +41,7 @@ import piscina from '/public/images/icons/piscina.svg'
 import igualdad from '/public/images/icons/igualdad.svg'
 import integracion_social from '/public/images/icons/integracion_social.svg'
 import prevencion_acoso from '/public/images/icons/prevencion_acoso.svg'
-import { myLoader } from '../util/functions'
+import { myLoader } from '../../util/functions'
 
 export default function Colegio(props){
   
@@ -78,40 +78,40 @@ export default function Colegio(props){
     });
 
     const icons_servicios_generales = {
-        "18": alojamiento,
-        "20": comedor,
+        "61": alojamiento,
+        "93": comedor,
         "22": horario_matutino,
         "23": horario_vespertino,
         "21": seguro,
-        "19": transporte,
+        "20": transporte,
     }
     const icons_servicios_especiales = {
-        "28": logopeda,
-        "49": psicologia
+        "36": logopeda,
+        "35": psicologia
     }
     const icons_comedor = {
-        "47": bajo_en_grasas,
-        "27": halal,
-        "46": hipercalorico,
-        "48": diabetico,
-        "43": sin_gluten,
-        "44": sin_lactosa,
-        "45": vegano,
-        "57": vegano
+        "62": bajo_en_grasas,
+        "94": halal,
+        "132": hipercalorico,
+        "34": diabetico,
+        "31": sin_gluten,
+        "32": sin_lactosa,
+        "131": vegano,
+        "33": vegano
     }
     const icons_equipamiento = {
-        "41": accesible,
-        "40": aire_acondicionado,
-        "14": campo_de_futbol,
-        "15": campo_de_tennis,
-        "56": instalaciones_olimpicas,
-        "17": piscina,
-        "16": piscina
+        "48": accesible,
+        "19": aire_acondicionado,
+        "18": campo_de_futbol,
+        "47": campo_de_tennis,
+        "52": instalaciones_olimpicas,
+        "16": piscina,
+        "17": piscina
     }
     const icons_integracion = {
-        "52": igualdad,
-        "51": integracion_social,
-        "50": prevencion_acoso
+        "157": igualdad,
+        "156": integracion_social,
+        "155": prevencion_acoso
     }
 
     if(!details) return <Spinner />
@@ -127,7 +127,7 @@ export default function Colegio(props){
             </div>
             
             {/* DETALLES */}
-            <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4 md:py-20 md:px-0">
+            <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4 md:py-20 md:px-4">
 
                 <div className="md:w-2/3 mb-8">
                     <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{details.name}</h1>
@@ -136,16 +136,16 @@ export default function Colegio(props){
                         <Image src={location} width={16} height={16} />&nbsp;
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
-                    <p className="mb-2 capitalize">colegio {wp_terms['model_educativo'][details.model_educativo]}</p>
+                    {details.modelo_educativo !== '154' && <p className="mb-2 capitalize">colegio {wp_terms['modelo_educativo'][details.modelo_educativo]}</p>}
                     <Link href="/"><a>Descubre otros colegios</a></Link>
                 </div>
 
                 <div className="md:w-1/3">
                     <h5 className="mb-2 md:mt-10 font-bold text-gray-700">Cursos</h5>
-                    <p className={`${details.cursos_ofrecidos.includes(7) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>infantil</p>
-                    <p className={`${details.cursos_ofrecidos.includes(8) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>primaria</p>
-                    <p className={`${details.cursos_ofrecidos.includes(9) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>eso</p>
-                    <p className={`${details.cursos_ofrecidos.includes(10) ? 'text-primary' : 'text-white'} uppercase mb-2 font-bold`}>bachillerato</p>
+                    <p className={`${details.cursos_ofrecidos.includes(7) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>infantil</p>
+                    <p className={`${details.cursos_ofrecidos.includes(8) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>primaria</p>
+                    <p className={`${details.cursos_ofrecidos.includes(9) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>eso</p>
+                    <p className={`${details.cursos_ofrecidos.includes(10) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>bachillerato</p>
                 </div>
 
             </div>
@@ -279,10 +279,13 @@ export default function Colegio(props){
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">integracion social</h1>
                 <hr className="title-separator" />
                 <ul>
-                    {details.programas_de_integracion && details.programas_de_integracion.map(el => <li key={el} className="flex items-center mt-4">
-                        <Image src={icons_integracion[el]} width={24} height={24}/>
-                        <p className="uppercase ml-2">{wp_terms['programas_de_integracion'][el]}</p>
-                    </li>)}
+                    {details.programas_de_integracion 
+                        ? details.programas_de_integracion.map(el => <li key={el} className="flex items-center mt-4">
+                            <Image src={icons_integracion[el]} width={24} height={24}/>
+                            <p className="uppercase ml-2">{wp_terms['programas_de_integracion'][el]}</p>
+                        </li>)
+                        : <p>no programas de integracion social</p>
+                    }
                 </ul>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
@@ -293,7 +296,9 @@ export default function Colegio(props){
                 <hr className="title-separator mb-8" />
                 <div className="flex overflow-x-scroll items-center">
                   {actividades 
-                    ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
+                    ? actividades.length > 0
+                        ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />)
+                        : <p>No hay Actviades en este momento</p>
                     : <p>loading...</p>
                   }
                 </div>

@@ -1,99 +1,189 @@
 {
-    "model_educativo": {
-        "29": "Britanico",
-        "3": "Internacional"
+    "idioma_de_clase": { 
+        "3" : "Castellano",
+        "4" : "Ingles",
+        "5" : "Frances",
+        "6" : "Alemán",
+        "7" : "Chino",
+        "49" : "Otros"
     },
-    "idioma_de_clase": {
-        "38": "Alemán",
-        "4": "Castellano",
-        "70": "Catalán",
-        "30": "Chino",
-        "6": "Frances",
-        "5": "Ingles",
-        "53": "Otros"
+    
+    "modelo_educativo": { 
+        "2" : "internacional",
+        "37" : "britanico",
+        "43" : "americano",
+        "71" : "europeo",
+        "141" : "frances",
+        "154" : "otros"
     },
-    "otros_idiomas_de_clase": {
-        "1": "Castellano",
-        "2": "Ingles",
-        "3": "Frances"
+    
+    "cursos_ofrecidos": { 
+        "8" : "Infantil",
+        "9" : "Primaria",
+        "10" : "ESO",
+        "11" : "Bachillerato"
     },
-    "cursos_ofrecidos": {
-        "7": "Infantil",
-        "8": "Primaria",
-        "9": "ESO",
-        "10": "Bachillerato"
-    },
+    
     "curriculum_academico": {
-        "39": "Advanced International Certificate of Education (AICE)",
-        "73": "Advanced Level (A-Level)",
-        "75": "Bachillerato Europeo",
-        "67": "International Baccalaureate Diploma Programme (IBDP)",
-        "74": "International General Certificate of Secondary Education (IGCSE)"
+        "12" : "International Baccalaureate Diploma Programme (IBDP)",
+        "38" : "Advanced Level (A-Level)",
+        "44" : "Bachillerato estadounidense (High School Diploma)",
+        "58" : "International General Certificate of Secondary Education (IGCSE)",
+        "59" : "Advanced International Certificate of Education (AICE)",
+        "63" : "Bachillerato Europeo",
+        "74" : "Advanced Placement International Diploma (APID)"
     },
-    "poblacion": {
-        "69": "Alicante",
-        "66": "Cuarte de Huerva",
-        "71": "Manacor",
-        "72": "Puçol",
-        "68": "Soto de Viñuelas"
+    
+    "poblacion": { 
+        "13" : "castelló de la plana",
+        "39" : "almuñecar",
+        "45" : "esplugues de llobregat",
+        "50" : "puçol",
+        "53" : "alcobendas",
+        "55" : "paterna",
+        "56" : "valencia",
+        "60" : "rocafort",
+        "64" : "alicante",
+        "67" : "huércal de almería",
+        "69" : "espartinas",
+        "72" : "roquetas de mar",
+        "73" : "madrid",
+        "76" : "cuarte de huerva",
+        "78" : "el palmar",
+        "80" : "alhaurín de la torre",
+        "82" : "las rozas",
+        "84" : "el puerto de santa maría",
+        "86" : "jaén",
+        "88" : "san miguel de salinas",
+        "91" : "benidorm",
+        "95" : "la garriga",
+        "98" : "picassent",
+        "99" : "ojén",
+        "101" : "pontevedra",
+        "103" : "santiago de compostela",
+        "105" : "granada",
+        "106" : "chamartín",
+        "108" : "las vaguadas",
+        "110" : "algeciras",
+        "113" : "la moraleja",
+        "115" : "málaga",
+        "116" : "bellavista-aljaraque",
+        "118" : "boadilla del monte",
+        "119" : "villanueva de la cañada",
+        "120" : "a coruña",
+        "122" : "barcelona",
+        "125" : "pozuelo de alarcón",
+        "127" : "l´eliana",
+        "128" : "toledo",
+        "129" : "torrente",
+        "130" : "soto de viñuelas",
+        "133" : "sant just desvern",
+        "134" : "benitachell",
+        "136" : "moralzarzal",
+        "137" : "aravaca",
+        "138" : "elche",
+        "140" : "san pedro alcántara",
+        "142" : "campo olivar,godella",
+        "143" : "el campello",
+        "144" : "girona",
+        "146" : "benalmádena",
+        "147" : "cártama estación",
+        "148" : "rincón de la victoria",
+        "149" : "manacor",
+        "151" : "monforte del cid",
+        "152" : "el ejido",
+        "153" : "sotogrande"
     },
-    "provincia": {
-        "11": "Alicante",
-        "55": "Islas Baleares",
-        "59": "Valencia",
-        "61": "Zaragoza",
-        "32": "Madrid"
+    
+    "provincia": { 
+        "14" : "castellón",
+        "40" : "granada",
+        "46" : "barcelona",
+        "51" : "valencia",
+        "54" : "madrid",
+        "65" : "alicante",
+        "68" : "almería",
+        "70" : "sevilla",
+        "77" : "zaragoza",
+        "79" : "murcia",
+        "81" : "málaga",
+        "85" : "cádiz",
+        "87" : "jaén",
+        "102" : "pontevedra",
+        "104" : "a coruña",
+        "109" : "badajoz",
+        "111" : "algeciras",
+        "117" : "huelva",
+        "121" : "galicia",
+        "145" : "girona",
+        "150" : "islas baleares"
     },
-    "pais": {
-        "12": "España"
+    
+    "pais": { "15" : "españa" },
+    
+    "equipamiento": { 
+        "16" : "Piscina climatizada",
+        "17" : "Piscina sin climatizar",
+        "18" : "Campo de futbol",
+        "19" : "Aire acondicionado",
+        "47" : "Campo de tennis",
+        "48" : "Adaptado para personas con minusvalía",
+        "52" : "Instalaciones olímpicas",
+        "89" : "Campo de hípica",
+        "92" : "Edificio individual"
     },
-    "equipamiento": {
-        "41": "Adaptado para personas con minusvalía",
-        "40": "Aire acondicionado",
-        "14": "Campo de futbol",
-        "15": "Campo de tenis",
-        "56": "Instalaciones olímpicas",
-        "17": "Piscina climatizada",
-        "16": "Piscina sin climatizar"
+    
+    "servicios_ofrecidos": { 
+        "20" : "Transporte escolar",
+        "21" : "Seguro de salud o vida",
+        "22" : "Horario ampliado matutino",
+        "23" : "Horario ampliado vespertino",
+        "61" : "Alojamiento",
+        "93" : "Comedor"
     },
-    "servicios_ofrecidos": {
-        "18": "Alojamiento",
-        "20": "Comedor",
-        "22": "Horario ampliado matutino",
-        "23": "Horario ampliado vespertino",
-        "21": "Seguro de salud o vida",
-        "19": "Transporte escolar"
+    
+    "actividades_extraescolares": { 
+        "24" : "Natación",
+        "25" : "Futbol",
+        "26" : "Ajedrez",
+        "27" : "Otros deportes",
+        "28" : "Violín",
+        "29" : "Piano",
+        "30" : "Ballet",
+        "41" : "Tennis",
+        "42" : "Otros instrumentos musicales",
+        "57" : "Patinaje",
+        "66" : "Gimnasia rítmica",
+        "75" : "Cocina",
+        "83" : "Danza española",
+        "90" : "Hípica",
+        "107" : "Teatro",
+        "112" : "Danza",
+        "123" : "Robótica",
+        "139" : "Coro musical"
     },
-    "actividades_extraescolares": {
-        "42": "Ajedrez",
-        "60": "Ballet",
-        "26": "Futbol",
-        "62": "Gimnasia rítmica",
-        "34": "Hípica",
-        "24": "Natación",
-        "35": "Otros deportes",
-        "37": "Otros instrumentos musicales",
-        "33": "Piano",
-        "25": "Tenis",
-        "36": "Violín"
+    
+    "menu_especial": { 
+        "31" : "sin gluten",
+        "32" : "sin lactosa",
+        "33" : "vegetariano",
+        "34" : "para diabéticos",
+        "62" : "bajo en grasas",
+        "94" : "Halal",
+        "97" : "musulmán",
+        "131" : "vegano",
+        "132" : "hipercalórico (suplemento en calorías)"
     },
-    "menu_especial": {
-        "47": "bajo en grasas",
-        "27": "Halal",
-        "46": "hipercalórico (suplemento en calorías)",
-        "48": "para diabéticos",
-        "43": "sin gluten",
-        "44": "sin lactosa",
-        "45": "vegano",
-        "57": "vegetariano"
+    
+    "servicios_especiales": { 
+        "35" : "Psicología infantil",
+        "36" : "Logopeda"
     },
-    "servicios_especiales": {
-        "28": "Logopeda",
-        "49": "Psicología infantil"
-    },
-    "programas_de_integracion": {
-        "52": "Programa de igualdad",
-        "51": "Programa de integración social",
-        "50": "Programa de prevención de acoso escolar (Cero Bullying)"
+    
+    "programas_de_integracion": { 
+        "155" : "Programa de prevención de acoso escolar (Cero Bullying)",
+        "156" : "Programa de integración social",
+        "157" : "Programa de igualdad"
     }
 }
+
