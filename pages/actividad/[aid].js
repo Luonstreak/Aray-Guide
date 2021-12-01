@@ -12,6 +12,7 @@ import location from '/public/images/icons/location.svg'
 import phone from '/public/images/icons/phone.svg'
 import web from '/public/images/icons/web.svg'
 import email from '/public/images/icons/email.svg'
+import { myLoader } from '../util/functions'
 
 export default function Actividad(props){
 
@@ -61,7 +62,7 @@ export default function Actividad(props){
                 <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
                 <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{details.anfitrion.post_title}</p>
                 <div className="absolute inset-0 z-0">
-                    <Image priority src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
+                    <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
                 </div>
             </div>
             

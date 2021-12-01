@@ -41,7 +41,7 @@ import piscina from '/public/images/icons/piscina.svg'
 import igualdad from '/public/images/icons/igualdad.svg'
 import integracion_social from '/public/images/icons/integracion_social.svg'
 import prevencion_acoso from '/public/images/icons/prevencion_acoso.svg'
-
+import { myLoader } from '../util/functions'
 
 export default function Colegio(props){
   
@@ -122,7 +122,7 @@ export default function Colegio(props){
                 <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
                 <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{wp_terms['provincia'][details.provincia]} • {wp_terms['pais'][details.pais]}</p>
                 <div className="absolute inset-0 z-0">
-                    <Image priority src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
+                    <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
                 </div>
             </div>
             

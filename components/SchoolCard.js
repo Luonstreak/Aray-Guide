@@ -1,10 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import wp_terms from '../util/wp_terms.json';
-
-const myLoader = ({ src, width, quality }) => {
-    return src;
-}
+import { myLoader } from '../util/functions'
 
 export default function SchoolCard({ el, grid }){
     const thumbnail = el['_embedded']['wp:featuredmedia'][0]['source_url'];
