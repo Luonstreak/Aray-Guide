@@ -22,7 +22,7 @@ export default function Navbar(){
                 </div>
                 {/* mobile hamburger menu */}
                 <button className="md:hidden" onClick={() => setOpen(true)}><Image src={burger} width={25} height={25} alt="menu icon" /></button>
-                <div className={`absolute w-screen h-screen top-0 bg-primary flex flex-col left-${open ? '0' : 'full'}`}>
+                <div className={`absolute md:hidden w-screen h-screen top-0 bg-primary flex flex-col left-${open ? '0' : 'full'}`}>
                     <div className="text-right">
                         <button className="p-4 text-lg" onClick={() => setOpen(false)}><Image src={close} width={25} height={25} alt="close menu icon" /></button>
                     </div>
