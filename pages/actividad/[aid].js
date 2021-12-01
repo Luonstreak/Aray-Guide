@@ -12,7 +12,7 @@ import location from '/public/images/icons/location.svg'
 import phone from '/public/images/icons/phone.svg'
 import web from '/public/images/icons/web.svg'
 import email from '/public/images/icons/email.svg'
-import { myLoader } from '../util/functions'
+import { myLoader } from '../../util/functions'
 
 export default function Actividad(props){
 
