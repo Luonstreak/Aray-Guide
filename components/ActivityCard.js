@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ActivityCard({ el }){
-    const thumbnail = el['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
+    const thumbnail = el['_embedded']['wp:featuredmedia'][0]['source_url'];
     return (
         <Link href={`/actividad/${el.id}?_embed`} passHref>
             <div className="shadow-lg mb-6 flex-none w-5/6 sm:w-1/2 bg-white rounded-lg p-4 my-2 mr-4 flex flex-col md:flex-row justify-center cursor-pointer">

@@ -2,17 +2,21 @@ import Link from 'next/link'
 import Image from 'next/image'
 import wp_terms from '../util/wp_terms.json';
 
+const myLoader = ({ src, width, quality }) => {
+    return src;
+}
+
 export default function SchoolCard({ el, grid }){
-    const thumbnail = el['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
+    const thumbnail = el['_embedded']['wp:featuredmedia'][0]['source_url'];
     return (
         <Link href={`/colegio/${el.id}`} passHref>
             <div className={`flex-none ${grid ? "w-full" : "w-5/6 sm:w-80 m-2"} bg-white rounded-lg flex flex-col shadow-lg cursor-pointer`}>
                 <div className="bg-gray-100 mb-2 md:mb-0 h-48 relative w-full flex-shrink-0">
-                    <Image layout="fill" className="object-cover rounded-t-lg" src={thumbnail} alt="preview de colegio" />
+                    <Image loader={myLoader} layout="fill" className="object-cover rounded-t-lg" src={thumbnail} alt="preview de colegio" />
                 </div>
                 <div className="px-4 py-2 h-40">
                     <p className="uppercase text-sm my-1">colegio {wp_terms['model_educativo'][el.ACF.model_educativo]}</p>
-                    <h2 className="font-bold text-2xl text-gray-700">{(el.i !== null) && `${el.i + 1}.`} {el.title.rendered}</h2>
+                    <h2 className="font-bold text-2xl text-gray-700">{el.i && `${el.i + 1}.`} {el.title.rendered}</h2>
                     {/* TODO: build rating system with elemnts underneath */}
                     {/* <div className="flex my-4">
                         <div className="rounded-full w-6 h-6 ring-2 ring-primary mr-6"></div>

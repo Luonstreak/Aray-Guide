@@ -219,7 +219,7 @@ export default function Buscar() {
                     ? Object.keys(filtersApplied).length > 0
                         ? (filteredSchools.length > 0)
                             ? <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
-                                {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i, ...el }} grid />)}
+                                {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
                             : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">No hay colegios con esos parametros.</p>
                         : (

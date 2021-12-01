@@ -56,7 +56,7 @@ export default function Colegio(props){
         if(!details && cid){
             axios.get(`https://api.aray.guide/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
                 if (res.data) {
-                    const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'].replace("https:", 'http://');
+                    const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
                     setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
