@@ -156,8 +156,10 @@ export default function Colegio(props){
                 <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">Opinión</h1>
                 <p className="mb-2 uppercase text-gray-400">de la guia aray</p>
                 <hr className="title-separator mb-4" />
-                {/* <p>{details.descripcion}</p> */}
-                <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
+                {details.description
+                    ? <p>{details.descripcion}</p>
+                    : <p className="text-lg text-gray-500 text-center w-full">Agregaremos una opinion sobre este colegio pronto</p>
+                }
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
@@ -323,13 +325,16 @@ export default function Colegio(props){
                     
                     <div className="flex mb-2 ml-8">
                         <Image src={email} width={16} height={16} />&nbsp;&nbsp;
-                        {details.correo_electronico ? (<Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>) : (<p>no compartido</p>)}
+                        {details.correo_electronico 
+                            ? <Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>
+                            : <p>no compartido</p>
+                        }
                     </div>
                     
                     <div className="flex mb-2 ml-8">
                         <Image src={web} width={16} height={16} />&nbsp;&nbsp;
                         {details.direccion_web 
-                            ? <Link href={details.direccion_web}><a><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a></Link>
+                            ? <a href={details.direccion_web} target="_blank" rel="noreferrer"><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a>
                             : <p>no compartido</p>
                         }
                     </div>

@@ -28,7 +28,8 @@ export default function Inicio() {
     { name: 'francia', id: '' },
     { name: 'italia', id: '' },
     { name: 'alemania', id: '' },
-    { name: 'china', id: '' }
+    { name: 'inglaterra', id: '' },
+    { name: 'portugal', id: '' },
   ])
 
   const router = useRouter();
