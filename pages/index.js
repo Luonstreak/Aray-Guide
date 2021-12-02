@@ -24,7 +24,7 @@ export default function Inicio() {
   const [schools, setSchools] = useState(null)
   const [actividades, setActividades] = useState(null)
   const [paises, setPaises] = useState([
-    { name: 'españa', id: '12' },
+    { name: 'españa', id: '15' },
     { name: 'francia', id: '' },
     { name: 'italia', id: '' },
     { name: 'alemania', id: '' },
