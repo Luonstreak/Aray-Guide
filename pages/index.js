@@ -53,7 +53,7 @@ export default function Inicio() {
       let paisesWithData = []
       paises.map(({ name }) => {
         paisesWithData.push({ name, numeroDeColegios: 0 });
-        // axios.get(`http://localhost/colegios?pais=${paisId}`).then(res => {
+        // axios.get(`https://localhost/colegios?pais=${paisId}`).then(res => {
         //   if (res.data) {
         //     paisesWithData.push({})
         //   }
