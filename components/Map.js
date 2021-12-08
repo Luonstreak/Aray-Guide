@@ -36,11 +36,6 @@ class Map extends React.Component {
       if(marker.ACF.latitude){
         new google.maps.Marker({
           label: { text: String(index + 1), color: "#ffffff" },
-          // icon: {
-          //   url: "https://api.aray.guide/wp-content/uploads/2021/11/placeholder-2.png",
-          //   size: new google.maps.Size(32, 32),
-          //   labelOrigin: new google.maps.Point(0,0),
-          // },
           position: {
             lat: Number(marker.ACF.latitude),
             lng: Number(marker.ACF.longitude)

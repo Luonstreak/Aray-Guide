@@ -109,7 +109,7 @@ export default function Buscar() {
             if(e.target.value === ''){
                 delete newQ.q;
             } else {
-                newQ.q = e.target.value;
+                newQ.q = e.target.value.toLowerCase();
             }
             router.push({ pathname, query: newQ });
         }

@@ -326,7 +326,7 @@ export default function Colegio(props){
                     <div className="flex mb-2 ml-8">
                         <Image src={email} width={16} height={16} />&nbsp;&nbsp;
                         {details.correo_electronico 
-                            ? <Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>
+                            ? <a href={`mailto:${details.correo_electronico}`} className="underline">{details.correo_electronico}</a>
                             : <p>no compartido</p>
                         }
                     </div>
