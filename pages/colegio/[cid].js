@@ -78,10 +78,10 @@ export default function Colegio(props){
     });
 
     const icons_servicios_generales = {
-        "61": alojamiento,
-        "93": comedor,
-        "22": horario_matutino,
+        "65": alojamiento,
+        "97": comedor,
         "23": horario_vespertino,
+        "22": horario_matutino,
         "21": seguro,
         "20": transporte,
     }
@@ -90,28 +90,28 @@ export default function Colegio(props){
         "35": psicologia
     }
     const icons_comedor = {
-        "62": bajo_en_grasas,
-        "94": halal,
-        "132": hipercalorico,
+        "66": bajo_en_grasas,
+        "98": halal,
+        "133": hipercalorico,
         "34": diabetico,
         "31": sin_gluten,
         "32": sin_lactosa,
-        "131": vegano,
+        "132": vegano,
         "33": vegano
     }
     const icons_equipamiento = {
-        "48": accesible,
+        "51": accesible,
         "19": aire_acondicionado,
         "18": campo_de_futbol,
-        "47": campo_de_tennis,
-        "52": instalaciones_olimpicas,
+        "50": campo_de_tennis,
+        "55": instalaciones_olimpicas,
         "16": piscina,
         "17": piscina
     }
     const icons_integracion = {
-        "157": igualdad,
-        "156": integracion_social,
-        "155": prevencion_acoso
+        "39": igualdad,
+        "38": integracion_social,
+        "37": prevencion_acoso
     }
 
     if(!details) return <Spinner />
