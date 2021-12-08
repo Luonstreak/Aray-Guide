@@ -36,14 +36,14 @@ export default function Inicio() {
 
   useEffect(() => {
     if(!schools){
-      axios.get('https://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
+      axios.get('https://ouro.com/wp-json/wp/v2/colegios?_embed').then(res => {
         if (res.data) {
           setSchools(res.data);
         }
       }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
     }
     if(!actividades){
-      axios.get('https://api.aray.guide/wp-json/wp/v2/actividades?_embed').then(res => {
+      axios.get('https://ouro.com/wp-json/wp/v2/actividades?_embed').then(res => {
         if (res.data) {
           setActividades(res.data);
         }

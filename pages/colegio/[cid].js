@@ -54,7 +54,7 @@ export default function Colegio(props){
 
     useEffect(() => {
         if(!details && cid){
-            axios.get(`https://api.aray.guide/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
+            axios.get(`https://ouro.com/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
                     setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
@@ -62,14 +62,14 @@ export default function Colegio(props){
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
         if(!actividades){
-            axios.get('https://api.aray.guide/wp-json/wp/v2/actividades?_embed').then(res => {
+            axios.get('https://ouro.com/wp-json/wp/v2/actividades?_embed').then(res => {
                 if (res.data) {
                     setActividades(res.data);
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Actviades"'));
         }
         if(!schools){
-          axios.get('https://api.aray.guide/wp-json/wp/v2/colegios?_embed').then(res => {
+          axios.get('https://ouro.com/wp-json/wp/v2/colegios?_embed').then(res => {
             if (res.data) {
                 setSchools(res.data);
             }

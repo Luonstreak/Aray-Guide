@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { myLoader } from '../util/functions';
 
 export default function CountryCard({ pais }){
-    const thumbnail = `https://api.aray.guide/wp-content/uploads/2021/12/${pais.name.replace('ñ', 'n')}.jpg`;
+    const thumbnail = `https://ouro.com/wp-content/uploads/2021/12/${pais.name.replace('ñ', 'n')}.jpg`;
     return pais.id ? <Link href={`/buscar?pais=${pais.id}`} passHref>
         <div className="relative group flex-none w-5/6 sm:w-80 rounded-lg flex flex-col cursor-pointer">
             <div className="w-full">
