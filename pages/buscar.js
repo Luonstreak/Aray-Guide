@@ -52,7 +52,7 @@ export default function Buscar() {
     }
     
     const fetchFilterOptions = async () => {
-        Promise.all(filters.map(filter => axios.get(`https://ouro.com/wp-json/wp/v2/${filter}`).then(res => res.data)))
+        Promise.all(filters.map(filter => axios.get(`https://ouroinc.com/wp-json/wp/v2/${filter}`).then(res => res.data)))
             .then(filterOptions => {
                 // TODO: REFACTOR THIS IF POSSIBLE OPTIMOZE PERFORMANCE
                 const parsedFilters = filterOptions.reduce((acc,filter) => {
@@ -70,7 +70,7 @@ export default function Buscar() {
     useEffect(() => {
         // fetch schools on load
         if(!schools){
-            axios.get('https://ouro.com/wp-json/wp/v2/colegios?per_page=100&_embed').then(res => {
+            axios.get('https://ouroinc.com/wp-json/wp/v2/colegios?per_page=100&_embed').then(res => {
                 if (res.data) {
                 setSchools(res.data);
                 }
