@@ -10,7 +10,6 @@ import location from '/public/images/icons/location.svg'
 import phone from '/public/images/icons/phone.svg'
 import email from '/public/images/icons/email.svg'
 import web from '/public/images/icons/web.svg'
-import Map from '../../components/Map'
 import Spinner from '../../components/Spinner'
 import curriculum from '/public/images/icons/curriculum_academico.svg'
 import entrevista from '/public/images/icons/entrevista_de_acceso.svg'
@@ -115,7 +114,7 @@ export default function Colegio(props){
     }
 
     if(!details) return <Spinner />
-    else return(
+    else return (
         <div className="bg-gray-50">
             {/* HERO */}
             <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60">
@@ -297,12 +296,12 @@ export default function Colegio(props){
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">Actividades destacadas</h1>
                 <hr className="title-separator mb-8" />
                 <div className="flex overflow-x-scroll items-center">
-                  {actividades 
+                {actividades 
                     ? actividades.length > 0
                         ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />)
                         : <p className="text-lg text-gray-500 text-center w-full">No hay actividades en este momento</p>
                     : <p>loading...</p>
-                  }
+                }
                 </div>
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
@@ -340,7 +339,7 @@ export default function Colegio(props){
                     </div>
                 </div>
                 <div className="flex-1">
-                    <Map markers={[{ ACF: details }]} className="h-64" zoomLevel={8} center={details} />
+                    <Image src={`https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=500x500&maptype=roadmap&markers=color:red|${details.latitude},${details.longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_API}`} alt="mapa ubicacion de escuela" width={500} height={500} className="rounded-lg"/>
                 </div>
             </div>
             <hr className="container-separator" />

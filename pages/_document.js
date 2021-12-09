@@ -9,12 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-            {/* <script
-                src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&callback=initMap&libraries=&v=weekly`}
-                async
-            ></script> */}
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

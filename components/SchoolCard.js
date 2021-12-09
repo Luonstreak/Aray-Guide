@@ -14,7 +14,7 @@ export default function SchoolCard({ el, grid }){
                 </div>
                 <div className="px-4 py-2 h-40">
                     <p className="uppercase text-sm my-1">colegio {wp_terms['modelo_educativo'][el.ACF.model_educativo]}</p>
-                    <h2 className="font-bold text-2xl text-gray-700 capitalize">{el.i && `${el.i + 1}.`} {el.title.rendered.toLowerCase()}</h2>
+                    <h2 className="font-bold text-2xl text-gray-700 capitalize">{Number.isInteger(el.i) && `${el.i + 1}.`} {el.title.rendered.toLowerCase()}</h2>
                     {/* TODO: build rating system with elemnts underneath */}
                     {/* <div className="flex my-4">
                         <div className="rounded-full w-6 h-6 ring-2 ring-primary mr-6"></div>

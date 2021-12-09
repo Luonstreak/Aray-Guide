@@ -13,14 +13,14 @@ class Map extends React.Component {
   componentDidMount() {
     const { defaultCenter } = this.state;
     const loader = new Loader({
-      apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+      apiKey: process.env.NEXT_PUBLIC_GOOGLE_API,
       version: "weekly",
     });
     loader.load().then(() => {
       this.setState({
         map: new google.maps.Map(document.getElementById("google-map"), {
           center: defaultCenter,
-          zoom: this.props.zoomLevel || 5,
+          zoom: this.props.zoomLevel || 12,
         })
       });
     }).then(() => {
@@ -49,9 +49,7 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className={`${this.props.className} rounded-lg bg-blue-100`} id="google-map" />
-      </div>
+      <div className="rounded-lg bg-blue-100" id="google-map" ></div>
     );
   }
 }
