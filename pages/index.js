@@ -18,6 +18,7 @@ import wechat from '/public/images/icons/wechat.svg';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import i18n from '../util/i18n.json';
 
 export default function Inicio() {
 
@@ -33,6 +34,7 @@ export default function Inicio() {
   ])
 
   const router = useRouter();
+  const { locale } = router;
 
   useEffect(() => {
     if(!schools){
@@ -72,7 +74,7 @@ export default function Inicio() {
       
       {/* META */}
       <Head>
-        <title>Aray Guide</title>
+        <title>{i18n[locale].metaTtl}</title>
         <meta name="description" content="Encuentra colegios atravez de España" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -82,7 +84,7 @@ export default function Inicio() {
         <div className="z-10 mx-auto w-10/12 md:w-full max-w-xl">
           <SearchInput onChange={submitSearch} />
         </div>
-        <h2 className="z-10 te2xt-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">Buscar un centro educativo en otro pais nunca ha sido tan facil</h2>
+        <h2 className="z-10 te2xt-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">{i18n[locale].indHeroText}</h2>
         <div className="z-0 absolute inset-0">
           <Image priority src={banner} layout="fill" className="object-cover brightness-90" alt="hero image" />
         </div>
@@ -91,12 +93,12 @@ export default function Inicio() {
       {/* ACTIVIDADES */}
       <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
-        <h1 className="uppercase font-bold mb-8 text-2xl md:text-3xl lg:text-4xl">actividades destacadas</h1>
+        <h1 className="uppercase font-bold mb-8 text-2xl md:text-3xl lg:text-4xl">{i18n[locale].globActDes}</h1>
         <div className="flex overflow-x-scroll items-center">
           {actividades 
             ? actividades.length > 0
               ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
-              : <p className="text-lg text-gray-500 text-center w-full">No hay actividades en este momento</p>
+              : <p className="text-lg text-gray-500 text-center w-full">{i18n[locale].globActEmpt}</p>
             : <p>loading...</p>
           }
         </div>
@@ -105,8 +107,8 @@ export default function Inicio() {
       {/* SELECCION */}
       <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
-        <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">seleccion</h1>
-        <p className="mb-8 uppercase text-gray-400">de la guia aray</p>
+        <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">{i18n[locale].indSelec}</h1>
+        <p className="mb-8 uppercase text-gray-400">{i18n[locale].indSelecSub}</p>
         <div className="flex overflow-x-scroll items-center gap-x-2 md:gap-x-6">
           {schools 
             ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} />) 
@@ -121,8 +123,8 @@ export default function Inicio() {
         <Link href="/subscribete" passHref>
           <div className="cursor-pointer w-full lg:w-8/12 xl:w-5/12 shadow-lg rounded bg-white p-4 md:p-6 relative md:inset-x-auto -bottom-16 flex flex-col md:flex-row justify-center md:items-center mx-auto">
             <div>
-              <h1 className="text-4xl font-bold">Subscribete a nuestro newsletter</h1>
-              <p className="mb-4">Y mantente al tanto de todo lo que occure en nuestra guia</p>
+              <h1 className="text-4xl font-bold">{i18n[locale].indSubTtl}</h1>
+              <p className="mb-4">{i18n[locale].indSubSubttl}</p>
               <hr className="title-separator" />
             </div>
             <a className="text-center md:text-left md:ml-10"><Image src={subsrcibete} width={50} height={50} alt="flecha derecha" /></a>
@@ -133,8 +135,8 @@ export default function Inicio() {
       {/* PAISES */}
       <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
-        <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">los paises</h1>
-        <p className="mb-8 uppercase text-gray-400">de la guia aray</p>
+        <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">{i18n[locale].indPais}</h1>
+        <p className="mb-8 uppercase text-gray-400">{i18n[locale].indPaisSub}</p>
         <div className="flex overflow-x-scroll items-center gap-x-4 md:gap-x-6">
           {paises.map(pais => {
             return <CountryCard key={pais.name} pais={pais} />
@@ -151,10 +153,10 @@ export default function Inicio() {
           <Link href="/subscribete" passHref>
             <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
               <div>
-                <h1 className="text-4xl font-bold capitalize mb-2">conoce todo</h1>
-                <p className="text-gray-500 mb-4">sobre la guia aray</p>
+                <h1 className="text-4xl font-bold capitalize mb-2">{i18n[locale].indCono}</h1>
+                <p className="text-gray-500 mb-4">{i18n[locale].indConoSub}</p>
                 <hr className="title-separator" />
-                <p className="mb-2">Descubre todo lo que necesitas saber sobre la guia de colegios mas completa que Aray ha desarollado para que todo sea mas comodo y sensillo para ti</p>
+                <p className="mb-2">{i18n[locale].indConoDesc}</p>
               </div>
               <div className="mx-auto md:w-40 mt-4 md:mt-0">
                 <Image src={subsrcibete} width={50} height={50} alt="flecha derecha" />
@@ -166,7 +168,7 @@ export default function Inicio() {
       {/* REDES SOCIALES */}
       <div className="container mx-auto max-w-screen-lg md:text-center px-2">
         <hr className="container-separator" />
-        <h1 className="text-4xl font-bold capitalize mb-2">siguenos en nuestras redes sociales</h1>
+        <h1 className="text-4xl font-bold capitalize mb-2">{i18n[locale].indSigueTtl}</h1>
           <hr className="title-separator mx-auto h-1" />
           <div className="flex flex-wrap justify-center gap-x-4 pt-4 pb-32">
 

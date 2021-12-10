@@ -10,10 +10,12 @@ import graduation from '/public/images/graduation.jpg'
 import wp_terms from '../util/wp_terms.json'
 import Map from '../components/Map'
 import Spinner from '../components/Spinner'
+import i18n from '../util/i18n.json'
 
 export default function Buscar() {
 
     const router = useRouter();
+    const { locale } = router;
 
     const [schools, setSchools] = useState(null)
     const [filteredSchools, setFilteredSchools] = useState([]);
@@ -35,21 +37,6 @@ export default function Buscar() {
         "programas_de_integracion",
         "curriculum_academico"
     ];
-
-    const filterIndex = {
-        "provincia": "Provincia",
-        "pais": "Pais",
-        "poblacion": "Poblacion",
-        "model_educativo": "Modelo Educativo",
-        "idioma_de_clases": "Idioma de clases",
-        "cursos_ofrecidos": "Cursos Ofrecidos",
-        "servicios_ofrecidos": "Servicios Ofrecidos",
-        "actividades_extraescolares": "Actividades Extraescolares",
-        "menu_especial": "Menu Especial",
-        "equipamiento": "Equipamiento",
-        "programa_de_integracion": "Programa de integracon",
-        "curriculum_academico": "Curriculo Academico"
-    }
     
     const fetchFilterOptions = async () => {
         Promise.all(filters.map(filter => axios.get(`https://ouroinc.com/wp-json/wp/v2/${filter}`).then(res => res.data)))
@@ -157,38 +144,38 @@ export default function Buscar() {
                 <div className="flex gap-4 overflow-x-scroll pb-4">
                     <Select
                         name="poblacion"
-                        label={filterIndex['poblacion']}
+                        label={i18n[locale]['poblacion']}
                         onChange={onFilterChange}
                         options={filterOptions['poblacion']}
                         value={filtersApplied['poblacion']} 
                     />
                     <Select
                         name="pais"
-                        label={filterIndex['pais']}
+                        label={i18n[locale]['pais']}
                         onChange={onFilterChange}
                         options={filterOptions['pais']}
                         value={filtersApplied['pais']} 
                     />
                     <Select name="curriculum_academico"
-                        label={filterIndex['curriculum_academico']}
+                        label={i18n[locale]['curriculum_academico']}
                         onChange={onFilterChange}
                         options={filterOptions['curriculum_academico']}
                         value={filtersApplied['curriculum_academico']} 
                     />
                     <Select name="equipamiento"
-                        label={filterIndex['equipamiento']}
+                        label={i18n[locale]['equipamiento']}
                         onChange={onFilterChange}
                         options={filterOptions['equipamiento']}
                         value={filtersApplied['equipamiento']} 
                     />
                     <Select name="menu_especial"
-                        label={filterIndex['menu_especial']}
+                        label={i18n[locale]['menu_especial']}
                         onChange={onFilterChange}
                         options={filterOptions['menu_especial']}
                         value={filtersApplied['menu_especial']} 
                     />
                     <Select name="idioma_de_clases"
-                        label={filterIndex['idioma_de_clases']}
+                        label={i18n[locale]['idioma_de_clases']}
                         onChange={onFilterChange}
                         options={filterOptions['idioma_de_clases']}
                         value={router.query['idioma_de_clases']} 
@@ -201,16 +188,16 @@ export default function Buscar() {
                 <div className="flex gap-2 mb-4 overflow-x-scroll flex-nowrap md:flex-wrap">
                     {Object.entries(filtersApplied).map(([key, val], index) => (
                         <div key={`${key}${val}${index}`} className="flex w-auto items-center rounded bg-primarylight flex-shrink-0">
-                            <p className={`px-4 text-white ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : wp_terms[key][val]}</p>
+                            <p className={`px-4 text-white ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : wp_terms[locale][key][val]}</p>
                             <button className="p-1 md:pt-3 md:pb-2 md:px-3 text-white hover:bg-primary rounded-r" onClick={() => removeTag(key)}><Image src={close} width={24} height={24} alt="close icon" /></button>
                         </div>
                     ))}
                 </div>
                 <div className="flex justify-between items-center">
-                    <h2 className="text-xl md:text-3xl text-gray-700 font-bold">Resultados de tu busqueda</h2>
+                    <h2 className="text-xl md:text-3xl text-gray-700 font-bold">{i18n[locale].busResul}</h2>
                     <div className="hidden md:block flex-shrink-0">
                         <Switch
-                            label="show map"
+                            label={i18n[locale].map}
                             onChange={() => setShowMap(!showMap)}
                             active={showMap} 
                         />
@@ -234,7 +221,7 @@ export default function Buscar() {
                             ? <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
                                 {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
-                            : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">No hay colegios con esos parametros.</p>
+                            : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{i18n[locale].busResulEmpt}</p>
                         : (
                             <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
                                 {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}

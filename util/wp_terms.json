@@ -1,37 +1,4 @@
 {
-    "modelo_educativo": {
-        "2": "Internacional",
-        "40": "Britanico",
-        "46": "Americano",
-        "75": "Europeo",
-        "141": "Frances",
-        "154": "Otros"
-    },
-    "idioma_de_clases": {
-        "3": "Castellano",
-        "4": "Ingles",
-        "5": "Frances",
-        "6": "Alemán",
-        "7": "Chino",
-        "52": "Otros",
-        "105": "Alemán, francés, chino",
-        "124": "catalán"
-    },
-    "cursos_ofrecidos": {
-        "8": "Infantil",
-        "9": "Primaria",
-        "10": "ESO",
-        "11": "Bachillerato"
-    },
-    "curriculum_academico": {
-        "12": "International Baccalaureate Diploma Programme (IBDP)",
-        "41": "Advanced Level (A-Level)",
-        "47": "Bachillerato estadounidense (High School Diploma)",
-        "62": "International General Certificate of Secondary Education (IGCSE)",
-        "63": "Advanced International Certificate of Education (AICE)",
-        "67": "Bachillerato Europeo",
-        "78": "Advanced Placement International Diploma (APID)"
-    },
     "poblacion": {
         "13": "castelló de la plana",
         "42": "almuñecar",
@@ -115,67 +82,395 @@
         "145": "girona",
         "150": "islas baleares"
     },
-    "pais": {
-        "15": "españa"
+    "es-ES": {
+        "modelo_educativo": {
+            "2": "Internacional",
+            "40": "Britanico",
+            "46": "Americano",
+            "75": "Europeo",
+            "141": "Frances",
+            "154": "Otros"
+        },
+        "idioma_de_clases": {
+            "3": "Castellano",
+            "4": "Ingles",
+            "5": "Frances",
+            "6": "Alemán",
+            "7": "Chino",
+            "52": "Otros",
+            "105": "Alemán, francés, chino",
+            "124": "catalán"
+        },
+        "cursos_ofrecidos": {
+            "8": "preescholar",
+            "9": "primaria",
+            "10": "secundaria",
+            "11": "bachillerato"
+        },
+        "curriculum_academico": {
+            "12": "International Baccalaureate Diploma Programme (IBDP)",
+            "41": "Advanced Level (A-Level)",
+            "47": "Bachillerato estadounidense (High School Diploma)",
+            "62": "International General Certificate of Secondary Education (IGCSE)",
+            "63": "Advanced International Certificate of Education (AICE)",
+            "67": "Bachillerato Europeo",
+            "78": "Advanced Placement International Diploma (APID)"
+        },
+        "pais": {
+            "15": "españa"
+        },
+        "equipamiento": {
+            "16": "Piscina climatizada",
+            "17": "Piscina sin climatizar",
+            "18": "Campo de futbol",
+            "19": "Aire acondicionado",
+            "50": "Campo de tenis",
+            "51": "Adaptado para personas con minusvalía",
+            "55": "Instalaciones olímpicas",
+            "93": "Campo de hípica",
+            "96": "Edificio individual"
+        },
+        "servicios_ofrecidos": {
+            "20": "Transporte escolar",
+            "21": "Seguro de salud o vida",
+            "22": "Horario ampliado matutino",
+            "23": "Horario ampliado vespertino",
+            "65": "Alojamiento",
+            "97": "Comedor"
+        },
+        "actividades_extraescolares": {
+            "24": "natación",
+            "25": "futbol",
+            "26": "ajedrez",
+            "27": "otros deportes",
+            "28": "violín",
+            "29": "piano",
+            "30": "ballet",
+            "44": "tenis",
+            "45": "otros instrumentos musicales",
+            "60": "patinaje",
+            "61": "robótica",
+            "70": "gimnasia rítmica",
+            "79": "cocina",
+            "87": "danza española",
+            "94": "hípica",
+            "100": "teatro",
+            "101": "danza",
+            "126": "arte dramático",
+            "139": "coro musical"
+        },
+        "menu_especial": {
+            "31": "sin gluten",
+            "32": "sin lactosa",
+            "33": "vegetariano",
+            "34": "para diabéticos",
+            "66": "bajo en grasas",
+            "98": "Halal",
+            "102": "musulmán",
+            "132": "vegano",
+            "133": "hipercalórico (suplemento en calorías)"
+        },
+        "servicios_especiales": {
+            "35": "Psicología infantil",
+            "36": "Logopeda"
+        },
+        "programas_de_integracion": {
+            "37": "Programa de prevención de acoso escolar (Cero Bullying)",
+            "38": "Programa de integración social",
+            "39": "Programa de igualdad"
+        }
     },
-    "equipamiento": {
-        "16": "Piscina climatizada",
-        "17": "Piscina sin climatizar",
-        "18": "Campo de futbol",
-        "19": "Aire acondicionado",
-        "50": "Campo de tenis",
-        "51": "Adaptado para personas con minusvalía",
-        "55": "Instalaciones olímpicas",
-        "93": "Campo de hípica",
-        "96": "Edificio individual"
+    "en-US": {
+        "modelo_educativo": {
+            "2": "International",
+            "40": "British",
+            "46": "American",
+            "75": "European",
+            "141": "French",
+            "154": "Others"
+        },
+        "idioma_de_clases": {
+            "3": "Spanish",
+            "4": "English",
+            "5": "French",
+            "6": "German",
+            "7": "Chinese",
+            "52": "Others",
+            "105": "German, French, Chinese",
+            "124": "Catalan"
+        },
+        "cursos_ofrecidos": {
+            "8": "pre school",
+            "9": "elementary",
+            "10": "middle school",
+            "11": "high school"
+        },
+        "curriculum_academico": {
+            "12": "International Baccalaureate Diploma Program (IBDP)",
+            "41": "Advanced Level (A-Level)",
+            "47": "American Baccalaureate (High School Diploma)",
+            "62": "International General Certificate of Secondary Education (IGCSE)",
+            "63": "Advanced International Certificate of Education (AICE)",
+            "67": "European Baccalaureate",
+            "78": "Advanced Placement International Diploma (APID)"
+        },
+        "pais": {
+            "15": "Spain"
+        },
+        "equipamiento": {
+            "16": "Climatized pool",
+            "17": "Unheated pool",
+            "18": "Football field",
+            "19": "Air conditioning",
+            "50": "Tennis court",
+            "51": "Adapted for people with disabilities",
+            "55": "Olympic facilities",
+            "93": "Equestrian field",
+            "96": "Individual building"
+        },
+        "servicios_ofrecidos": {
+            "20": "School transportation",
+            "21": "Health or life insurance",
+            "22": "Extended morning hours",
+            "23": "Extended evening hours",
+            "65": "accommodation",
+            "97": "Dining room"
+        },
+        "actividades_extraescolares": {
+            "24": "swimming",
+            "25": "soccer",
+            "26": "Chess",
+            "27": "Another sports",
+            "28": "fiddle",
+            "29": "piano",
+            "30": "ballet",
+            "44": "tennis",
+            "45": "other musical instruments",
+            "60": "skating",
+            "61": "robotic",
+            "70": "rhythmic gymnastics",
+            "79": "kitchen room",
+            "87": "Spanish dance",
+            "94": "equestrian",
+            "100": "theater",
+            "101": "dance",
+            "126": "dramatic Art",
+            "139": "musical choir"
+        },
+        "menu_especial": {
+            "31": "without gluten",
+            "32": "Without lactose",
+            "33": "vegetarian",
+            "34": "for diabetics",
+            "66": "low in fat",
+            "98": "Halal",
+            "102": "Muslim",
+            "132": "vegan",
+            "133": "hypercaloric (calorie supplement)"
+        },
+        "servicios_especiales": {
+            "35": "Child psychology",
+            "36": "Speech therapist"
+        },
+        "programas_de_integracion": {
+            "37": "School bullying prevention program (Zero Bullying)",
+            "38": "Social integration program",
+            "39": "Equality program"
+        }
     },
-    "servicios_ofrecidos": {
-        "20": "Transporte escolar",
-        "21": "Seguro de salud o vida",
-        "22": "Horario ampliado matutino",
-        "23": "Horario ampliado vespertino",
-        "65": "Alojamiento",
-        "97": "Comedor"
+    "zh-CN": {
+        "modelo_educativo": {
+            "2": "国际的",
+            "40": "英国",
+            "46": "美国人",
+            "75": "欧洲的",
+            "141": "法语",
+            "154": "其他"
+        },
+        "idioma_de_clases": {
+            "3": "西班牙语",
+            "4": "英语",
+            "5": "法语",
+            "6": "德语",
+            "7": "中国人",
+            "52": "其他",
+            "105": "德语, 法语, 中国人",
+            "124": "加泰罗尼亚语"
+        },
+        "cursos_ofrecidos": {
+            "8": "学前班",
+            "9": "小学",
+            "10": "中学",
+            "11": "学士"
+        },
+        "curriculum_academico": {
+            "12": "国际文凭课程 (IBDP)",
+            "41": "高级水平（A-Level）",
+            "47": "美国学士学位（高中文凭）",
+            "62": "国际普通中等教育证书 (IGCSE)",
+            "63": "高级国际教育证书 (AICE)",
+            "67": "欧洲文凭",
+            "78": "大学先修国际文凭 (APID)"
+        },
+        "pais": {
+            "15": "西班牙"
+        },
+        "equipamiento": {
+            "16": "恒温游泳池",
+            "17": "不加热池",
+            "18": "足球场",
+            "19": "空调",
+            "50": "网球场",
+            "51": "适合残疾人士",
+            "55": "奥运设施",
+            "93": "马术场",
+            "96": "单体建筑"
+        },
+        "servicios_ofrecidos": {
+            "20": "学校交通",
+            "21": "健康或人寿保险",
+            "22": "延长上午时间",
+            "23": "延长晚间营业时间",
+            "65": "住所",
+            "97": "饭厅"
+        },
+        "actividades_extraescolares": {
+            "24": "游泳",
+            "25": "足球",
+            "26": "棋",
+            "27": "另一项运动",
+            "28": "小提琴",
+            "29": "钢琴",
+            "30": "芭蕾舞",
+            "44": "网球",
+            "45": "其他乐器",
+            "60": "溜冰",
+            "61": "机器人",
+            "70": "艺术体操",
+            "79": "厨房房间",
+            "87": "西班牙舞蹈",
+            "94": "马术",
+            "100": "剧院",
+            "101": "舞蹈",
+            "126": "戏剧艺术",
+            "139": "合唱团"
+        },
+        "menu_especial": {
+            "31": "不含麸质",
+            "32": "不含乳糖",
+            "33": "素食主义者",
+            "34": "糖尿病患者",
+            "66": "低脂肪",
+            "98": "清真",
+            "102": "穆斯林",
+            "132": "素食主义者",
+            "133": "高热量（热量补充剂）"
+        },
+        "servicios_especiales": {
+            "35": "儿童心理学",
+            "36": "语言治疗师"
+        },
+        "programas_de_integracion": {
+            "37": "校园欺凌预防计划（零欺凌）",
+            "38": "社会融合计划",
+            "39": "平等计划"
+        }
     },
-    "actividades_extraescolares": {
-        "24": "natación",
-        "25": "futbol",
-        "26": "ajedrez",
-        "27": "otros deportes",
-        "28": "violín",
-        "29": "piano",
-        "30": "ballet",
-        "44": "tenis",
-        "45": "otros instrumentos musicales",
-        "60": "patinaje",
-        "61": "robótica",
-        "70": "gimnasia rítmica",
-        "79": "cocina",
-        "87": "danza española",
-        "94": "hípica",
-        "100": "teatro",
-        "101": "danza",
-        "126": "arte dramático",
-        "139": "coro musical"
-    },
-    "menu_especial": {
-        "31": "sin gluten",
-        "32": "sin lactosa",
-        "33": "vegetariano",
-        "34": "para diabéticos",
-        "66": "bajo en grasas",
-        "98": "Halal",
-        "102": "musulmán",
-        "132": "vegano",
-        "133": "hipercalórico (suplemento en calorías)"
-    },
-    "servicios_especiales": {
-        "35": "Psicología infantil",
-        "36": "Logopeda"
-    },
-    "programas_de_integracion": {
-        "37": "Programa de prevención de acoso escolar (Cero Bullying)",
-        "38": "Programa de integración social",
-        "39": "Programa de igualdad"
+    "fr-FR": {
+        "modelo_educativo": {
+            "2": "International",
+            "40": "Britanique",
+            "46": "américain",
+            "75": "européen",
+            "141": "français",
+            "154": "Autres"
+        },
+        "idioma_de_clases": {
+            "3": "Espagnol",
+            "4": "Anglais",
+            "5": "français",
+            "6": "Allemand, Chinois, Autres",
+            "7": "Allemand",
+            "52": "français",
+            "105": "Chinois",
+            "124": "catalan"
+        },
+        "cursos_ofrecidos": {
+            "8": "préscolaire",
+            "9": "primaire",
+            "10": "lycée"
+        },
+        "curriculum_academico": {
+            "12": "Programme du diplôme du baccalauréat international (IBDP)",
+            "41": "Niveau avancé (A-Level)",
+            "47": "Baccalauréat américain (diplôme d'études secondaires)",
+            "62": "Certificat général international d'enseignement secondaire (IGCSE)",
+            "63": "Certificat international avancé d'éducation (AICE)",
+            "67": "Baccalauréat européen",
+            "78": "Diplôme international de placement avancé (APID)"
+        },
+        "pais": {
+            "15": "Espagne"
+        },
+        "equipamiento": {
+            "16": "Piscine climatisée",
+            "17": "Piscine non chauffée",
+            "18": "Terrain de football",
+            "19": "Air conditionné",
+            "50": "Court de tennis",
+            "51": "Adapté aux personnes handicapées",
+            "55": "Installations olympiques",
+            "93": "Terrain équestre",
+            "96": "Immeuble individuel"
+        },
+        "servicios_ofrecidos": {
+            "20": "Transport scolaire",
+            "21": "Assurance maladie ou vie",
+            "22": "Heures du matin prolongées",
+            "23": "Heures de soirée prolongées",
+            "65": "hébergement",
+            "97": "Salle à manger"
+        },
+        "actividades_extraescolares": {
+            "24": "natation",
+            "25": "football",
+            "26": "Échecs",
+            "27": "Un autre sport",
+            "28": "violon",
+            "29": "piano",
+            "30": "ballet",
+            "44": "tennis",
+            "45": "autres instruments de musique",
+            "60": "patinage",
+            "61": "robotique",
+            "70": "gymnastique rythmique",
+            "79": "cuisine",
+            "87": "danse espagnole",
+            "94": "équestre",
+            "100": "théâtre",
+            "101": "Danse",
+            "126": "Art dramatique",
+            "139": "choeur musical"
+        },
+        "menu_especial": {
+            "31": "sans gluten",
+            "32": "sans lactose",
+            "33": "végétarien",
+            "34": "pour les diabétiques",
+            "66": "faible en gras",
+            "98": "Halal",
+            "102": "musulman",
+            "132": "végétalien",
+            "133": "hypercalorique (supplément calorique)"
+        },
+        "servicios_especiales": {
+            "35": "Psychologie infantile",
+            "36": "Orthophoniste"
+        },
+        "programas_de_integracion": {
+            "37": "Programme de prévention du harcèlement scolaire (Zero Bullying)",
+            "38": "Programme d'intégration sociale",
+            "39": "Programme d'égalité"
+        }
     }
 }
