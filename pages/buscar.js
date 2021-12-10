@@ -107,7 +107,7 @@ export default function Buscar() {
         const { pathname, query } = router;
         const addFilter = Number(e.target.value);
         if(addFilter){
-            router.push({ pathname, query: { ...query, [e.target.name]: query[e.target.name] ? query[e.target.name] + `,${addFilter}` : addFilter } });
+            router.push({ pathname, query: { ...query, [e.target.name]: addFilter } });
         } else {
             let newQ = {...query};
             delete newQ[e.target.name];
