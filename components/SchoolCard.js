@@ -3,8 +3,12 @@ import Image from 'next/image'
 import wp_terms from '../util/wp_terms.json';
 import { myLoader } from '../util/functions'
 import placeholder from '/public/images/school-placeholder.png'
+import i18n from '../util/i18n.json'
+import { useRouter } from 'next/router'
 
 export default function SchoolCard({ el, grid }){
+    const router = useRouter();
+    const { locale } = router;
     const thumbnail = el['_embedded'] ? el['_embedded']['wp:featuredmedia'][0]['source_url'] : placeholder;
     return (
         <Link href={`/colegio/${el.id}`} passHref>
@@ -13,7 +17,7 @@ export default function SchoolCard({ el, grid }){
                     <Image loader={myLoader} layout="fill" className="object-cover rounded-t-lg" src={thumbnail} alt="preview de colegio" />
                 </div>
                 <div className="px-4 py-2 h-40">
-                    <p className="uppercase text-sm my-1">colegio {wp_terms['modelo_educativo'][el.ACF.model_educativo]}</p>
+                    <p className="uppercase text-sm my-1">{i18n[locale].colCole} {wp_terms[locale]['modelo_educativo'][el.ACF.model_educativo]}</p>
                     <h2 className="font-bold text-2xl text-gray-700 capitalize">{Number.isInteger(el.i) && `${el.i + 1}.`} {el.title.rendered.toLowerCase()}</h2>
                     {/* TODO: build rating system with elemnts underneath */}
                     {/* <div className="flex my-4">

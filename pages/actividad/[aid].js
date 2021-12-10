@@ -7,16 +7,18 @@ import map from '/public/images/map.png'
 import subsrcibete from '/public/images/subscribete.png'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import wp_terms from '../../util/wp_terms.json';
+import wp_terms from '../../util/wp_terms.json'
 import location from '/public/images/icons/location.svg'
 import phone from '/public/images/icons/phone.svg'
 import web from '/public/images/icons/web.svg'
 import email from '/public/images/icons/email.svg'
 import { myLoader } from '../../util/functions'
+import i18n from '../../util/i18n.json'
 
 export default function Actividad(props){
 
     const router = useRouter()
+    const { locale } = router;
     const { aid } = router.query
 
     const [details, setDetails] = useState(null)
@@ -69,7 +71,7 @@ export default function Actividad(props){
             {/* DETALLES */}
             <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4">
                 <div className="md:w-2/3 mt-8">
-                    <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">informacion general</h1>
+                    <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{i18n[locale].actInfo}</h1>
                     <hr className="title-separator mb-8" />
                     <div className="flex mb-2">
                         <Image src={location} width={16} height={16} />&nbsp;
@@ -79,7 +81,7 @@ export default function Actividad(props){
                     <Link href={`/colegio/${details.anfitrion.ID}?_embed`}><a className="underline uppercase">{details.anfitrion.post_title}</a></Link>
                 </div>
                 <div className="md:w-1/3 mt-8 md:mt-16">
-                    <h5 className="uppercase text-gray-700 font-bold text-md mb-4">fecha</h5>
+                    <h5 className="uppercase text-gray-700 font-bold text-md mb-4">{i18n[locale].actDate}</h5>
                     <p className="uppercase font-bold text-primary">{details.desde === details.hasta ? formatDate(details.desde) : `del ${formatDate(details.desde)} a ${formatDate(details.hasta, true)}`}</p>
                 </div>
             </div>
@@ -87,8 +89,8 @@ export default function Actividad(props){
             {/* DESCRIPCION */}
             <hr className="container-separator" />
             <div className="container max-w-screen-lg mx-auto p-4">
-                <h1 className="uppercase text-gray-700 font-bold text-xl md:text-2xl lg:text-4xl">descripción</h1>
-                <p className="mb-2 uppercase text-gray-400">de la actividad</p>
+                <h1 className="uppercase text-gray-700 font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].actDes}</h1>
+                <p className="mb-2 uppercase text-gray-400">{i18n[locale].globDeLa}</p>
                 <hr className="title-separator mb-8" />
                 <p>{details.descripcion}</p>
             </div>
@@ -99,10 +101,10 @@ export default function Actividad(props){
                 <a href={details.web} target="_blank" rel="noreferrer">
                     <div className="absolute inset-x-0 md:left-10 md:right-10 lg:left-1/3 lg:right-1/3 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col md:flex-row md:items-center ">
                         <div>
-                            <h1 className="text-4xl font-bold capitalize mb-2">mas informacion</h1>
-                            <p className="text-gray-500 mb-4">de la actividad</p>
+                            <h1 className="text-4xl font-bold capitalize mb-2">{i18n[locale].actMas}</h1>
+                            <p className="text-gray-500 mb-4">{i18n[locale].globDeLa}</p>
                             <hr className="title-separator" />
-                            <p className="mb-2">Descubre todo lo que necesitas saber sobre la guia de colegios mas completa que Aray ha desarollado para que todo sea mas comodo y sensillo para ti</p>
+                            <p className="mb-2">{i18n[locale].actDecu}</p>
                         </div>
                         <div className="mx-auto md:w-40 mt-4 md:mt-0">
                             <Image src={subsrcibete} width={50} height={50} alt="flecha derecha" />
@@ -114,7 +116,7 @@ export default function Actividad(props){
             {/* ACTIVIDADES */}
             <hr className="container-separator" />
             <div className="container max-w-screen-lg mx-auto p-4">
-            <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">Actividades destacadas</h1>
+            <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].globActDes}</h1>
                 <hr className="title-separator mb-8" />
                 <div className="flex overflow-x-scroll items-center">
                 {actividades 
@@ -128,7 +130,7 @@ export default function Actividad(props){
             <hr className="container-separator" />
             <div className="container max-w-screen-lg mx-auto p-4 flex flex-col md:flex-row">
                 <div className="flex-1">
-                    <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">contacto</h1>
+                    <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].actCont}</h1>
                     <hr className="title-separator mb-8" />
 
                     <div className="flex mb-2 ml-8">
@@ -155,7 +157,7 @@ export default function Actividad(props){
 
             {/* SELECCION */}
             <div className="container max-w-screen-lg mx-auto pb-8 md:pb-16 p-4">
-                <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">te puede interesar</h1>
+                <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].actRelac}</h1>
                 <hr className="title-separator" />
                 <div className="flex overflow-x-scroll items-center">
                 {schools 

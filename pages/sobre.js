@@ -1,84 +1,89 @@
 import Image from 'next/image'
 import logo from '/public/images/logo-white.svg'
+import i18n from '../util/i18n.json'
+import { useRouter } from 'next/router'
 
 export default function Sobre(){
+    const router = useRouter();
+    const text = i18n[router.locale];
+
     return (
         <div className="bg-white">
             <div className="bg-primary flex flex-col justify-center items-center py-40">
                 <Image src={logo} width={50} height={50} alt="logo" />
-                <h1 className="text-white text-4xl font-bold mt-2 uppercase">Sobre la guia</h1>
-                <p className="text-white text-sm uppercase">Descrubre lo que necesitas saber</p>
+                <h1 className="text-white text-4xl font-bold mt-2 uppercase">{text.sobSb}</h1>
+                <p className="text-white text-sm uppercase">{text.sobSobSub}</p>
             </div>
             <div className="container max-w-screen-lg mx-auto bg-white">
                 <div className="pt-20 pb-10 px-4 w-full lg:w-2/3 mx-auto">
-                    <h2 className="text-4xl font-bold">Que es la guia aray?</h2>
+                    <h2 className="text-4xl font-bold">{text.sobQue}</h2>
                     <hr className="title-separator mb-8" />
-                    <p className="text-lg text-gray-500 mb-4">Darles una educación de calidad a nuestros hijos es lo más importante que podemos ofrecerles como padres.</p>
-                    <p className="text-lg text-gray-500 mb-4">¿Pero cómo elegir el colegio adecuado?</p>
-                    <p className="text-lg text-gray-500 mb-4">¿Cómo estar seguros de que estamos dejando en manos de las personas correctas el porvenir de nuestros hijos?</p>
-                    <p className="text-lg text-gray-500"><strong>Tener la certeza de que estás eligiendo el centro educativo más adecuado</strong> a vuestras necesidades y preferencias entre todas las opciones posibles, es requisito primordial antes de comenzar los pasos previos para inscribir a tus hijos en dicho centro.</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobQue2}</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobQue3}</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobQue4}</p>
+                    <p className="text-lg text-gray-500"><strong>{text.sobQue5}</strong>{text.sobQue6}</p>
                 </div>
                 <hr className="container-separator" />
                 
                 <div className="pb-10 px-4 w-full lg:w-2/3 mx-auto">
-                    <h2 className="text-4xl font-bold">Propósito de la guía Aray</h2>
+                    <h2 className="text-4xl font-bold">{text.sobProp}</h2>
                     <hr className="title-separator mb-8" />
-                    <p className="text-lg text-gray-500 mb-4">En ella encontrarás <strong>una selección con los mejores colegios de Europa</strong>, los cuales cubren tanto la educación primaria como la secundaria.</p>
-                    <p className="text-lg text-gray-500">La guía, <strong>especialmente dirigida a aquellas familias que desean instalarse en un país europeo</strong> por motivos de trabajo, proyectos empresariales o educación, califica los mejores centros educativos y les otorga unos galardones específicos teniendo en cuenta distintos criterios.</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobProp2}<strong>{text.sobProp3}</strong>{text.sobProp4}</p>
+                    <p className="text-lg text-gray-500">{text.sobProp5}<strong>{text.sobProp6}</strong>{text.sobProp7}</p>
                 </div>
                 <hr className="container-separator" />
                 
                 <div className="pb-10 px-4 w-full lg:w-2/3 mx-auto">
-                    <h2 className="text-4xl font-bold">Criterio y sistema de evaluación</h2>
+                    <h2 className="text-4xl font-bold">{text.sobCrit}</h2>
                     <hr className="title-separator mb-8" />
-                    <p className="text-lg text-gray-500 mb-4">El consejo académico de la guía Aray es el órgano responsable de analizar cada colegio <strong>de forma individual y anónima para formar un criterio objetivo</strong> donde se evalúa y reconoce la excelencia del centro.</p>
-                    <p className="text-lg text-gray-500 mb-4">Algunas de las características más importantes que se toman en cuenta en el momento de la evaluación de los centros educativos son las siguientes:</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobCrit2}<strong>{text.sobCrit3}</strong>{text.sobCrit4}</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobCrit37}</p>
                     <ul className="list-disc pl-8 text-lg mb-4">
-                        <li>Índice de admisión de los alumnos en las universidades de mayor prestigio</li>
-                        <li>Nivel de capacitación y experiencia del equipo humano</li>
-                        <li>Valores fundacionales</li>
-                        <li>Instalaciones del centro</li>
-                        <li>Política de admisiones</li>
-                        <li>Historia y trayectoria</li>
+                        <li>{text.sobCrit5}</li>
+                        <li>{text.sobCrit6}</li>
+                        <li>{text.sobCrit7}</li>
+                        <li>{text.sobCrit8}</li>
+                        <li>{text.sobCrit9}</li>
+                        <li>{text.sobCrit10}</li>
                     </ul>
-                    <p className="text-lg text-gray-500 mb-4">De este modo en la guía Aray existen los siguientes reconocimientos:</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobCrit11}</p>
                     <ul className="list-disc pl-8 text-lg mb-4">
-                        <li>Galardón Aray de notabilidad</li>
-                        <li>Galardón de sobresaliente representado con una estrella</li>
-                        <li>Galardón de matrícula de honor representado con dos estrellas</li>
-                        <li>Estrella honorífica a la excelencia, galardón representado con tres estrellas.</li>
+                        <li>{text.sobCrit12}</li>
+                        <li>{text.sobCrit13}</li>
+                        <li>{text.sobCrit14}</li>
+                        <li>{text.sobCrit15}</li>
                     </ul>
-                    <p className="text-lg text-gray-500 mb-4">La calificación de los centros es revisada periódicamente con el fin de asegurar la relevancia en el tiempo, por lo que los centros pueden ganar o perder estrellas.</p>
-                    <p className="text-lg text-gray-500 mb-4">Por otro lado, <strong>los colegios pueden recibir una insignia de capacitación cuando se valora como excelente alguna característica especial del centro.</strong></p>
-                    <p className="text-lg text-gray-500 mb-4">Como por ejemplo:</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobCrit16}</p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobCrit17}<strong>{text.sobCrit18}</strong></p>
+                    <p className="text-lg text-gray-500 mb-4">{text.sobCrit19}</p>
                     <ul className="list-disc pl-8 text-lg mb-4">
                         <li>
-                            <strong>Contar con alguno de los siguientes programas:</strong>
+                            <strong>{text.sobCrit20}</strong>
                             <ul className="list-disc pl-8 text-lg font-light mb-2">
-                                <li>Igualdad</li>
-                                <li>Prevención contra el acoso escolar</li>
-                                <li>Integración social</li>
-                                <li>Adaptación con especialización en alumnos con TAE (trastorno del espectro autista)</li>
-                                <li>Adaptación para alumnos con capacidades diferentes</li>
+                                <li>{text.sobCrit21}</li>
+                                <li>{text.sobCrit22}</li>
+                                <li>{text.sobCrit23}</li>
+                                <li>{text.sobCrit24}</li>
+                                <li>{text.sobCrit25}</li>
                             </ul>
                         </li>
                         <li>
-                            <strong>Especialización en alguna actividad:</strong>
+                            <strong>{text.sobCrit26}</strong>
                             <ul className="list-disc pl-8 text-lg font-light mb-2">
-                                <li>Tenis</li>
-                                <li>Fútbol</li>
-                                <li>Hípica</li>
-                                <li>Robótica</li>
-                                <li>Programación</li>
+                                <li>{text.sobCrit27}</li>
+                                <li>{text.sobCrit28}</li>
+                                <li>{text.sobCrit29}</li>
+                                <li>{text.sobCrit30}</li>
+                                <li>{text.sobCrit31}</li>
                             </ul>
                         </li>
                         <li>
-                            <strong>Nivel académico de idioma:</strong>
+                            <strong>{text.sobCrit32}</strong>
                             <ul className="list-disc pl-8 text-lg font-light mb-2">
-                                <li>Inglés</li>
-                                <li>Chino</li>
-                                <li>Español</li>
-                                <li>Francés</li>
+                                <li>{text.sobCrit33}</li>
+                                <li>{text.sobCrit34}</li>
+                                <li>{text.sobCrit35}</li>
+                                <li>{text.sobCrit36}</li>
                             </ul>
                         </li>
                     </ul>
@@ -86,14 +91,14 @@ export default function Sobre(){
                 <hr className="container-separator" />
                 
                 <div className="pb-10 px-4 w-full lg:w-2/3 mx-auto">
-                    <h2 className="text-4xl font-bold">Como utilizar la guia Aray?</h2>
+                    <h2 className="text-4xl font-bold">{text.sobComo}</h2>
                     <hr className="title-separator mb-8" />
-                        <p className="text-lg text-gray-500 mb-4">La guía Aray ha sido diseñada para que las familias encuentren rápidamente los mejores centros educativos de Europa sin tener que perder demasiado tiempo buscando y comparando.</p>
-                        <p className="text-lg text-gray-500 mb-4">En nuestra guía encontrarás la información más destacada de cada colegio, y tendrás la certeza de que en ella solo se encuentran aquellos centros que por la calidad de su enseñanza, instalaciones y profesorado están en los lugares más altos tras haber pasado por una evaluación exhaustiva.</p>
-                        <p className="text-lg text-gray-500 mb-4">Una vez en la página de inicio puedes seleccionar diferentes filtros para poder ver los resultados que buscas más fácilmente.</p>
-                        <p className="text-lg text-gray-500 mb-4">De este modo puedes filtrar por país, por calificación o por palabra clave, como por ejemplo, “programación”, para ver solo aquellos centros que ofrecen esta disciplina.</p>
-                        <p className="text-lg text-gray-500 mb-4">Una vez obtengas los resultados que buscas puedes clicar en cada centro para ver toda la información detallada del mismo y un enlace a su sitio web.</p>
-                        <p className="text-lg text-gray-500">Esperamos que la guía Aray os ayude a elegir con seguridad el mejor centro educativo para vuestros hijos.</p>
+                        <p className="text-lg text-gray-500 mb-4">{text.sobComo2}</p>
+                        <p className="text-lg text-gray-500 mb-4">{text.sobComo3}</p>
+                        <p className="text-lg text-gray-500 mb-4">{text.sobComo4}</p>
+                        <p className="text-lg text-gray-500 mb-4">{text.sobComo5}</p>
+                        <p className="text-lg text-gray-500 mb-4">{text.sobComo6}</p>
+                        <p className="text-lg text-gray-500">{text.sobComo7}</p>
                 </div>
                 <hr className="container-separator" />
             </div>
