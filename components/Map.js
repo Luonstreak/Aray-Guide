@@ -20,7 +20,7 @@ class Map extends React.Component {
       this.setState({
         map: new google.maps.Map(document.getElementById("google-map"), {
           center: defaultCenter,
-          zoom: this.props.zoomLevel || 12,
+          zoom: this.props.zoomLevel || 5,
         })
       });
     }).then(() => {

@@ -76,7 +76,8 @@ export default function Buscar() {
             Object.entries(filtersApplied).forEach(([filter, val]) => {
                 filteredSchools = filteredSchools.filter(school => {
                     if(filter === 'q'){
-                        return school.title.rendered.toLowerCase().includes(val)
+                        const pureTitle = school.title.rendered.toLowerCase().replaceAll(/[.,\/#!$%\^&\*;:{}=\-_`~()´’]/g,"").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                        return pureTitle.includes(val)
                     }
                     return Array.isArray(school.ACF[filter])
                         ? school.ACF[filter].includes(Number(val))
@@ -106,7 +107,7 @@ export default function Buscar() {
         const { pathname, query } = router;
         const addFilter = Number(e.target.value);
         if(addFilter){
-            router.push({ pathname, query: { ...query, [e.target.name]: addFilter } });
+            router.push({ pathname, query: { ...query, [e.target.name]: query[e.target.name] ? query[e.target.name] + `,${addFilter}` : addFilter } });
         } else {
             let newQ = {...query};
             delete newQ[e.target.name];
@@ -126,7 +127,7 @@ export default function Buscar() {
     }
     return (
         <div className="bg-gray-50">
-            <div className="w-screen px-2 pt-24 md:pt-32 pb-8 md:pb-16 bg-gray-100 flex flex-col items-center relative">
+            <div className="w-screen px-2 md:px-4 pt-24 md:pt-32 pb-8 md:pb-16 bg-gray-100 flex flex-col items-center relative">
                 <input
                     name="q"
                     className="z-10 bg-opacity-90 w-full max-w-screen-md lg:px-8 lg:py-4 px-4 py-2 bg-white bg-opacity-90 text-gray-900 ring-1 ring-gray-200 rounded text-xl outline-none focus:ring ring-gray-200" 
@@ -140,7 +141,7 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className="container max-w-screen-lg mx-auto py-4">
+            <div className="container max-w-screen-lg mx-auto py-4 px-2 md:px-4">
                 <div className="flex gap-4 overflow-x-scroll pb-4">
                     <Select
                         name="poblacion"
@@ -156,25 +157,29 @@ export default function Buscar() {
                         options={filterOptions['pais']}
                         value={filtersApplied['pais']} 
                     />
-                    <Select name="curriculum_academico"
+                    <Select 
+                        name="curriculum_academico"
                         label={i18n[locale]['curriculum_academico']}
                         onChange={onFilterChange}
                         options={filterOptions['curriculum_academico']}
                         value={filtersApplied['curriculum_academico']} 
                     />
-                    <Select name="equipamiento"
+                    <Select 
+                        name="equipamiento"
                         label={i18n[locale]['equipamiento']}
                         onChange={onFilterChange}
                         options={filterOptions['equipamiento']}
                         value={filtersApplied['equipamiento']} 
                     />
-                    <Select name="menu_especial"
+                    <Select 
+                        name="menu_especial"
                         label={i18n[locale]['menu_especial']}
                         onChange={onFilterChange}
                         options={filterOptions['menu_especial']}
                         value={filtersApplied['menu_especial']} 
                     />
-                    <Select name="idioma_de_clases"
+                    <Select 
+                        name="idioma_de_clases"
                         label={i18n[locale]['idioma_de_clases']}
                         onChange={onFilterChange}
                         options={filterOptions['idioma_de_clases']}
@@ -183,12 +188,12 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className="container max-w-screen-lg mx-auto px-4 md:px-0">
+            <div className="container max-w-screen-lg mx-auto px-2 md:px-4">
                 {/* APPLIED FILTER LABELS*/}
                 <div className="flex gap-2 mb-4 overflow-x-scroll flex-nowrap md:flex-wrap">
                     {Object.entries(filtersApplied).map(([key, val], index) => (
                         <div key={`${key}${val}${index}`} className="flex w-auto items-center rounded bg-primarylight flex-shrink-0">
-                            <p className={`px-4 text-white ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : wp_terms[locale][key][val]}</p>
+                            <p className={`px-4 text-white ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : (key ==='poblacion' || key ==='provincia') ? wp_terms[key][val] : wp_terms[locale][key][val]}</p>
                             <button className="p-1 md:pt-3 md:pb-2 md:px-3 text-white hover:bg-primary rounded-r" onClick={() => removeTag(key)}><Image src={close} width={24} height={24} alt="close icon" /></button>
                         </div>
                     ))}
@@ -218,12 +223,12 @@ export default function Buscar() {
                 {schools
                     ? Object.keys(filtersApplied).length > 0
                         ? (filteredSchools.length > 0)
-                            ? <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
+                            ? <div className={`grid grid-cols-1 px-2 md:px-4 gap-4 ${showMap ? 'sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 w-full'} md:grid-cols-4`}>
                                 {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
                             : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{i18n[locale].busResulEmpt}</p>
                         : (
-                            <div className={`grid grid-cols-1 gap-0 md:gap-4 ${showMap ? 'md:grid-cols-2 w-1/2' : 'md:grid-cols-4 w-full'}`}>
+                            <div className={`grid grid-cols-1 gap-4 px-2 md:px-4 ${showMap ? 'sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 w-full'} md:grid-cols-4` }>
                                 {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
                         )
