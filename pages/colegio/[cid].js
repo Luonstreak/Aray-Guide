@@ -119,7 +119,7 @@ export default function Colegio(props){
     else return (
         <div className="bg-gray-50">
             {/* HERO */}
-            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60">
+            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60 px-4">
                 <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
                 <p className="z-10 text-white lg:text-2xl lg:text-gray-300 capitalize">{wp_terms['provincia'][details.provincia]} • {wp_terms[locale]['pais'][details.pais]}</p>
                 <div className="absolute inset-0 z-0">
@@ -283,7 +283,7 @@ export default function Colegio(props){
                 <ul>
                     {details.programas_de_integracion 
                         ? details.programas_de_integracion.map(el => <li key={el} className="flex items-center mt-4">
-                            <Image src={icons_integracion[el]} width={24} height={24}/>
+                            <Image src={icons_integracion[el]} width={24} height={24} />
                             <p className="uppercase ml-2">{wp_terms[locale]['programas_de_integracion'][el]}</p>
                         </li>)
                         : <p>{text.colProgEmpt}</p>
