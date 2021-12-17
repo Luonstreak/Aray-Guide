@@ -12,7 +12,7 @@ export default function SchoolCard({ el, grid }){
     const thumbnail = el['_embedded'] ? el['_embedded']['wp:featuredmedia'][0]['source_url'] : placeholder;
     return (
         <Link href={`/colegio/${el.id}`} passHref>
-            <div className={`flex-none ${grid ? "w-full" : "w-5/6 sm:w-80 m-2"} bg-white rounded-lg flex flex-col shadow-lg cursor-pointer`}>
+            <div className="bg-white rounded-lg shadow-lg cursor-pointer mx-2 mb-8">
                 <div className="bg-gray-100 mb-2 md:mb-0 h-48 relative w-full flex-shrink-0">
                     <Image loader={myLoader} layout="fill" className="object-cover rounded-t-lg" src={thumbnail} alt="preview de colegio" />
                 </div>

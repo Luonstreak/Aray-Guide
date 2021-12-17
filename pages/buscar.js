@@ -223,12 +223,12 @@ export default function Buscar() {
                 {schools
                     ? Object.keys(filtersApplied).length > 0
                         ? (filteredSchools.length > 0)
-                            ? <div className={`grid grid-cols-1 px-2 md:px-4 gap-4 ${showMap ? 'sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 w-full'} md:grid-cols-4`}>
+                            ? <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'h-[32rem] overflow-y-scroll sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 md:grid-cols-4 w-full'}`}>
                                 {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
                             : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{i18n[locale].busResulEmpt}</p>
                         : (
-                            <div className={`grid grid-cols-1 gap-4 px-2 md:px-4 ${showMap ? 'sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 w-full'} md:grid-cols-4` }>
+                            <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'h-[32rem] overflow-y-scroll sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 md:grid-cols-4 w-full'}` }>
                                 {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
                         )

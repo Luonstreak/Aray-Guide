@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image';
 import Link from 'next/link';
-import SchoolCard from '../../components/SchoolCard' 
-import ActivityCard from '../../components/ActivityCard' 
+import Carousel from '../../components/Carousel'
 import map from '/public/images/map.png'
 import subsrcibete from '/public/images/subscribete.png'
 import { useEffect, useState } from 'react'
@@ -117,13 +116,8 @@ export default function Actividad(props){
             <hr className="container-separator" />
             <div className="container max-w-screen-lg mx-auto p-4">
             <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].globActDes}</h1>
-                <hr className="title-separator mb-8" />
-                <div className="flex overflow-x-scroll items-center">
-                {actividades 
-                    ? actividades.map(el => <ActivityCard key={el.guid} el={el} />) 
-                    : <p>loading...</p>
-                }
-                </div>
+            <hr className="title-separator mb-8" />
+            <Carousel data={actividades} type="activity" />
             </div>
 
             {/* CONTACTO */}
@@ -159,12 +153,7 @@ export default function Actividad(props){
             <div className="container max-w-screen-lg mx-auto pb-8 md:pb-16 p-4">
                 <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].actRelac}</h1>
                 <hr className="title-separator" />
-                <div className="flex overflow-x-scroll items-center">
-                {schools 
-                    ? schools.map(el => <SchoolCard key={el.guid} el={el} />) 
-                    : <p>loading...</p>
-                }
-                </div>
+                <Carousel data={schools} type="school" />
             </div>
         </div>
     )

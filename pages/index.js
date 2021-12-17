@@ -2,24 +2,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import SearchInput from '../components/SearchInput' 
-import ActivityCard from '../components/ActivityCard' 
-import SchoolCard from '../components/SchoolCard' 
-import CountryCard from '../components/CountryCard' 
 import subsrcibete from '/public/images/subscribete.png'
 import conoce from '/public/images/conoce.jpg'
 import banner from '/public/images/banner.jpg'
-import facebook from '/public/images/icons/facebook.svg';
-import instagram from '/public/images/icons/instagram.svg';
-import linkedin from '/public/images/icons/linkedin.svg';
-import tiktok from '/public/images/icons/tiktok.svg';
-import weibo from '/public/images/icons/weibo.svg';
-import xiaohongshu from '/public/images/icons/xiaohongshu.svg';
-import wechat from '/public/images/icons/wechat.svg';
+import facebook from '/public/images/icons/facebook.svg'
+import instagram from '/public/images/icons/instagram.svg'
+import linkedin from '/public/images/icons/linkedin.svg'
+import tiktok from '/public/images/icons/tiktok.svg'
+import weibo from '/public/images/icons/weibo.svg'
+import xiaohongshu from '/public/images/icons/xiaohongshu.svg'
+import wechat from '/public/images/icons/wechat.svg'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import i18n from '../util/i18n.json';
-
+import i18n from '../util/i18n.json'
+import Carousel from '../components/Carousel'
 export default function Inicio() {
 
   const [schools, setSchools] = useState(null)
@@ -38,7 +35,7 @@ export default function Inicio() {
 
   useEffect(() => {
     if(!schools){
-      axios.get('https://ouroinc.com/wp-json/wp/v2/colegios?_embed').then(res => {
+      axios.get('https://ouroinc.com/wp-json/wp/v2/colegios?_embed&per_page=12').then(res => {
         if (res.data) {
           setSchools(res.data);
         }
@@ -94,27 +91,15 @@ export default function Inicio() {
       <div className="container mx-auto max-w-screen-lg px-2">
         <hr className="container-separator" />
         <h1 className="uppercase font-bold mb-8 text-2xl md:text-3xl lg:text-4xl">{i18n[locale].globActDes}</h1>
-        <div className="flex overflow-x-scroll items-center">
-          {actividades 
-            ? actividades.length > 0
-              ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />) 
-              : <p className="text-lg text-gray-500 text-center w-full">{i18n[locale].globActEmpt}</p>
-            : <p>loading...</p>
-          }
-        </div>
+        <Carousel data={actividades} type="activity" />
+        <hr className="container-separator" />
       </div>
       
       {/* SELECCION */}
       <div className="container mx-auto max-w-screen-lg px-2">
-        <hr className="container-separator" />
         <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">{i18n[locale].indSelec}</h1>
         <p className="mb-8 uppercase text-gray-400">{i18n[locale].indSelecSub}</p>
-        <div className="flex overflow-x-scroll items-center gap-x-2 md:gap-x-6">
-          {schools 
-            ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} />) 
-            : <p>loading...</p>
-          }
-        </div>
+        <Carousel data={schools} type="school" />
         <hr className="container-separator" />
       </div>
 
@@ -137,11 +122,7 @@ export default function Inicio() {
         <hr className="container-separator" />
         <h1 className="uppercase font-bold text-2xl md:text-3xl lg:text-4xl">{i18n[locale].indPais}</h1>
         <p className="mb-8 uppercase text-gray-400">{i18n[locale].indPaisSub}</p>
-        <div className="flex overflow-x-scroll items-center gap-x-4 md:gap-x-6">
-          {paises.map(pais => {
-            return <CountryCard key={pais.name} pais={pais} />
-          })}
-        </div>
+        <Carousel data={paises} type="country" />
         <hr className="container-separator" />
       </div>
 
@@ -173,68 +154,68 @@ export default function Inicio() {
           <div className="flex flex-wrap justify-center gap-x-4 pt-4 pb-32">
 
             {/* facebook */}
-            <a href="https:/facebook.com/arayasociados/" target="_blank" rel="noreferrer">
+            {locale !== 'zh-CN' && <a href="https:/facebook.com/arayasociados/" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={facebook} w={25} h={25} alt="facebook logo" />
                 <p className="text-xs">Facebook</p>
               </div>
-            </a>
+            </a>}
 
             {/* instagram */}
-            <a href="https://www.instagram.com/arayasociados" target="_blank" rel="noreferrer">
+            {locale !== 'zh-CN' && <a href="https://www.instagram.com/arayasociados" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={instagram} w={25} h={25} alt="instagram logo" />
                 <p className="text-xs">Instagram</p>
               </div>
-            </a>
+            </a>}
             
             {/* linkedin */}
-            <a href="https://www.linkedin.com/company/ara%26asociados/" target="_blank" rel="noreferrer">
+            {locale !== 'zh-CN' && <a href="https://www.linkedin.com/company/ara%26asociados/" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={linkedin} w={25} h={25} alt="linkedin logo" />
                 <p className="text-xs">Linked In</p>
               </div>
-            </a>
+            </a>}
             
             {/* tiktok */}
-            <a href="https:/tiktok.com/arayasociados/" target="_blank" rel="noreferrer">
+            {locale !== 'zh-CN' && <a href="https:/tiktok.com/arayasociados/" target="_blank" rel="noreferrer">
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">TikTok</p>
               </div>
-            </a>
+            </a>}
 
             {/* wechat */}
-            {/* <Link href="https:/wechat.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
+            {locale === 'zh-CN' && <a href="https:/wechat.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={wechat} w={25} h={25} alt="wechat logo" />
                 <p className="text-xs">WeChat</p>
               </div>
-            </Link> */}
+            </a>}
 
             {/* weibo */}
-            {/* <Link href="https:/weibo.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
+            {locale === 'zh-CN' && <a href="https:/weibo.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={weibo} w={25} h={25} alt="weibo logo" />
                 <p className="text-xs">Weibo</p>
               </div>
-            </Link> */}
+            </a>}
 
             {/* dou yin */}
-            {/* <Link href="https:/douyin.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
+            {locale === 'zh-CN' && <a href="https:/douyin.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={tiktok} w={25} h={25} alt="tiktok logo" />
                 <p className="text-xs">Dou Yin</p>
               </div>
-            </Link> */}
+            </a>}
 
             {/* xiao hong shu */}
-            {/* <Link href="https:/xiaohongshu.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
+            {locale === 'zh-CN' && <a href="https:/xiaohongshu.com/arayasociados/" target="_blank" rel="noreferrer" passHref>
               <div className="flex flex-col items-center hover:bg-gray-100 rounded-md px-2 pb-2 cursor-pointer">
                 <Image className="scale-50" src={xiaohongshu} w={25} h={25} alt="xiaohongshu logo" />
                 <p className="text-xs">Xiao Hong Shu</p>
               </div>
-            </Link> */}
+            </a>}
 
 
 

@@ -31,10 +31,10 @@ export default function Navbar(){
                     <div className="text-right">
                         <button className="p-4 text-lg" onClick={() => setLanMenuOpen(false)}><Image src={close} width={25} height={25} alt="close menu icon" /></button>
                     </div>
-                    <Link href={pathname} locale="es-ES"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navEs}</a></Link>
-                    <Link href={pathname} locale="en-US"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navEn}</a></Link>
-                    <Link href={pathname} locale="zh-CN"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navCn}</a></Link>
-                    <Link href={pathname} locale="fr-FR"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navFr}</a></Link>
+                    <Link href={pathname} locale="es-ES"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navEs} - Español</a></Link>
+                    <Link href={pathname} locale="en-US"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navEn} - English</a></Link>
+                    <Link href={pathname} locale="zh-CN"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navCn} - 简体中文</a></Link>
+                    <Link href={pathname} locale="fr-FR"><a className="py-4 text-2xl text-center md:text-xl text-white" onClick={() => setLanMenuOpen(false)}>{i18n[locale].navFr} - Français</a></Link>
                 </div>
                 {/* mobile nav menu */}
                 <button className="md:hidden" onClick={() => setNavMenuOpen(true)}><Image src={burger} width={25} height={25} alt="menu icon" /></button>

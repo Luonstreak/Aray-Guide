@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
-import SchoolCard from '../../components/SchoolCard' 
-import ActivityCard from '../../components/ActivityCard' 
+import Carousel from '../../components/Carousel'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import wp_terms from '../../util/wp_terms.json'
@@ -40,7 +39,7 @@ import piscina from '/public/images/icons/piscina.svg'
 import igualdad from '/public/images/icons/igualdad.svg'
 import integracion_social from '/public/images/icons/integracion_social.svg'
 import prevencion_acoso from '/public/images/icons/prevencion_acoso.svg'
-import { myLoader } from '../../util/functions'
+import { myLoader, decodeHTMLEntities } from '../../util/functions'
 import i18n from '../../util/i18n.json';
 
 export default function Colegio(props){
@@ -115,12 +114,12 @@ export default function Colegio(props){
         "38": integracion_social,
         "37": prevencion_acoso
     }
-    if(!details) return <Spinner />
+    if(!details) return <div className="container mx-auto text-center py-40"><Spinner /></div>
     else return (
         <div className="bg-gray-50">
             {/* HERO */}
             <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60 px-4">
-                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
+                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{decodeHTMLEntities(details.name)}</h1>
                 <p className="z-10 text-white lg:text-2xl lg:text-gray-300 capitalize">{wp_terms['provincia'][details.provincia]} • {wp_terms[locale]['pais'][details.pais]}</p>
                 <div className="absolute inset-0 z-0">
                     <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
@@ -131,18 +130,18 @@ export default function Colegio(props){
             <div className="container max-w-screen-lg mx-auto flex flex-col md:flex-row p-4 md:py-20 md:px-4">
 
                 <div className="md:w-2/3 mb-8">
-                    <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{details.name}</h1>
+                    <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{decodeHTMLEntities(details.name)}</h1>
                     <hr className="title-separator mb-2" />
                     <div className="flex mb-2">
                         <Image src={location} width={16} height={16} />&nbsp;
-                        <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
+                        <p className="capitalize">{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
                     {details.modelo_educativo !== '154' && <p className="mb-2 capitalize">{text.colCole} {wp_terms[locale]['modelo_educativo'][details.modelo_educativo]}</p>}
                     <Link href="/"><a>{text.colDesc}</a></Link>
                 </div>
 
                 <div className="md:w-1/3">
-                    <h5 className="mb-2 md:mt-10 font-bold text-gray-700">{text.colCurs}</h5>
+                    <h5 className="mb-2 md:mt-10 font-bold text-gray-700 capitalize">{text.colCurs}</h5>
                     <p className={`${details.cursos_ofrecidos.includes(8) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>{wp_terms[locale].cursos_ofrecidos['8']}</p>
                     <p className={`${details.cursos_ofrecidos.includes(9) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>{wp_terms[locale].cursos_ofrecidos['9']}</p>
                     <p className={`${details.cursos_ofrecidos.includes(10) ? 'text-primary' : 'text-gray-400 line-through'} uppercase mb-2 font-bold`}>{wp_terms[locale].cursos_ofrecidos['10']}</p>
@@ -296,14 +295,7 @@ export default function Colegio(props){
             <div className="container max-w-screen-lg mx-auto p-4">
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{text.globActDes}</h1>
                 <hr className="title-separator mb-8" />
-                <div className="flex overflow-x-scroll items-center">
-                {actividades 
-                    ? actividades.length > 0
-                        ? actividades.map(el => <ActivityCard key={el.guid.rendered} el={el} />)
-                        : <p className="text-lg text-gray-500 text-center w-full">{text.globActEmpt}</p>
-                    : <p>loading...</p>
-                }
-                </div>
+                <Carousel data={actividades} type="activity" />
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
@@ -315,12 +307,12 @@ export default function Colegio(props){
 
                     <div className="flex mb-2 ml-8">
                         <Image src={location} width={16} height={16} />&nbsp;&nbsp;
-                        <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {details.codigo_postal}, {wp_terms['provincia'][details.provincia]}</p>
+                        <p className="capitalize">{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {details.codigo_postal}, {wp_terms['provincia'][details.provincia]}</p>
                     </div>
                     
                     <div className="flex mb-2 ml-8">
                         <Image src={phone} width={16} height={16} />&nbsp;&nbsp;
-                        <p>{details.telefono || 'no compartido'}</p>
+                        <p>{details.telefono || text.colNoCom}</p>
                     </div>
                     
                     <div className="flex mb-2 ml-8">
@@ -334,7 +326,7 @@ export default function Colegio(props){
                     <div className="flex mb-2 ml-8">
                         <Image src={web} width={16} height={16} />&nbsp;&nbsp;
                         {details.direccion_web 
-                            ? <a href={`https:${details.direccion_web}`} target="_blank" rel="noreferrer"><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a>
+                            ? <a href={`https:${details.direccion_web.replace("http://","/").replace("https://","")}`} target="_blank" rel="noreferrer"><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a>
                             : <p>{text.colNoCom}</p>
                         }
                     </div>
@@ -349,12 +341,7 @@ export default function Colegio(props){
             <div className="container max-w-screen-lg mx-auto p-4">
                 <h1 className="uppercase font-bold text-xl md:text-2xl lg:text-4xl">{text.colRelac}</h1>
                 <hr className="title-separator" />
-                <div className="flex overflow-x-scroll items-center">
-                {schools 
-                    ? schools.map(el => <SchoolCard key={el.guid.rendered} el={el} />) 
-                    : <p>loading...</p>
-                }
-                </div>
+                <Carousel data={schools} type="school" />
             </div>
         </div>
     )
