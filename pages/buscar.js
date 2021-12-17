@@ -15,7 +15,8 @@ import i18n from '../util/i18n.json'
 export default function Buscar() {
 
     const router = useRouter();
-    const { locale } = router;
+    const locale = router.locale;
+    const text = i18n[locale];
 
     const [schools, setSchools] = useState(null)
     const [filteredSchools, setFilteredSchools] = useState([]);
@@ -132,7 +133,7 @@ export default function Buscar() {
                     name="q"
                     className="z-10 bg-opacity-90 w-full max-w-screen-md lg:px-8 lg:py-4 px-4 py-2 bg-white bg-opacity-90 text-gray-900 ring-1 ring-gray-200 rounded text-xl outline-none focus:ring ring-gray-200" 
                     type="text"
-                    placeholder="Buscar colegio"
+                    placeholder={text.globSrchInput}
                     onKeyPress={handleTermSearch}
                     defaultValue={router.query.q}
                 />
@@ -145,42 +146,42 @@ export default function Buscar() {
                 <div className="flex gap-4 overflow-x-scroll pb-4">
                     <Select
                         name="poblacion"
-                        label={i18n[locale]['poblacion']}
+                        label={text['poblacion']}
                         onChange={onFilterChange}
                         options={filterOptions['poblacion']}
                         value={filtersApplied['poblacion']} 
                     />
                     <Select
                         name="pais"
-                        label={i18n[locale]['pais']}
+                        label={text['pais']}
                         onChange={onFilterChange}
                         options={filterOptions['pais']}
                         value={filtersApplied['pais']} 
                     />
                     <Select 
                         name="curriculum_academico"
-                        label={i18n[locale]['curriculum_academico']}
+                        label={text['curriculum_academico']}
                         onChange={onFilterChange}
                         options={filterOptions['curriculum_academico']}
                         value={filtersApplied['curriculum_academico']} 
                     />
                     <Select 
                         name="equipamiento"
-                        label={i18n[locale]['equipamiento']}
+                        label={text['equipamiento']}
                         onChange={onFilterChange}
                         options={filterOptions['equipamiento']}
                         value={filtersApplied['equipamiento']} 
                     />
                     <Select 
                         name="menu_especial"
-                        label={i18n[locale]['menu_especial']}
+                        label={text['menu_especial']}
                         onChange={onFilterChange}
                         options={filterOptions['menu_especial']}
                         value={filtersApplied['menu_especial']} 
                     />
                     <Select 
                         name="idioma_de_clases"
-                        label={i18n[locale]['idioma_de_clases']}
+                        label={text['idioma_de_clases']}
                         onChange={onFilterChange}
                         options={filterOptions['idioma_de_clases']}
                         value={router.query['idioma_de_clases']} 
@@ -199,10 +200,10 @@ export default function Buscar() {
                     ))}
                 </div>
                 <div className="flex justify-between items-center">
-                    <h2 className="text-xl md:text-3xl text-gray-700 font-bold">{i18n[locale].busResul}</h2>
+                    <h2 className="text-xl md:text-3xl text-gray-700 font-bold">{text.busResul}</h2>
                     <div className="hidden md:block flex-shrink-0">
                         <Switch
-                            label={i18n[locale].map}
+                            label={text.map}
                             onChange={() => setShowMap(!showMap)}
                             active={showMap} 
                         />
@@ -226,7 +227,7 @@ export default function Buscar() {
                             ? <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'h-[32rem] overflow-y-scroll sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 md:grid-cols-4 w-full'}`}>
                                 {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                             </div> 
-                            : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{i18n[locale].busResulEmpt}</p>
+                            : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{text.busResulEmpt}</p>
                         : (
                             <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'h-[32rem] overflow-y-scroll sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 md:grid-cols-4 w-full'}` }>
                                 {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}

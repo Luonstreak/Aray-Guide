@@ -53,7 +53,7 @@ export default function MyCarousel(props) {
   // };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-4">
       {props.data
         ? props.data.length > 0
           ? (

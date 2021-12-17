@@ -170,7 +170,7 @@ export default function Colegio(props){
                     <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{text.colCar}</h1>
                     <hr className="title-separator" />
                     <ul>
-                        {details.curriculum_academico && <div className="flex items-start mt-4">
+                        {details.curriculum_academico && <div className="flex items-start pt-4">
                             <div className="flex-shrink-0">
                                 <Image src={curriculum} width={24} height={24}/>
                             </div>
@@ -208,7 +208,7 @@ export default function Colegio(props){
                     </ul>
                 </div>
                 <div className="md:w-1/3">
-                    <div className="border-l-2 md:border-l-0  md:border-r-2 border-primary px-4 text-right">
+                    <div className="border-l-2 md:border-l-0  md:border-r-2 border-primary px-4 py-4 md:py-2 text-left md:text-right bg-primary bg-opacity-20 md:bg-opacity-0 mt-4 md:mt-0">
                         <h4 className="uppercase text-lg">{text.colLang}</h4>
                         <p className="uppercase text-gray-600">{wp_terms[locale]['idioma_de_clases'][details.idioma_de_clases]}</p>
                     </div>
@@ -281,9 +281,9 @@ export default function Colegio(props){
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{text.colInt}</h1>
                 <hr className="title-separator" />
                 <ul>
-                    {details.programas_de_integracion 
-                        ? details.programas_de_integracion.map(el => <li key={el} className="flex items-center mt-4">
-                            <Image src={icons_integracion[el]} width={24} height={24} />
+                    {details.programas_de_integracion
+                        ? details.programas_de_integracion.map(el => <li key={el} className="flex items-center pt-4">
+                            <div className="flex-shrink-0"><Image src={icons_integracion[el]} width={24} height={24} /></div>
                             <p className="uppercase ml-2">{wp_terms[locale]['programas_de_integracion'][el]}</p>
                         </li>)
                         : <p>{text.colProgEmpt}</p>

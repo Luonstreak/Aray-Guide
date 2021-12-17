@@ -1,9 +1,16 @@
+import wp_terms from '../util/wp_terms.json'
+import { useRouter } from 'next/router' 
+
 export default function Select(props){
+
+    const router = useRouter();
+    const locale = router.locale;
     
     const variants = {
         default: "bg-gray-200 text-gray-700 outline-none mt-1 ring-primarylight",
         text: "bg-gray-50 text-gray-700 focus:text-gray-800 hover:bg-gray-100 outline-none"
     }
+
     const { name, label, value = null, options, multi, variant = 'default', onChange = () => {}} = props;
     return (
         <select
@@ -16,12 +23,17 @@ export default function Select(props){
             value={value || -1}
         >
             <option default value={null}>{label}</option>
-            {options && options.map(option => (
+            {options && options.map(option => {
+                console.log(name, option.value)
+                const label = (name !== 'poblacion' && name !== 'provincia')
+                    ? wp_terms[locale][name][option.value]
+                    : wp_terms[name][option.value];
+                return (
                 <option
                     key={`${option.name}-${option.value}`}
                     value={option.value}
-                >{option.label}</option>
-            ))}
+                >{label}</option>
+            )})}
         </select>
     )
 }

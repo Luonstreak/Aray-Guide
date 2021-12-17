@@ -14,47 +14,47 @@ export default function Contacto(){
                 <h1 className="text-5xl text-white">{text.contTtl}</h1>
                 <p className="text-xl text-white">{text.contSub}</p>
             </div>
-            <div className="w-full lg:w-2/3 lg:h-screen bg-white px-4 md:px-40 py-12 lg:pt-40 lg:pb-32">
+            <div className="w-full lg:w-2/3 lg:h-full bg-white px-4 md:px-40 py-8 lg:pt-20 lg:pb-32">
                 <label htmlFor="nombre">{text.contNm}</label>
                 <input
                     name="nombre"
                     type="text" 
-                    className="mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
+                    className="mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
                 />
                 <label htmlFor="apellidos">{text.contApe}</label>
                 <input
                     name="apellidos" 
                     type="text" 
-                    className="mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
+                    className="mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
                 />
                 <label htmlFor="email">{text.contEma}</label>
                 <input
                     name="email" 
                     type="email" 
-                    className="mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
+                    className="mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
                 />
                 <label htmlFor="telefono">{text.contTel}</label>
                 <input
                     name="telefono" 
                     type="phone" 
-                    className="mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
+                    className="mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
                 />
                 <label htmlFor="origen">{text.contPaOr}</label>
                 <input
                     name="origen" 
                     type="text" 
-                    className="mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
+                    className="mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
                 />
                 <label htmlFor="destino">{text.contPaDe}</label>
                 <input
                     name="destino" 
                     type="text" 
-                    className="mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
+                    className="mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto" 
                 />
                 <label htmlFor="mensaje">{text.contMsj}</label>
                 <textarea
                     name="mensaje"
-                    className="resize-none mb-8 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto"
+                    className="resize-none mb-4 bg-gray-100 border-b-2 border-primary px-4 py-2 w-full outline-none focus:border-yellow-700  lg:w-40m mx-auto"
                 />
                 <div>
                     <input type="checkbox" id="terminos" name="terminos" />

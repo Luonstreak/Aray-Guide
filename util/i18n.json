@@ -1,5 +1,6 @@
 {
     "es-ES": {
+        "globSrchInput": "Buscar Colegios",
         "globActDes": "actividades destacadas",
         "globActEmpt": "no hay actividades en este momento",
         "globDeLa": "de la actividad",
@@ -156,9 +157,15 @@
         "sobComo4": "Una vez en la página de inicio puedes seleccionar diferentes filtros para poder ver los resultados que buscas más fácilmente.",
         "sobComo5": "De este modo puedes filtrar por país, por calificación o por palabra clave, como por ejemplo, “programación”, para ver solo aquellos centros que ofrecen esta disciplina.",
         "sobComo6": "Una vez obtengas los resultados que buscas puedes clicar en cada centro para ver toda la información detallada del mismo y un enlace a su sitio web.",
-        "sobComo7": "Esperamos que la guía Aray os ayude a elegir con seguridad el mejor centro educativo para vuestros hijos."
+        "sobComo7": "Esperamos que la guía Aray os ayude a elegir con seguridad el mejor centro educativo para vuestros hijos.",
+        "gdprTtl": "La guia Aray",
+        "gdprSub": "utiliza cookies",
+        "gdprBody": "Este sitio web utiliza cookies propias y de terceros que permiten mejorar la usabilidad de navegación y recopilar información. No se usan las cookies para recoger información de carácter personal. Solo se instalarán las cookies no esenciales para la navegación si acepta esta característica. Encontrará más información en nuestra Política de cookies.",
+        "gdprBtn": "solo necesarias",
+        "gdprBtn2": "aceptar"
     },
     "en-US": {
+        "globSrchInput": "Search Schools",
         "globActDes": "highlighted activities",
         "globActEmpt": "no activities at this time",
         "globDeLa": "of the activity",
@@ -315,9 +322,15 @@
         "sobComo4": "Once on the home page you can select different filters to be able to see the results you are looking for more easily.",
         "sobComo5": "In this way you can filter by country, by qualification or by keyword, such as \"programming\", to see only those centers that offer this discipline.",
         "sobComo6": "Once you get the results you are looking for, you can click on each center to see all its detailed information and a link to its website.",
-        "sobComo7": "We hope that the Aray guide will help you safely choose the best educational center for your children"
+        "sobComo7": "We hope that the Aray guide will help you safely choose the best educational center for your children",
+        "gdprTtl": "The Aray Guide",
+        "gdprSub": "uses cookies",
+        "gdprBody": "This website uses its own and third-party cookies that allow us to improve browsing usability and collect information. Cookies are not used to collect personal information. Cookies not essential for navigation will only be installed if you accept this feature. You will find more information in our Cookies Policy.",
+        "gdprBtn": "only necessary",
+        "gdprBtn2": "accept"
     },
     "zh-CN": {
+        "globSrchInput": "搜索学校",
         "globActDes": "特色活动",
         "globActEmpt": "目前没有活动",
         "globDeLa": "活动的",
@@ -474,9 +487,15 @@
         "sobComo4": "进入主页后，您可以选择不同的过滤器，以便更轻松地查看您正在寻找的结果。",
         "sobComo5": "通过这种方式，您可以按国家、资格或关键字（例如“程序设计”）进行过滤，以仅查看提供此学科的中心。",
         "sobComo6": "获得所需的结果后，您可以单击每个中心以查看其所有详细信息以及指向其网站的链接。",
-        "sobComo7": "我们希望 Aray 指南能帮助您安全地为您的孩子选择最好的教育中心。"
+        "sobComo7": "我们希望 Aray 指南能帮助您安全地为您的孩子选择最好的教育中心。",
+        "gdprTtl": "指南“Aray”",
+        "gdprSub": "使用 cookie。",
+        "gdprBody": "本网站使用自己的和第三方的 cookie，使我们能够提高浏览可用性和收集信息。 Cookie 不用于收集个人信息。 只有当您接受此功能时，才会安装对导航而言非必需的 Cookie。 您可以在我们的 Cookie 政策中找到更多信息。",
+        "gdprBtn": "只需要",
+        "gdprBtn2": "接受"
     },
     "fr-FR": {
+        "globSrchInput": "Recherche École",
         "globActDes": "activités en vedette",
         "globActEmpt": "il n'y a pas d'activités en ce moment",
         "globDeLa": "de l'activité",
@@ -633,6 +652,11 @@
         "sobComo4": "Une fois sur la page d'accueil, vous pouvez sélectionner différents filtres pour pouvoir voir plus facilement les résultats que vous recherchez.",
         "sobComo5": "De cette façon, vous pouvez filtrer par pays, par qualification ou par mot-clé, comme \"programmation\", pour ne voir que les centres qui proposent cette discipline.",
         "sobComo6": "Une fois que vous obtenez les résultats que vous recherchez, vous pouvez cliquer sur chaque centre pour voir toutes ses informations détaillées et un lien vers son site Web.",
-        "sobComo7": "Nous espérons que le guide Aray vous aidera à choisir en toute sécurité le meilleur centre éducatif pour vos enfants."
+        "sobComo7": "Nous espérons que le guide Aray vous aidera à choisir en toute sécurité le meilleur centre éducatif pour vos enfants.",
+        "gdprTtl": "Le guide Aray",
+        "gdprSub": "utilise des cookies.",
+        "gdprBody": "Ce site Web utilise ses propres cookies et ceux de tiers qui nous permettent d'améliorer la convivialité de la navigation et de collecter des informations. Les cookies ne sont pas utilisés pour collecter des informations personnelles. Les cookies non indispensables à la navigation ne seront installés que si vous acceptez cette fonctionnalité. Vous trouverez plus d'informations dans notre Politique de Cookies.",
+        "gdprBtn": "Seulement nécessaire",
+        "gdprBtn2": "Accepter"
     }
 }
