@@ -25,7 +25,8 @@ export default function Actividad(props){
     const [actividades, setActividades] = useState(null)
 
     useEffect(() => {
-        if(!details){
+        if(aid){
+            setDetails(null);
             axios.get(`https://ouroinc.com/wp-json/wp/v2/actividades/${aid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
@@ -47,7 +48,7 @@ export default function Actividad(props){
             }
           }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
-    });
+    },[aid]);
 
     const formatDate = (date, year) => {
         const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];

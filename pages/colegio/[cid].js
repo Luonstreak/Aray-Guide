@@ -54,7 +54,8 @@ export default function Colegio(props){
   const [actividades, setActividades] = useState(null)
 
     useEffect(() => {
-        if(!details && cid){
+        if(cid){
+            setDetails(null)
             axios.get(`https://ouroinc.com/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
@@ -76,7 +77,7 @@ export default function Colegio(props){
             }
           }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
-    });
+    },[cid]);
 
     const icons_servicios_generales = {
         "65": alojamiento,
