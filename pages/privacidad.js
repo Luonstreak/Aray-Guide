@@ -1,7 +1,13 @@
 import condiciones from '/public/images/condiciones.jpg'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import i18n from '../util/i18n.json'
 
 export default function Condiciones(){
+    const router = useRouter();
+    const locale = router.locale;
+    const text = i18n[locale];
+
     return (
         <>
             {/* HERO */}
