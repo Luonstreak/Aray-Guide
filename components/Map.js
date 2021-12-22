@@ -20,7 +20,8 @@ class Map extends React.Component {
       this.setState({
         map: new google.maps.Map(document.getElementById("google-map"), {
           center: defaultCenter,
-          zoom: this.props.zoomLevel || 5,
+          disableDefaultUI: true,
+          zoom: this.props.zoomLevel || 6,
         })
       });
     }).then(() => {
@@ -49,7 +50,7 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div className="rounded-lg bg-blue-100" id="google-map" ></div>
+      <div className={`bg-blue-100 ${this.props.square ? 'rounded-0' : 'rounded-lg'}`} id="google-map" ></div>
     );
   }
 }

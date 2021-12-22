@@ -17,19 +17,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-*::-webkit-scrollbar {
-  display: none;
-}
-
-
 @layer base {
 
   h1, h2, h3, h4 {
@@ -69,5 +56,4 @@ a {
   padding: 0;
   height: 100%;
   width: 100%;
-  max-height: 500px;
 }

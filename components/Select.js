@@ -7,7 +7,7 @@ export default function Select(props){
     const locale = router.locale;
     
     const variants = {
-        default: "bg-gray-200 text-gray-700 outline-none mt-1 ring-primarylight",
+        default: "bg-white text-gray-800 outline-none mt-1 ring-2 ring-gray-200",
         text: "bg-gray-50 text-gray-700 focus:text-gray-800 hover:bg-gray-100 outline-none"
     }
 

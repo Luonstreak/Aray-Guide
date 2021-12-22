@@ -127,8 +127,8 @@ export default function Buscar() {
         router.push({ pathname, query: newQ });
     }
     return (
-        <div className="bg-gray-50">
-            <div className="w-screen px-2 md:px-4 pt-24 md:pt-32 pb-8 md:pb-16 bg-gray-100 flex flex-col items-center relative">
+        <div className="bg-gray-50 relative">
+            <div className="w-screen px-2 md:px-4 pt-20 md:pt-24 pb-4 md:pb-8 bg-gray-100 flex flex-col items-center relative">
                 <input
                     name="q"
                     className="z-10 bg-opacity-90 w-full max-w-screen-md lg:px-8 lg:py-4 px-4 py-2 bg-white bg-opacity-90 text-gray-900 ring-1 ring-gray-200 rounded text-xl outline-none focus:ring ring-gray-200" 
@@ -142,8 +142,8 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className="container max-w-screen-lg mx-auto py-4 px-2 md:px-4">
-                <div className="flex gap-4 overflow-x-scroll pb-4">
+            <div className={`bg-gray-100 py-4 px-2 md:px-4 flex justify-between items-center ${showMap && 'sticky top-0 z-20'}`}>
+                <div className="flex gap-4 overflow-x-scroll p-1 pb-4 md:pb-2">
                     <Select
                         name="poblacion"
                         label={text['poblacion']}
@@ -187,55 +187,43 @@ export default function Buscar() {
                         value={router.query['idioma_de_clases']} 
                     />
                 </div>
-            </div>
-
-            <div className="container max-w-screen-lg mx-auto px-2 md:px-4">
-                {/* APPLIED FILTER LABELS*/}
-                <div className="flex gap-2 mb-4 overflow-x-scroll flex-nowrap md:flex-wrap">
-                    {Object.entries(filtersApplied).map(([key, val], index) => (
-                        <div key={`${key}${val}${index}`} className="flex w-auto items-center rounded bg-primarylight flex-shrink-0">
-                            <p className={`px-4 text-white ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : (key ==='poblacion' || key ==='provincia') ? wp_terms[key][val] : wp_terms[locale][key][val]}</p>
-                            <button className="p-1 md:pt-3 md:pb-2 md:px-3 text-white hover:bg-primary rounded-r" onClick={() => removeTag(key)}><Image src={close} width={24} height={24} alt="close icon" /></button>
-                        </div>
-                    ))}
-                </div>
-                <div className="flex justify-between items-center">
-                    <h2 className="text-xl md:text-3xl text-gray-700 font-bold">{text.busResul}</h2>
-                    <div className="hidden md:block flex-shrink-0">
-                        <Switch
-                            label={text.map}
-                            onChange={() => setShowMap(!showMap)}
-                            active={showMap} 
-                        />
-                    </div>
-                </div>
-                <hr className="title-separator" />
-                {/* <div className="flex flex-wrap gap-4 items-centermd:pt-4">
-                    <p className="w-full text-center md:text-left text-gray-500 text-md uppercase mt-4 md:mt-0">{filteredSchools ? `${filteredSchools.length} resultado${filteredSchools.length === 1 ? '' : 's'}` : schools ? `${schools.length} resultado${schools.length === 1 ? '' : 's'}` : 'cargando resultados'}</p>
-                    <Select
-                        label="ordernar por"
-                        name="ordernar por"
-                        options={[{ label: 'nombre ascendente', value: "nasc"}, { label: 'nombre descendente', value: "ndes"}]}
-                        variant="text"
+                <div className="hidden lg:block flex-shrink-0 ml-4">
+                    <Switch
+                        label={text.map}
+                        onChange={() => setShowMap(!showMap)}
+                        active={showMap} 
                     />
-                </div> */}
+                </div>
             </div>
-            <div className="container max-w-screen-lg mx-auto pt-4 pb-16 flex">
-                {schools
-                    ? Object.keys(filtersApplied).length > 0
-                        ? (filteredSchools.length > 0)
-                            ? <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'h-[32rem] overflow-y-scroll sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 md:grid-cols-4 w-full'}`}>
-                                {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
-                            </div> 
-                            : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{text.busResulEmpt}</p>
-                        : (
-                            <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'h-[32rem] overflow-y-scroll sm:grid-cols-2 w-1/2' : 'sm:grid-cols-2 md:grid-cols-4 w-full'}` }>
-                                {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
-                            </div> 
-                        )
-                        : <Spinner />
-                    }
-                {schools && showMap && <div className="w-1/2 ml-8"><Map markers={filteredSchools || schools} /></div>}
+            {/* APPLIED FILTER LABELS*/}
+            <div className="flex gap-2 px-2 md:px-4 overflow-x-scroll flex-nowrap md:flex-wrap">
+                {Object.entries(filtersApplied).map(([key, val], index) => (
+                    <div key={`${key}${val}${index}`} className="flex w-auto items-center rounded bg-primarylighter bg-opacity-50 flex-shrink-0">
+                        <p className={`px-4 text-primary ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : (key ==='poblacion' || key ==='provincia') ? wp_terms[key][val] : wp_terms[locale][key][val]}</p>
+                        <button className="p-1 pt-2 px-2 md:pt-3 md:pb-2 md:px-3 text-white hover:bg-primarylighter rounded-r" onClick={() => removeTag(key)}><Image src={close} width={24} height={24} alt="close icon" /></button>
+                    </div>
+                ))}
+            </div>
+            <div className="flex relative">
+                <div className={`container max-w-screen-lg  pt-4 pb-16 flex ${showMap ? 'w-1/2' : 'mx-auto'}`}>
+                    {schools
+                        ? Object.keys(filtersApplied).length > 0
+                            ? (filteredSchools.length > 0)
+                                ? <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'sm:grid-cols-3' : 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full'}`}>
+                                    {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
+                                </div> 
+                                : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{text.busResulEmpt}</p>
+                            : (
+                                <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'sm:grid-cols-3' : 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full'}` }>
+                                    {schools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
+                                </div> 
+                            )
+                            : <Spinner />
+                        }
+                </div>
+                {schools && showMap && <div className="container w-1/2 h-[60rem] sticky top-24 right-0 bottom-0">
+                    <Map square markers={filteredSchools || schools} />
+                </div>}
             </div>
         </div>
     )

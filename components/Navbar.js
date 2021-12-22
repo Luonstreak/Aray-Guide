@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '/public/images/logo-white.svg';
-import close from '/public/images/icons/close.svg';
+import close from '/public/images/icons/close-white.svg';
 import burger from '/public/images/icons/burger.svg';
 import lang from '/public/images/icons/lang.svg';
 import { useState } from 'react'
@@ -15,7 +15,7 @@ export default function Navbar(){
     const router = useRouter();
     const { locale, pathname } = router;
     return(
-        <div className="fixed z-30 bg-black bg-opacity-40 w-screen">
+        <div className="fixed z-20 bg-black bg-opacity-40 w-screen">
             <div className="container mx-auto flex flex-row px-4 md:px-0">
                 <Link href="/">
                     <button className="py-2"><Image src={logo} width={50} height={50} alt="logo" /></button>
@@ -38,7 +38,7 @@ export default function Navbar(){
                 </div>
                 {/* mobile nav menu */}
                 <button className="md:hidden" onClick={() => setNavMenuOpen(true)}><Image src={burger} width={25} height={25} alt="menu icon" /></button>
-                <div className={`absolute md:hidden w-screen h-screen top-0 bg-primary flex flex-col ${navMenuOpen ? 'left-0' : 'left-full'}`}>
+                <div className={`absolute md:hidden z-50 w-screen h-screen top-0 bg-primary flex flex-col ${navMenuOpen ? 'left-0' : 'left-full'}`}>
                     <div className="text-right">
                         <button className="p-4 text-lg" onClick={() => setNavMenuOpen(false)}><Image src={close} width={25} height={25} alt="close menu icon" /></button>
                     </div>
