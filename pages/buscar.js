@@ -23,6 +23,7 @@ export default function Buscar() {
     const [filterOptions, setFilterOptions] = useState({})
     const [filtersApplied, setFiltersApplied] = useState({})
     const [showMap, setShowMap] = useState(false)
+    const [suggestions, setSuggestions] = useState({ pais: [], poblacion: [] });
 
     const filters = [
         "provincia",
@@ -126,17 +127,61 @@ export default function Buscar() {
         delete newQ[field];
         router.push({ pathname, query: newQ });
     }
+
+    const generateTermSuggestions = (term) => {
+        const newSuggestions = { pais: [], poblacion: [] };
+        if(!term || term.length < 2) {
+            setSuggestions(newSuggestions);
+            return;
+        }
+        if(filterOptions.pais){
+            filterOptions.pais.map(el => {
+                if(el.label.includes(term)) newSuggestions.pais.push(el);
+            })
+        }
+        if(filterOptions.poblacion){
+            filterOptions.poblacion.map(el => {
+                if(el.label.includes(term)) newSuggestions.poblacion.push(el);
+            })
+        }
+        setSuggestions(newSuggestions);
+    }
+
+    const handleSuggestionSelected = e => {
+        onFilterChange(e);
+        setSuggestions({ pais: [], poblacion: []});
+    }
+
     return (
         <div className="bg-gray-50 relative">
             <div className="w-screen px-2 md:px-4 pt-20 md:pt-24 pb-4 md:pb-8 bg-gray-100 flex flex-col items-center relative">
-                <input
-                    name="q"
-                    className="z-10 bg-opacity-90 w-full max-w-screen-md lg:px-8 lg:py-4 px-4 py-2 bg-white bg-opacity-90 text-gray-900 ring-1 ring-gray-200 rounded text-xl outline-none focus:ring ring-gray-200" 
-                    type="text"
-                    placeholder={text.globSrchInput}
-                    onKeyPress={handleTermSearch}
-                    defaultValue={router.query.q}
-                />
+                <div className="relative z-10 w-full max-w-screen-md">
+                    <input
+                        name="q"
+                        className="w-full bg-opacity-90 lg:px-8 lg:py-4 px-4 py-2 bg-white bg-opacity-90 text-gray-900 ring-1 ring-gray-200 rounded text-xl outline-none focus:ring ring-gray-200" 
+                        type="text"
+                        placeholder={text.globSrchInput}
+                        onKeyPress={handleTermSearch}
+                        onChange={e => generateTermSuggestions(e.target.value)}
+                        defaultValue={router.query.q}
+                    />
+                    {suggestions.pais.length > 0 && (
+                        <ul className="absolute bg-white top-16 rounded w-full drop-shadow-xl left-0">
+                            <li className="px-4 py-2 bg-gray-200 font-bold rounded-t"><p>{text.pais}:</p></li>
+                            {suggestions.pais.map(el => (
+                                <li key={el.label} onClick={() => handleSuggestionSelected({ target: { name: 'pais', value: el.value }})} className="hover:bg-yellow-500/20 px-8 py-4 rounded cursor-pointer capitalize text-lg">{el.label}</li>
+                            ))}
+                        </ul>
+                    )}
+                    {suggestions.poblacion.length > 0 && (
+                        <ul className="absolute bg-white top-16 rounded w-full drop-shadow-xl left-0">
+                            <li className="px-4 py-2 bg-gray-200 font-bold rounded-t"><p>{text.poblacion}:</p></li>
+                            {suggestions.poblacion.map(el => (
+                                <li key={el.label} onClick={() => handleSuggestionSelected({ target: { name: 'poblacion', value: el.value }})} className="hover:bg-yellow-500/20 px-8 py-4 rounded cursor-pointer capitalize text-lg">{el.label}</li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
                 <div className="absolute inset-0 z-0">
                     <Image priority src={graduation} layout="fill" className="object-cover object-bottom brightness-50" alt="hero image" />
                 </div>

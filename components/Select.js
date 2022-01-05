@@ -24,7 +24,6 @@ export default function Select(props){
         >
             <option default value={null}>{label}</option>
             {options && options.map(option => {
-                console.log(name, option.value)
                 const label = (name !== 'poblacion' && name !== 'provincia')
                     ? wp_terms[locale][name][option.value]
                     : wp_terms[name][option.value];
