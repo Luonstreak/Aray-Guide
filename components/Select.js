@@ -7,7 +7,7 @@ export default function Select(props){
     const locale = router.locale;
     
     const variants = {
-        default: "bg-white text-gray-800 outline-none mt-1 ring-2 ring-gray-200",
+        default: "bg-white text-gray-800 outline-none mt-1 ring-1 ring-gray-200",
         text: "bg-gray-50 text-gray-700 focus:text-gray-800 hover:bg-gray-100 outline-none"
     }
 
@@ -18,7 +18,7 @@ export default function Select(props){
             multiple={multi}
             disabled={!options || !options.length}
             style={{ maxWidth: '200px' }}
-            className={`px-4 py-2 rounded-lg h-12 text-lg capitalize ${variants[variant]}`}
+            className={`bg-gray-50 p-2 rounded-md h-10 text-lg capitalize w-auto ${variants[variant]}`}
             onChange={onChange}
             value={value || -1}
         >

@@ -28,7 +28,7 @@ export default function Inicio() {
     { name: 'alemania', id: '' },
     { name: 'inglaterra', id: '' },
     { name: 'portugal', id: '' },
-  ])
+  ]);
 
   const router = useRouter();
   const { locale } = router;
@@ -62,10 +62,6 @@ export default function Inicio() {
     }
   })
 
-  const submitSearch = term => {
-    router.push(`/buscar?q=${term}`)
-  }
-
   return (
     <div className="bg-gray-50">
       
@@ -78,8 +74,8 @@ export default function Inicio() {
       
       {/* HERO SEARCH */}
       <div className="w-screen h-80 lg:h-96 flex flex-col justify-center content-center bg-primary relative">
-        <div className="z-10 mx-auto w-10/12 md:w-full max-w-xl">
-          <SearchInput onChange={submitSearch} />
+        <div className="z-20 mx-auto w-10/12 md:w-full max-w-xl">
+          <SearchInput />
         </div>
         <h2 className="z-10 te2xt-xl text-white md:text-3xl my-4 mx-8 lg:mx-auto display">{i18n[locale].indHeroText}</h2>
         <div className="z-0 absolute inset-0">

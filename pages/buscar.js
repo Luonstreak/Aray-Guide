@@ -6,6 +6,7 @@ import Switch from '../components/Switch'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import close from '/public/images/icons/close.svg'
+import filtersIcon from '/public/images/icons/filters.svg';
 import graduation from '/public/images/graduation.jpg'
 import wp_terms from '../util/wp_terms.json'
 import Map from '../components/Map'
@@ -24,11 +25,11 @@ export default function Buscar() {
     const [filtersApplied, setFiltersApplied] = useState({})
     const [showMap, setShowMap] = useState(false)
     const [suggestions, setSuggestions] = useState({ pais: [], poblacion: [] });
-
+    const [filtersModal, setFiltersModal] = useState(false);
     const filters = [
+        "poblacion",
         "provincia",
         "pais",
-        "poblacion",
         "modelo_educativo",
         "idioma_de_clases",
         "cursos_ofrecidos",
@@ -69,7 +70,7 @@ export default function Buscar() {
         if(!filterOptions.poblacion){
             fetchFilterOptions();
         }
-        // if url params pre-populate filters state hoo
+        // if url params pre-populate filters state
         setFiltersApplied(router.query);
 
         // if filters exist, filter schools
@@ -136,12 +137,12 @@ export default function Buscar() {
         }
         if(filterOptions.pais){
             filterOptions.pais.map(el => {
-                if(el.label.includes(term)) newSuggestions.pais.push(el);
+                if(el.label.includes(term.toLowerCase())) newSuggestions.pais.push(el);
             })
         }
         if(filterOptions.poblacion){
             filterOptions.poblacion.map(el => {
-                if(el.label.includes(term)) newSuggestions.poblacion.push(el);
+                if(el.label.includes(term.toLowerCase())) newSuggestions.poblacion.push(el);
             })
         }
         setSuggestions(newSuggestions);
@@ -153,10 +154,12 @@ export default function Buscar() {
     }
 
     return (
-        <div className="bg-gray-50 relative">
+        <div className={`bg-gray-50 relative ${filtersModal && 'h-screen overflow-hidden'}`}>
             <div className="w-screen px-2 md:px-4 pt-20 md:pt-24 pb-4 md:pb-8 bg-gray-100 flex flex-col items-center relative">
                 <div className="relative z-10 w-full max-w-screen-md">
                     <input
+                        autoComplete="off"
+                        spellCheck="false"
                         name="q"
                         className="w-full bg-opacity-90 lg:px-8 lg:py-4 px-4 py-2 bg-white bg-opacity-90 text-gray-900 ring-1 ring-gray-200 rounded text-xl outline-none focus:ring ring-gray-200" 
                         type="text"
@@ -187,8 +190,37 @@ export default function Buscar() {
                 </div>
             </div>
 
-            <div className={`bg-gray-100 py-4 px-2 md:px-4 flex justify-between items-center ${showMap && 'sticky top-0 z-20'}`}>
-                <div className="flex gap-4 overflow-x-scroll p-1 pb-4 md:pb-2">
+            <div className={`bg-gray-100 py-2 px-2 md:px-4 flex justify-between items-center ${showMap && 'sticky top-0 z-20'}`}>
+                {/* MOBILE FILTER MODAL */}
+                <button className="inline-flex items-center justify-center lg:hidden py-2 w-full"><Image src={filtersIcon} width={24} height={24} alt="filters" onClick={() => setFiltersModal(true)} /></button>
+                <div className={`absolute w-screen h-screen z-50 h-screen top-0 bg-gray-100 flex-col ${filtersModal ? 'left-0 bottom-0 flex' : 'left-full hidden'}`}>
+                    <div className='flex flex-row justify-between items-center'>
+                        <h1 className='capitalize text-xl pl-8'>Search filters</h1>
+                        <button className="p-4 text-lg text-right" onClick={() => setFiltersModal(false)}><Image src={close} width={25} height={25} alt="close menu icon" /></button>
+                    </div>
+                    {Object.keys(filtersApplied).length > 1 && <button className='text-center text-white py-2 mb-4 w-full bg-primarylight' onClick={() => {
+                        router.push({ pathname: router.pathname, query: {}})
+                        setFiltersModal(false);
+                    }}>Borrar todos</button>}
+                    <div className="text-left px-8 overflow-y-scroll pb-8">
+                        {filters.map(filter => (
+                            <div key={filter} className='first:pt-0 pt-4'>
+                                <p className="capitalize text-md font-bold text-gray-500">{filter.replaceAll("_", " ")}</p>
+                                {filterOptions[filter] ? filterOptions[filter].map(el => {
+                                    const isActive = (filtersApplied[filter] && Number(filtersApplied[filter]) === Number(el.value));
+                                    return (
+                                        <button
+                                            onClick={() => isActive ? removeTag(filter) : onFilterChange({ target: { name: filter, value: el.value }})}
+                                            key={el.label}
+                                            className={`capitalize w-full text-left px-4 py-2 text-gray-500 ${isActive && 'text-gray-800 font-medium'}`}
+                                        >{el.label}</button>
+                                    )}) : <p>loading...</p>}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                {/* FILTER DROPDOWNS */}
+                <div className="hidden lg:flex flex-wrap gap-4 p-1 pb-4 md:pb-2">
                     <Select
                         name="poblacion"
                         label={text['poblacion']}
@@ -240,12 +272,12 @@ export default function Buscar() {
                     />
                 </div>
             </div>
-            {/* APPLIED FILTER LABELS*/}
-            <div className="flex gap-2 px-2 md:px-4 overflow-x-scroll flex-nowrap md:flex-wrap">
+            {/* APPLIED FILTER LABELS */}
+            <div className="flex gap-2 px-2 md:px-4 pt-4 overflow-x-scroll flex-nowrap md:flex-wrap">
                 {Object.entries(filtersApplied).map(([key, val], index) => (
                     <div key={`${key}${val}${index}`} className="flex w-auto items-center rounded bg-primarylighter bg-opacity-50 flex-shrink-0">
-                        <p className={`px-4 text-primary ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : (key ==='poblacion' || key ==='provincia') ? wp_terms[key][val] : wp_terms[locale][key][val]}</p>
-                        <button className="p-1 pt-2 px-2 md:pt-3 md:pb-2 md:px-3 text-white hover:bg-primarylighter rounded-r" onClick={() => removeTag(key)}><Image src={close} width={24} height={24} alt="close icon" /></button>
+                        <p className={`pl-4 pr-2 text-primary ${key !== 'q' && 'capitalize'} whitespace-nowrap`}>{key === 'q' ? `"${val}"` : (key ==='poblacion' || key ==='provincia') ? wp_terms[key][val] : wp_terms[locale][key][val]}</p>
+                        <button className="p-1 md:pt-3 md:pb-2 md:px-3 text-white hover:bg-primarylighter rounded-r" onClick={() => removeTag(key)}><Image src={close} width={16} height={16} alt="close icon" /></button>
                     </div>
                 ))}
             </div>
@@ -254,7 +286,7 @@ export default function Buscar() {
                     {schools
                         ? Object.keys(filtersApplied).length > 0
                             ? (filteredSchools.length > 0)
-                                ? <div className={`grid grid-cols-1 px-2 md:px-4 ${showMap ? 'sm:grid-cols-3' : 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full'}`}>
+                                ? <div className={`grid grid-cols-1 px-2 md:px-2 ${showMap ? 'sm:grid-cols-3' : 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full'}`}>
                                     {filteredSchools.map((el, i) => <SchoolCard key={el.guid.rendered} el={{ i: showMap ? i : null, ...el }} grid />)}
                                 </div> 
                                 : <p className="text-2xl text-gray-400 text-center w-full h-full py-10 font-bold">{text.busResulEmpt}</p>

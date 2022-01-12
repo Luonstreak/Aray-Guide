@@ -39,6 +39,8 @@ import piscina from '/public/images/icons/piscina.svg'
 import igualdad from '/public/images/icons/igualdad.svg'
 import integracion_social from '/public/images/icons/integracion_social.svg'
 import prevencion_acoso from '/public/images/icons/prevencion_acoso.svg'
+import horse from '/public/images/icons/horse.svg'
+import placeholder from '/public/images/school.png'
 import { myLoader, decodeHTMLEntities } from '../../util/functions'
 import i18n from '../../util/i18n.json';
 
@@ -58,8 +60,11 @@ export default function Colegio(props){
             setDetails(null)
             axios.get(`https://ouroinc.com/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
                 if (res.data) {
-                    const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
-                    setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
+                    let thumbnail = null;
+                    if(res.data['_embedded']) {
+                        thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'];
+                    }
+                    setDetails({ ...res.data, ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
@@ -108,7 +113,8 @@ export default function Colegio(props){
         "50": campo_de_tennis,
         "55": instalaciones_olimpicas,
         "16": piscina,
-        "17": piscina
+        "17": piscina,
+        "93": horse,
     }
     const icons_integracion = {
         "39": igualdad,
@@ -116,14 +122,16 @@ export default function Colegio(props){
         "37": prevencion_acoso
     }
     if(!details) return <div className="container mx-auto text-center py-40"><Spinner /></div>
-    else return (
+    else {
+        const pureUrl = details.direccion_web.replace("http://","").replace("https://","").replace("www.","");
+        return (
         <div className="bg-gray-50">
             {/* HERO */}
             <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60 px-4">
-                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{decodeHTMLEntities(details.name)}</h1>
-                <p className="z-10 text-white lg:text-2xl lg:text-gray-300 capitalize">{wp_terms['provincia'][details.provincia]} • {wp_terms[locale]['pais'][details.pais]}</p>
-                <div className="absolute inset-0 z-0">
-                    <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
+                <h1 className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-800'} text-3xl lg:text-6xl uppercase mb-4`}>{decodeHTMLEntities(details.name)}</h1>
+                <p className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-500'} lg:text-2xl capitalize`}>{wp_terms['provincia'][details.provincia]} • {wp_terms[locale]['pais'][details.pais]}</p>
+                <div className={`absolute inset-0 z-0 ${details.thumbnail ? '' : 'bg-primarylighter'}`}>
+                    <Image priority loader={myLoader} src={details.thumbnail || placeholder} layout='fill' objectFit='cover' className={details.thumbnail ? 'object-cover brightness-50' : 'brightness-100'} alt="hero image" />
                 </div>
             </div>
             
@@ -327,7 +335,7 @@ export default function Colegio(props){
                     <div className="flex mb-2 ml-8">
                         <Image src={web} width={16} height={16} />&nbsp;&nbsp;
                         {details.direccion_web 
-                            ? <a href={`https:${details.direccion_web.replace("http://","/").replace("https://","")}`} target="_blank" rel="noreferrer"><span className="underline">{details.direccion_web}</span><span className="text-yellow-500">&#x27F6;</span></a>
+                            ? <a href={`https://www.${pureUrl}`} target="_blank" rel="noreferrer"><span className="underline">{pureUrl}</span><span className="text-yellow-500">&#x27F6;</span></a>
                             : <p>{text.colNoCom}</p>
                         }
                     </div>
@@ -344,6 +352,6 @@ export default function Colegio(props){
                 <hr className="title-separator" />
                 <Carousel data={schools} type="school" />
             </div>
-        </div>
-    )
+        </div>)
+    }
 }
