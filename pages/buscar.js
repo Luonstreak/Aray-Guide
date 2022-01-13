@@ -203,9 +203,9 @@ export default function Buscar() {
                         setFiltersModal(false);
                     }}>Borrar todos</button>}
                     <div className="text-left px-8 overflow-y-scroll pb-8">
-                        {filters.map(filter => (
+                        {filters ? filters.map(filter => (
                             <div key={filter} className='first:pt-0 pt-4'>
-                                <p className="capitalize text-md font-bold text-gray-500">{filter ? filter.replaceAll("_", " ") : 'loading...'}</p>
+                                <p className="capitalize text-md font-bold text-gray-500">{filter.replaceAll("_", " ")}</p>
                                 {filterOptions[filter] ? filterOptions[filter].map(el => {
                                     const isActive = (filtersApplied[filter] && Number(filtersApplied[filter]) === Number(el.value));
                                     return (
@@ -216,7 +216,7 @@ export default function Buscar() {
                                         >{el.label}</button>
                                     )}) : <p>loading...</p>}
                             </div>
-                        ))}
+                        )) : <p>loading...</p>}
                     </div>
                 </div>
                 {/* FILTER DROPDOWNS */}
