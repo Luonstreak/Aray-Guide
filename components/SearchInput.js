@@ -123,7 +123,7 @@ export default function SearchInput(props){
                     </ul>
                 )}
                 <button className="absolute top-2 lg:top-4 right-4" onClick={() => handleTermSearch({ keyCode: 13, target: { value: term }})}>
-                    <Image src={magnifier} width={32} height={32} />
+                    <Image src={magnifier} width={32} height={32} alt="" />
                 </button>
             </div>
         </div>

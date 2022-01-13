@@ -89,7 +89,7 @@ export default function Buscar() {
             });
             setFilteredSchools(filteredSchools)
         }
-    },[schools, router.query, filtersApplied]);
+    },[schools, router.query, filtersApplied, filterOptions]);
 
     const handleTermSearch = e => {
         const { pathname, query } = router;
@@ -205,7 +205,7 @@ export default function Buscar() {
                     <div className="text-left px-8 overflow-y-scroll pb-8">
                         {filters.map(filter => (
                             <div key={filter} className='first:pt-0 pt-4'>
-                                <p className="capitalize text-md font-bold text-gray-500">{filter.replaceAll("_", " ")}</p>
+                                <p className="capitalize text-md font-bold text-gray-500">{filter ? filter.replaceAll("_", " ") : 'loading...'}</p>
                                 {filterOptions[filter] ? filterOptions[filter].map(el => {
                                     const isActive = (filtersApplied[filter] && Number(filtersApplied[filter]) === Number(el.value));
                                     return (

@@ -48,7 +48,7 @@ export default function Actividad(props){
             }
           }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
-    },[aid]);
+    },[aid, schools, actividades]);
 
     const formatDate = (date, year) => {
         const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -74,7 +74,7 @@ export default function Actividad(props){
                     <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{i18n[locale].actInfo}</h1>
                     <hr className="title-separator mb-8" />
                     <div className="flex mb-2">
-                        <Image src={location} width={16} height={16} />&nbsp;
+                        <Image src={location} width={16} height={16} alt="map pin icon" />&nbsp;
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
                     <p className="uppercase mb-4">{details.tipo}</p>
@@ -129,17 +129,17 @@ export default function Actividad(props){
                     <hr className="title-separator mb-8" />
 
                     <div className="flex mb-2 ml-8">
-                        <Image src={location} width={16} height={16} />&nbsp;&nbsp;
+                        <Image src={location} width={16} height={16} alt="location icon" />&nbsp;&nbsp;
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
 
                     <div className="flex mb-2 ml-8">
-                        <Image src={phone} width={16} height={16} />&nbsp;&nbsp;
+                        <Image src={phone} width={16} height={16} alt="phone icon" />&nbsp;&nbsp;
                         <p>{details.telefono || 'no compartido'}</p>
                     </div>
                     
                     <div className="flex mb-2 ml-8">
-                        <Image src={email} width={16} height={16} />&nbsp;&nbsp;
+                        <Image src={email} width={16} height={16} alt="email icon" />&nbsp;&nbsp;
                         {details.correo_electronico ? (<Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>) : (<p>no compartido</p>)}
                     </div>
                     

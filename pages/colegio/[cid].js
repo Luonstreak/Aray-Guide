@@ -82,7 +82,7 @@ export default function Colegio(props){
             }
           }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
-    },[cid]);
+    },[cid, actividades, schools]);
 
     const icons_servicios_generales = {
         "65": alojamiento,
@@ -131,7 +131,7 @@ export default function Colegio(props){
                 <h1 className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-800'} text-3xl lg:text-6xl uppercase mb-4`}>{decodeHTMLEntities(details.name)}</h1>
                 <p className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-500'} lg:text-2xl capitalize`}>{wp_terms['provincia'][details.provincia]} • {wp_terms[locale]['pais'][details.pais]}</p>
                 <div className={`absolute inset-0 z-0 ${details.thumbnail ? '' : 'bg-primarylighter'}`}>
-                    <Image priority loader={myLoader} src={details.thumbnail || placeholder} layout='fill' objectFit='cover' className={details.thumbnail ? 'object-cover brightness-50' : 'brightness-100'} alt="hero image" />
+                    <Image priority loader={myLoader} src={details.thumbnail || placeholder} layout='fill' objectFit='cover' className={details.thumbnail ? 'object-cover brightness-50' : 'brightness-100'} alt="" />
                 </div>
             </div>
             
@@ -142,7 +142,7 @@ export default function Colegio(props){
                     <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{decodeHTMLEntities(details.name)}</h1>
                     <hr className="title-separator mb-2" />
                     <div className="flex mb-2">
-                        <Image src={location} width={16} height={16} />&nbsp;
+                        <Image src={location} width={16} height={16} alt="location icon" />&nbsp;
                         <p className="capitalize">{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
                     {details.modelo_educativo !== '154' && <p className="mb-2 capitalize">{text.colCole} {wp_terms[locale]['modelo_educativo'][details.modelo_educativo]}</p>}
@@ -180,7 +180,7 @@ export default function Colegio(props){
                     <ul>
                         {details.curriculum_academico && <div className="flex items-start pt-4">
                             <div className="flex-shrink-0">
-                                <Image src={curriculum} width={24} height={24}/>
+                                <Image src={curriculum} width={24} height={24} alt="" />
                             </div>
                             <div className="ml-2">
                                 {details.curriculum_academico.map((el, index) => <li key={el}><p className="uppercase mb-2">{index + 1}. {wp_terms[locale]['curriculum_academico'][el]}</p></li>)}
@@ -189,7 +189,7 @@ export default function Colegio(props){
 
                         {details.entrevista_de_acceso && <div className="flex items-start mt-2">
                             <div className="flex-shrink-0">
-                                <Image src={entrevista} width={24} height={24}/>
+                                <Image src={entrevista} width={24} height={24} alt="" />
                             </div>
                             <div className="ml-2">
                                 <li><p className="uppercase mb-2">{text.colCArEntr}</p></li>
@@ -198,7 +198,7 @@ export default function Colegio(props){
 
                         {details.nivel_minimo_de_idioma && <div className="flex items-start mt-2">
                             <div className="flex-shrink-0">
-                                <Image src={nivel_minimo} width={24} height={24}/>
+                                <Image src={nivel_minimo} width={24} height={24} alt="" />
                             </div>
                             <div className="ml-2">
                                 <li><p className="uppercase mb-2">{text.colCarNiv}</p></li>
@@ -207,7 +207,7 @@ export default function Colegio(props){
                         </div>}
                         <div className="flex items-start mt-2">
                             <div className="flex-shrink-0">
-                                <Image src={distribucion} width={24} height={24}/>
+                                <Image src={distribucion} width={24} height={24} alt="" />
                             </div>
                             <div className="ml-2">
                                 <li><p className="uppercase mb-2">{details.distribucion_de_clases.split("_").join(" ")}</p></li>
@@ -233,7 +233,7 @@ export default function Colegio(props){
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">{text.colServGen}</h5>
                         <ul>
                             {details.servicios_ofrecidos.map(el => <li key={el} className="flex items-center mb-4">
-                                <Image src={icons_servicios_generales[el]} width={24} height={24}/>
+                                <Image src={icons_servicios_generales[el]} width={24} height={24} alt="" />
                                 <p className="uppercase ml-2">&nbsp;{wp_terms[locale]['servicios_ofrecidos'][el]}</p>
                             </li>)}
                         </ul>
@@ -242,7 +242,7 @@ export default function Colegio(props){
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">{text.colServEsp}</h5>
                         <ul>
                             {details.servicios_especiales.map(el => <li key={el} className="flex items-center mb-4">
-                                <Image src={icons_servicios_especiales[el]} width={24} height={24}/>
+                                <Image src={icons_servicios_especiales[el]} width={24} height={24} alt="" />
                                 <p className="uppercase ml-2">{wp_terms[locale]['servicios_especiales'][el]}</p>
                             </li>)}
                         </ul>
@@ -251,7 +251,7 @@ export default function Colegio(props){
                         <h5 className="mb-2 mt-4 uppercase font-bold text-gray-700">{text.colCom}</h5>
                         <ul>
                             {details.menu_especial.map(el => <li key={el} className="flex items-center mb-4">
-                                <Image src={icons_comedor[el]} width={24} height={24}/>
+                                <Image src={icons_comedor[el]} width={24} height={24} alt="" />
                                 <p className="uppercase ml-2">{wp_terms[locale]['menu_especial'][el]}</p>
                             </li>)}
                         </ul>
