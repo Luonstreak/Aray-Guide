@@ -77,8 +77,8 @@ export default function Actividad(props){
     else return(
         <div className="bg-gray-50">
             {/* HERO */}
-            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60 p-4">
-                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4 md:px-40">{details.name}</h1>
+            <div className="w-screen flex flex-col justify-center items-center relative py-20 md:py-32 lg:py-44 p-4">
+                <h1 className="z-10 text-white text-3xl md:text-4xl lg:text-5xl uppercase mb-4 md:px-40">{details.name}</h1>
                 <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{details.anfitrion.post_title}</p>
                 <div className="absolute inset-0 z-0">
                     <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />

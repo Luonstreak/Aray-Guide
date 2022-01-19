@@ -127,8 +127,8 @@ export default function Colegio(props){
         return (
         <div className="bg-gray-50">
             {/* HERO */}
-            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60 px-4">
-                <h1 className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-800'} text-3xl lg:text-6xl uppercase mb-4`}>{decodeHTMLEntities(details.name)}</h1>
+            <div className="w-screen flex flex-col justify-center items-center relative py-20 md:py-32 lg:py-44 px-4">
+                <h1 className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-800'} text-3xl md:text-4xl lg:text-5xl uppercase mb-4`}>{decodeHTMLEntities(details.name)}</h1>
                 <p className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-500'} lg:text-2xl capitalize`}>{wp_terms['provincia'][details.provincia]} • {wp_terms[locale]['pais'][details.pais]}</p>
                 <div className={`absolute inset-0 z-0 ${details.thumbnail ? '' : 'bg-primarylighter'}`}>
                     <Image priority loader={myLoader} src={details.thumbnail || placeholder} layout='fill' objectFit='cover' className={details.thumbnail ? 'object-cover brightness-50' : 'brightness-100'} alt="" />

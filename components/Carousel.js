@@ -4,9 +4,6 @@ import Spinner from "../components/Spinner"
 import SchoolCard from "./SchoolCard"
 import ActivityCard from "./ActivityCard"
 import CountryCard from "./CountryCard"
-import Image from 'next/image'
-import chevronLeft from '/public/images/icons/chevron_left.svg'
-import chevronRight from '/public/images/icons/chevron_right.svg'
 import { useRouter } from 'next/router'
 import i18n from '../util/i18n.json'
 
@@ -20,7 +17,7 @@ export default function MyCarousel(props) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: props.type === 'school' ? 3 : 2,
+      items: props.type === 'activity' ? 2 : 3,
       slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
