@@ -25,13 +25,30 @@ export default function Actividad(props){
     const [actividades, setActividades] = useState(null)
 
     useEffect(() => {
-        if(aid){
+        if(!details && aid){
             setDetails(null);
             axios.get(`https://ouroinc.com/wp-json/wp/v2/actividades/${aid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
                     setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }
+            }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
+        }
+        if(details && !details.direccion_1){
+            axios.get(`https://ouroinc.com/wp-json/wp/v2/colegios/${details.anfitrion.ID}?_embed`).then(res => {
+                const parentProps = {
+                    direccion_1: res.data.ACF.direccion_1,
+                    direccion_2: res.data.ACF.direccion_2,
+                    poblacion: res.data.ACF.poblacion,
+                    provincia: res.data.ACF.provincia,
+                    pais: res.data.ACF.pais,
+                    latitude: res.data.ACF.latitude,
+                    longitude: res.data.ACF.longitude,
+                    telefono: res.data.ACF.telefono,
+                    correo_electronico: res.data.ACF.correo_electronico,
+
+                }
+                setDetails({ ...details, ...parentProps });
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
         if(!actividades){
@@ -48,7 +65,7 @@ export default function Actividad(props){
             }
           }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
-    },[aid, schools, actividades]);
+    },[aid, schools, actividades, details]);
 
     const formatDate = (date, year) => {
         const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -60,8 +77,8 @@ export default function Actividad(props){
     else return(
         <div className="bg-gray-50">
             {/* HERO */}
-            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60">
-                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4">{details.name}</h1>
+            <div className="w-screen flex flex-col justify-center items-center relative py-20 lg:py-60 p-4">
+                <h1 className="z-10 text-white text-3xl lg:text-6xl uppercase mb-4 md:px-40">{details.name}</h1>
                 <p className="z-10 text-white lg:text-2xl lg:text-gray-300">{details.anfitrion.post_title}</p>
                 <div className="absolute inset-0 z-0">
                     <Image priority loader={myLoader} src={details.thumbnail} layout="fill" className="object-cover brightness-50" alt="hero image" />
@@ -73,17 +90,17 @@ export default function Actividad(props){
                 <div className="md:w-2/3 mt-8">
                     <h1 className="text-gray-700 text-2xl md:text-4xl font-bold uppercase">{i18n[locale].actInfo}</h1>
                     <hr className="title-separator mb-8" />
-                    <div className="flex mb-2">
+                    {details.direccion_1 && <div className="flex mb-2">
                         <Image src={location} width={16} height={16} alt="map pin icon" />&nbsp;
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
-                    </div>
+                    </div>}
                     <p className="uppercase mb-4">{details.tipo}</p>
                     <Link href={`/colegio/${details.anfitrion.ID}?_embed`}><a className="underline uppercase">{details.anfitrion.post_title}</a></Link>
                 </div>
-                <div className="md:w-1/3 mt-8 md:mt-16">
+                {details.desde && <div className="md:w-1/3 mt-8 md:mt-16">
                     <h5 className="uppercase text-gray-700 font-bold text-md mb-4">{i18n[locale].actDate}</h5>
                     <p className="uppercase font-bold text-primary">{details.desde === details.hasta ? formatDate(details.desde) : `del ${formatDate(details.desde)} a ${formatDate(details.hasta, true)}`}</p>
-                </div>
+                </div>}
             </div>
             
             {/* DESCRIPCION */}
@@ -92,7 +109,7 @@ export default function Actividad(props){
                 <h1 className="uppercase text-gray-700 font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].actDes}</h1>
                 <p className="mb-2 uppercase text-gray-400">{i18n[locale].globDeLa}</p>
                 <hr className="title-separator mb-8" />
-                <p>{details.descripcion}</p>
+                <p className='max-w-screen-sm leading-relaxed'>{details.descripcion}</p>
             </div>
 
             {/* MAS INFORMACION */}
@@ -128,24 +145,24 @@ export default function Actividad(props){
                     <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{i18n[locale].actCont}</h1>
                     <hr className="title-separator mb-8" />
 
-                    <div className="flex mb-2 ml-8">
+                    <div className="flex mb-2">
                         <Image src={location} width={16} height={16} alt="location icon" />&nbsp;&nbsp;
                         <p>{details.direccion_1} {details.direccion_2} {wp_terms['poblacion'][details.poblacion]} {wp_terms['provincia'][details.provincia]}</p>
                     </div>
 
-                    <div className="flex mb-2 ml-8">
+                    <div className="flex mb-2">
                         <Image src={phone} width={16} height={16} alt="phone icon" />&nbsp;&nbsp;
                         <p>{details.telefono || 'no compartido'}</p>
                     </div>
                     
-                    <div className="flex mb-2 ml-8">
+                    <div className="flex mb-2">
                         <Image src={email} width={16} height={16} alt="email icon" />&nbsp;&nbsp;
                         {details.correo_electronico ? (<Link href={`mailto:${details.correo_electronico}`}><a className="underline">{details.correo_electronico}</a></Link>) : (<p>no compartido</p>)}
                     </div>
                     
                 </div>
                 <div className="flex-1">
-                    <Image src={map} alt="map placeholder" />
+                <Image src={`https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=500x500&maptype=roadmap&markers=color:red|${details.latitude},${details.longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_API}`} alt="mapa ubicacion de escuela" width={500} height={500} className="rounded-lg"/>
                 </div>
             </div>
             <hr className="container-separator" />

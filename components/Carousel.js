@@ -10,47 +10,30 @@ import chevronRight from '/public/images/icons/chevron_right.svg'
 import { useRouter } from 'next/router'
 import i18n from '../util/i18n.json'
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 1 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 1 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
-  }
-};
 
 export default function MyCarousel(props) {
-
+  
   const router = useRouter();
   const { locale } = router;
   const text = i18n[locale];
   
-  // const CustomLeftArrow = ({ onClick, ...rest }) => {
-  //   const { onMove, carouselState: { currentSlide, deviceType } } = rest;
-  //   return (
-  //     <button className="bg-blue-500" onClick={() => onClick()} >
-  //       <Image src={chevronLeft} width={50} height={50} alt="chevron-left" />
-  //     </button>
-  //   );
-  // };
-
-  // const CustomRightArrow = ({ onClick, ...rest }) => {
-  //   const { onMove, carouselState: { currentSlide, deviceType } } = rest;
-  //   return (
-  //     <button className="bg-blue-500" onClick={() => onClick()} >
-  //       <Image src={chevronRight} width={50} height={50} alt="chevron-right" />
-  //     </button>
-  //   );
-  // };
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: props.type === 'school' ? 3 : 2,
+      slidesToSlide: 1 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 1 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
+    }
+  };
 
   return (
     <div className="container mx-auto mt-4">
@@ -58,13 +41,11 @@ export default function MyCarousel(props) {
         ? props.data.length > 0
           ? (
             <Carousel
-              // customLeftArrow={<CustomLeftArrow />}
-              // customRightArrow={<CustomRightArrow />}
               swipeable={true}
               draggable={true}
               showDots={false}
               responsive={responsive}
-              ssr={true} // means to render carousel on server-side.
+              ssr={true}
               infinite={true}
               autoPlay={props.deviceType !== "mobile" ? true : false}
               slidesToSlide={1}
@@ -88,7 +69,6 @@ export default function MyCarousel(props) {
                 }
               })}
             </Carousel>
-          // ) : <div className="bg-black"><Image src={chevronLeft} width={50} height={50} alt="chevron-left" /></div>
           ) : <p className="text-center capitalize">{text.globActEmpt}</p>
         : <Spinner />
       }
