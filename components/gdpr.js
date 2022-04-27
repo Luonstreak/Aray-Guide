@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 export default function Gdpr(){
-    const [showing, setShowing] = useState(true);
+    const [showing, setShowing] = useState(false);
     const [expand, setExpand] = useState(false);
     const [allowMarketing, setAllowMarketing] = useState(true)
     const [allowBehaviour, setAllowBehaviour] = useState(true);
@@ -16,7 +16,7 @@ export default function Gdpr(){
     const behavior = ['_clck','_clsk','CLID','ANONCHK','MR','MUID','SM'];
 
     useEffect(() => {
-        if(getCookie('gdpr_accepted')) setShowing(false);
+        if(!getCookie('gdpr_accepted')) setShowing(true);
     },[])
 
     const getCookie = (name) => {

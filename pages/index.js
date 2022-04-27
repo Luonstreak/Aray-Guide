@@ -17,7 +17,8 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import i18n from '../util/i18n.json'
 import Carousel from '../components/Carousel'
-export default function Inicio() {
+
+function Inicio() {
 
   const [schools, setSchools] = useState(null)
   const [actividades, setActividades] = useState(null)
@@ -222,3 +223,5 @@ export default function Inicio() {
     </div>
   )
 }
+
+export default Inicio

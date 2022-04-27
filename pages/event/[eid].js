@@ -18,16 +18,16 @@ export default function Actividad(props){
 
     const router = useRouter()
     const { locale } = router;
-    const { aid } = router.query
+    const { eid } = router.query
 
     const [details, setDetails] = useState(null)
     const [schools, setSchools] = useState(null)
-    const [actividades, setActividades] = useState(null)
+    const [event, setEvents] = useState(null)
 
     useEffect(() => {
-        if(!details && aid){
+        if(!details && eid){
             setDetails(null);
-            axios.get(`https://ouroinc.com/wp-json/wp/v2/actividades/${aid}?_embed`).then(res => {
+            axios.get(`https://ouroinc.com/wp-json/wp/v2/actividades/${eid}?_embed`).then(res => {
                 if (res.data) {
                     const thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url']
                     setDetails({ ...res.data.ACF, name: res.data.title.rendered, thumbnail });
@@ -51,7 +51,7 @@ export default function Actividad(props){
                 setDetails({ ...details, ...parentProps });
             }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
         }
-        if(!actividades){
+        if(!event){
             axios.get('https://ouroinc.com/wp-json/wp/v2/actividades?_embed').then(res => {
                 if (res.data) {
                     setActividades(res.data);
@@ -65,7 +65,7 @@ export default function Actividad(props){
             }
           }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
-    },[aid, schools, actividades, details]);
+    },[eid, schools, event, details]);
 
     const formatDate = (date, year) => {
         const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];

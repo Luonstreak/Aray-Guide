@@ -7,12 +7,15 @@ import lang from '/public/images/icons/lang.svg';
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import i18n from '../util/i18n.json'
+import { useSession } from 'next-auth/react';
 
 export default function Navbar(){
 
     const [navMenuOpen, setNavMenuOpen] =  useState(false);
     const [lanMenuOpen, setLanMenuOpen] =  useState(false);
     const router = useRouter();
+
+    const { data: session } = useSession()
     const { locale, pathname } = router;
     return(
         <div className="fixed z-30 bg-black bg-opacity-40 w-screen">
@@ -24,6 +27,9 @@ export default function Navbar(){
                     <Link href="/buscar" passHref><button className="p-4 h-full bg-black bg-opacity-0 hover:bg-opacity-20 text-gray-50 md:text-xl">{i18n[locale].navCol}</button></Link>
                     <Link href="/sobre" passHref><button className="p-4 h-full bg-black bg-opacity-0 hover:bg-opacity-20 text-gray-50 md:text-xl">{i18n[locale].navSob}</button></Link>
                     <Link href="/contacto" passHref><button className="p-4 h-full bg-black bg-opacity-0 hover:bg-opacity-20 text-gray-50 md:text-xl">{i18n[locale].navCont}</button></Link>
+                    {session
+                        ? <Link href="/profile" passHref><button className="p-4 h-full bg-black bg-opacity-0 hover:bg-opacity-20 text-gray-50 md:text-xl">Profile</button></Link>
+                        : <Link href="/auth/signin" passHref><button className="p-4 h-full bg-black bg-opacity-0 hover:bg-opacity-20 text-gray-50 md:text-xl">Sign In</button></Link>}
                 </div>
                 {/* lang menu */}
                 <button className="ml-auto md:ml-0 mr-4 md:mr-0 md:px-8 bg-black bg-opacity-0 md:hover:bg-opacity-20" onClick={() => setLanMenuOpen(true)}><Image src={lang} width={25} height={25} alt="menu icon" /></button>

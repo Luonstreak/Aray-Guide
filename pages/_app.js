@@ -3,9 +3,9 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Gdpr from '../components/gdpr'
 import Head from 'next/head'
+import { SessionProvider } from "next-auth/react"
 
-function MyApp({ Component, pageProps }) {
-
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return <>
     <Gdpr />
     <Head>
@@ -14,9 +14,10 @@ function MyApp({ Component, pageProps }) {
       <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     </Head>
-    <Navbar />
-    <Component {...pageProps} />
-    <Footer />
+    <SessionProvider session={session} >
+      <Navbar />
+      <Component {...pageProps} />
+    </SessionProvider>
   </>
 }
 

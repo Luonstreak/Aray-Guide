@@ -44,21 +44,21 @@ import placeholder from '/public/images/school.png'
 import { myLoader, decodeHTMLEntities } from '../../util/functions'
 import i18n from '../../util/i18n.json';
 
-export default function Colegio(props){
+export default function School(props){
   
   const router = useRouter()
   const { locale } = router;
   const text = i18n[locale];
-  const { cid } = router.query
+  const { sid } = router.query
     
   const [details, setDetails] = useState(null)
   const [schools, setSchools] = useState(null)
-  const [actividades, setActividades] = useState(null)
+  const [events, setEvents] = useState(null)
 
     useEffect(() => {
-        if(cid){
+        if(sid){
             setDetails(null)
-            axios.get(`https://ouroinc.com/wp-json/wp/v2/colegios/${cid}?_embed`).then(res => {
+            axios.get(`https://ouroinc.com/wp-json/wp/v2/colegios/${sid}?_embed`).then(res => {
                 if (res.data) {
                     let thumbnail = null;
                     if(res.data['_embedded']) {
@@ -66,23 +66,23 @@ export default function Colegio(props){
                     }
                     setDetails({ ...res.data, ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }
-            }).catch(err => console.log(err, 'There was an error fetching "Detalles del colegio"'));
+            }).catch(err => console.log(err, 'There was an error fetching school details'));
         }
-        if(!actividades){
+        if(!events){
             axios.get('https://ouroinc.com/wp-json/wp/v2/actividades?_embed').then(res => {
                 if (res.data) {
-                    setActividades(res.data);
+                    setEvents(res.data);
                 }
-            }).catch(err => console.log(err, 'There was an error fetching "Actviades"'));
+            }).catch(err => console.log(err, 'There was an error fetching event details'));
         }
         if(!schools){
           axios.get('https://ouroinc.com/wp-json/wp/v2/colegios?_embed').then(res => {
             if (res.data) {
                 setSchools(res.data);
             }
-          }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
+          }).catch(err => console.log(err, 'There was an error fetching centers'));
         }
-    },[cid, actividades, schools]);
+    },[sid, events, schools]);
 
     const icons_servicios_generales = {
         "65": alojamiento,
@@ -125,7 +125,8 @@ export default function Colegio(props){
     else {
         const pureUrl = details.direccion_web.replace("http://","").replace("https://","").replace("www.","");
         return (
-        <div className="bg-gray-50">
+            
+            <div className="bg-gray-50">
             {/* HERO */}
             <div className="w-screen flex flex-col justify-center items-center relative py-20 md:py-32 lg:py-44 px-4">
                 <h1 className={`z-10 ${details.thumbnail ? 'text-white' : 'text-gray-800'} text-3xl md:text-4xl lg:text-5xl uppercase mb-4`}>{decodeHTMLEntities(details.name)}</h1>
@@ -300,11 +301,11 @@ export default function Colegio(props){
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
-            {/* ACTIVIDADES */}
+            {/* events */}
             <div className="container max-w-screen-lg mx-auto p-4">
                 <h1 className="text-gray-700 uppercase font-bold text-xl md:text-2xl lg:text-4xl">{text.globActDes}</h1>
                 <hr className="title-separator mb-8" />
-                <Carousel data={actividades} type="activity" />
+                <Carousel data={events} type="activity" />
             </div>
             <hr className="border-gray-400 border-1 w-5/6 mx-auto my-8" />
 
