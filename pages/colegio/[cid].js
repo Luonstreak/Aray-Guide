@@ -62,7 +62,7 @@ export default function Colegio(props){
                 if (res.data) {
                     let thumbnail = null;
                     if(res.data['_embedded']) {
-                        thumbnail = res.data['_embedded']['wp:featuredmedia'][0]['source_url'];
+                        thumbnail = res.data['_embedded']?.['wp:featuredmedia']?.[0]?.['source_url'];
                     }
                     setDetails({ ...res.data, ...res.data.ACF, name: res.data.title.rendered, thumbnail });
                 }

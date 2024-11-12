@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { myLoader } from '../util/functions'
 
 export default function ActivityCard({ el }){
-    const thumbnail = el['_embedded']['wp:featuredmedia'][0]['source_url'];
+    const thumbnail = el['_embedded']?.['wp:featuredmedia']?.[0]?.['source_url'] || '';
     return (
         <Link href={`/actividad/${el.id}?_embed`} passHref>
             <div className="shadow-lg mb-6 flex-none bg-white rounded-lg p-4 m-2 flex flex-col sm:flex-row justify-center cursor-pointer">

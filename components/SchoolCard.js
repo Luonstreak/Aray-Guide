@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 export default function SchoolCard({ el, grid }){
     const router = useRouter();
     const { locale } = router;
-    const thumbnail = el['_embedded'] ? el['_embedded']['wp:featuredmedia'][0]['source_url'] : placeholder;
+    const thumbnail = el['_embedded']?.['wp:featuredmedia']?.[0]?.['source_url'] ?? placeholder;
     return (
         <Link href={`/colegio/${el.id}`} passHref>
             <div className="bg-white rounded-lg shadow-lg cursor-pointer mx-2 mb-8">

@@ -42,18 +42,20 @@ export default function Buscar() {
     ];
     
     const fetchFilterOptions = async () => {
-        Promise.all(filters.map(filter => axios.get(`https://ouroinc.com/wp-json/wp/v2/${filter}`).then(res => res.data)))
+        Promise.all(filters.map(filter => axios.get(`https://ouroinc.com/wp-json/wp/v2/${filter}?per_page=100`).then(res => res.data)))
             .then(filterOptions => {
-                // TODO: REFACTOR THIS IF POSSIBLE OPTIMOZE PERFORMANCE
-                const parsedFilters = filterOptions.reduce((acc,filter) => {
-                    const values = filter.reduce((acc, curr) => {
-                        if(acc[curr.taxonomy]){ acc[curr.taxonomy].push({ label: curr.name, value: curr.id }) }
-                        else acc[curr.taxonomy] = [{ label: curr.name, value: curr.id }];
-                        return acc;
-                    },{});
-                    return { ...acc, [Object.keys(values)[0]]: values[Object.keys(values)[0]] }
-                },{});
-                setFilterOptions(parsedFilters);
+            const parsedFilters = filterOptions.reduce((acc, filter) => {
+                const values = filter.reduce((acc, curr) => {
+                if (acc[curr.taxonomy]) {
+                    acc[curr.taxonomy].push({ label: curr.name, value: curr.id });
+                } else {
+                    acc[curr.taxonomy] = [{ label: curr.name, value: curr.id }];
+                }
+                return acc;
+                }, {});
+                return { ...acc, [Object.keys(values)[0]]: values[Object.keys(values)[0]] };
+            }, {});
+            setFilterOptions(parsedFilters);
             });
     }
 
@@ -62,7 +64,7 @@ export default function Buscar() {
         if(!schools){
             axios.get('https://ouroinc.com/wp-json/wp/v2/colegios?per_page=100&_embed').then(res => {
                 if (res.data) {
-                setSchools(res.data);
+                    setSchools(res.data);
                 }
             }).catch(err => console.log(err, 'There was an error fetching "Colegios"'));
         }
